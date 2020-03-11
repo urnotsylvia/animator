@@ -19,10 +19,6 @@ public class IShapeTest {
   IShape s4 = new Rectangle("s4", 15.1 , 40, c1, p1, lok1);
   IShape s5 = new Rectangle("s5", 15, 50, c1, p1, lok1);
 
-
-
-
-//dshfakhdkjhfkshf
   @Test
   public void getColor() {
     assertEquals(s1.getColor(), c1);
@@ -44,6 +40,10 @@ public class IShapeTest {
   assertEquals(s1.getPos(), p1);
   }
 
+@Test
+public void new() {
+
+  }
 
   @Test
   public void addKeyFrame() {
