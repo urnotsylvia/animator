@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2a946191-7843-4308-b482-33b614da41c7" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1YxjJntz68qbiKpXAjrmAngYJag" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="IShapeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Archive" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="IShapeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.IShapeTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2a946191-7843-4308-b482-33b614da41c7" name="Default Changelist" comment="" />
+      <created>1583891069264</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583891069264</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="237" y="69" key="#Project_Structure" timestamp="1583938954154">
+      <screen x="0" y="0" width="1289" height="819" />
+    </state>
+    <state x="237" y="69" key="#Project_Structure/0.0.1289.819@0.0.1289.819" timestamp="1583938954154" />
+    <state x="494" y="300" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1583891090340">
+      <screen x="0" y="0" width="1289" height="819" />
+    </state>
+    <state x="494" y="300" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1289.819@0.0.1289.819" timestamp="1583891090340" />
+    <state x="300" y="5" key="CommitChangelistDialog2" timestamp="1583940003031">
+      <screen x="0" y="0" width="1289" height="819" />
+    </state>
+    <state x="300" y="5" key="CommitChangelistDialog2/0.0.1289.819@0.0.1289.819" timestamp="1583940003031" />
+    <state x="319" y="125" key="FileChooserDialogImpl" timestamp="1583939961540">
+      <screen x="0" y="0" width="1289" height="819" />
+    </state>
+    <state x="319" y="125" key="FileChooserDialogImpl/0.0.1289.819@0.0.1289.819" timestamp="1583939961540" />
+    <state x="125" y="0" key="SettingsEditor" timestamp="1583939796711">
+      <screen x="0" y="0" width="1289" height="819" />
+    </state>
+    <state x="125" y="0" key="SettingsEditor/0.0.1289.819@0.0.1289.819" timestamp="1583939796711" />
+    <state x="93" y="93" width="1103" height="633" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1583939992824">
+      <screen x="0" y="0" width="1289" height="819" />
+    </state>
+    <state x="93" y="93" width="1103" height="633" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1289.819@0.0.1289.819" timestamp="1583939992824" />
+    <state x="341" y="235" key="com.intellij.ide.util.TipDialog" timestamp="1583939851806">
+      <screen x="0" y="0" width="1289" height="819" />
+    </state>
+    <state x="341" y="235" key="com.intellij.ide.util.TipDialog/0.0.1289.819@0.0.1289.819" timestamp="1583939851806" />
+    <state x="370" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1583891130038">
+      <screen x="0" y="0" width="1289" height="819" />
+    </state>
+    <state x="370" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1289.819@0.0.1289.819" timestamp="1583891130038" />
+  </component>
+</project>
