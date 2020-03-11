@@ -20,11 +20,15 @@ public abstract class AShape implements IShape {
    * @param w         the width of the shape
    * @param h         the height of the shape
    * @param color     the color of the shape
-   * @param pos       the position of the shape
+   * @param pos       the position of the shape,
+   *                  if x or y is negative, the Shape is still exist but off-screen
    * @param keyFrames the current status of the shape
    */
   public AShape(String name, double w, double h, RGBColor color, Posn pos,
       List<KeyFrame> keyFrames) {
+    if (w < 0.0001 || h < 0.0001) {
+      throw new IllegalArgumentException("the dimension of the shape cannot be negative");
+    }
     this.name = name;
     this.color = color;
     this.w = w;
@@ -64,7 +68,7 @@ public abstract class AShape implements IShape {
 
   @Override
   public IShape getShape() {
-    return new Rectangle("", 0, 0, new RGBColor(0, 0, 0), new Posn(0, 0), new ArrayList());
+    return new Rectangle("", 0.0001, 0.0001, new RGBColor(0, 0, 0), new Posn(0, 0), new ArrayList());
   }
 
   @Override
@@ -120,6 +124,11 @@ public abstract class AShape implements IShape {
       default:
         return 0;
     }
+  }
+
+  @Override
+  public void setName(String name) {
+    this.name = name;
   }
 }
 

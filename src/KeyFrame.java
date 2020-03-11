@@ -21,12 +21,34 @@ public class KeyFrame {
    * @param color the color of the shape
    */
   public KeyFrame(int time, int x, int y, int w, int h, RGBColor color) {
+    if (w < 0.0001 || h < 0.0001) {
+      throw new IllegalArgumentException("the dimension cannot be negative");
+    }
+
     this.time = time;
     this.x = x;
     this.y = y;
     this.w = w;
     this.h = h;
     this.color = color;
+  }
+
+  @Override
+  public boolean equals(Object other) {
+    if (!(other instanceof KeyFrame)) {
+      return false;
+    } else {
+      return (this.time == ((KeyFrame) other).time
+          && this.w <= ((KeyFrame) other).w + 0.0001
+          && this.w >= ((KeyFrame) other).w - 0.0001
+          && this.w <= ((KeyFrame) other).w + 0.0001
+          && this.w >= ((KeyFrame) other).w - 0.0001
+          && this.color.equals(((KeyFrame) other).color)
+          && this.y <= ((KeyFrame) other).y + 0.0001
+          && this.y >= ((KeyFrame) other).y - 0.0001
+          && this.h <= ((KeyFrame) other).h + 0.0001
+          && this.h >= ((KeyFrame) other).h - 0.0001);
+    }
   }
 
   /**

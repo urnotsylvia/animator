@@ -77,4 +77,10 @@ public interface IShape {
    * @param newColor represent the color of the shape should change to
    */
   void changeColor(RGBColor newColor);
+
+  /**
+   * change the name of the shape to the given String
+   * @param name the new name to be change to
+   */
+  void setName(String name);
 }

@@ -51,10 +51,8 @@ public class Posn {
    * @param x represent the new x value
    * @return the new position with the new x value
    */
-  public Posn setX(double x) {
-    Posn p = new Posn(0, 0);
-    p.x = x;
-    return p;
+  public void setX(double x) {
+    this.x = x;
   }
 
   /**
@@ -70,11 +68,18 @@ public class Posn {
    * to set the y to the value of the new y input.
    *
    * @param y represent the new y value
-   * @return the new position with the new y value
    */
-  public Posn setY(double y) {
-    Posn p = new Posn(0, 0);
-    p.y = y;
-    return p;
+  public void setY(double y) {
+    this.y = y;
+  }
+
+  @Override
+  public boolean equals(Object other) {
+    if (!(other instanceof Posn)) {
+      return false;
+    } else {
+      return (this.x == ((Posn) other).x
+      && this.y == ((Posn) other).y);
+    }
   }
 }

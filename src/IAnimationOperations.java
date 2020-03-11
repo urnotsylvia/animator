@@ -21,13 +21,20 @@ public interface IAnimationOperations {
   void remove(String name);
 
   /**
-   * In order to get the string format of the motion.
+   * In order to get the string format of the shape's motion that starts at the given time.
    *
-   * @param which represent the
+   * @param which represent the name of the shape
    * @param when  the motion that user want to get start from which tick
    * @return the string format of the motion
    */
   String motionToString(String which, int when);
+
+  /**
+   * return the list of shapes of the model.
+   *
+   * @return list of shapes
+   */
+  List<IShape> getShapes();
 
   /**
    * Return the present state of the game as a string.
