@@ -19,6 +19,10 @@ public class AnimationModel implements IAnimationOperations {
     this.shapes = shapes;
   }
 
+//  public class Builder implements AnimationBuilder<> {
+//    ///////////////////////////////////////////////////////////////////////////////////some thing from the starter code
+//  }
+
   @Override
   public void add(IShape shape) {
     for (IShape s : this.shapes) {
@@ -71,7 +75,11 @@ public class AnimationModel implements IAnimationOperations {
 
   @Override
   public List<IShape> getShapes() {
-    return shapes;
+    List<IShape> copy = new ArrayList<>();
+    for (IShape s: shapes) {
+      copy.add(s);
+    }
+    return copy;
   }
 
   @Override

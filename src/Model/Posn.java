@@ -15,6 +15,9 @@ public class Posn {
    * @param y to represent the Y coordinate of Model.Posn
    */
   public Posn(double x, double y) {
+    if (x < 0 || y < 0) {
+      throw new IllegalArgumentException("position cannot be negative");
+    }
     this.x = x;
     this.y = y;
   }
