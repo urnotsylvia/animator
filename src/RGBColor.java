@@ -1,5 +1,3 @@
-import java.nio.channels.IllegalChannelGroupException;
-
 /**
  * A class RGBColor to represent the color of the shape in animation.
  */
@@ -36,13 +34,21 @@ public class RGBColor {
 
   @Override
   public boolean equals(Object other) {
-    if (! (other instanceof RGBColor)){
+    if (!(other instanceof RGBColor)) {
       return false;
-    }
-    else {
+    } else {
       return (this.blue == ((RGBColor) other).blue
           && this.red == ((RGBColor) other).red
           && this.green == ((RGBColor) other).green);
     }
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 2;
+    result += 3 * this.red;
+    result += 5 * this.green;
+    result += 7 * this.blue;
+    return result;
   }
 }

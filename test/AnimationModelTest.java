@@ -5,35 +5,49 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
 
+/**
+ * The tests and examples of the animation.
+ */
 public class AnimationModelTest {
+
   RGBColor c1 = new RGBColor(100, 0, 20);
+  RGBColor c1Same = new RGBColor(100, 0, 20);
+  RGBColor c1Diff = new RGBColor(250, 250, 250);
   RGBColor c2 = new RGBColor(10, 100, 100);
   Posn p1 = new Posn(10, 20);
+  Posn sameP1 = new Posn(10, 20);
   Posn p2 = new Posn(20, 30);
+  Posn p3 = new Posn(5, 20);
+  Posn p4 = new Posn(10, 100);
   KeyFrame k1 = new KeyFrame(1, 15, 40, 10, 20, c1);
+  KeyFrame sameK1 = new KeyFrame(1, 15, 40, 10, 20, c1);
+  KeyFrame diffK1 = new KeyFrame(2, 13, 41, 15, 2, c2);
   KeyFrame k2 = new KeyFrame(1, 20, 40, 10, 20, c1);
   KeyFrame k3 = new KeyFrame(4, 20, 40, 10, 20, c1);
-  KeyFrame k4 = new KeyFrame(5, 20, 40, 10, 20, c2);
-  KeyFrame k5 = new KeyFrame(5, 10, 5, 10, 20, c2);
+  KeyFrame k4 = new KeyFrame(9, 20, 40, 10, 20, c2);
   List<KeyFrame> lok1 = new ArrayList(Arrays.asList(k1));
-  List<KeyFrame> lok4 = new ArrayList(Arrays.asList(k3));
-  List<KeyFrame> lok5 = new ArrayList(Arrays.asList(k5));
   List<KeyFrame> lok2 = new ArrayList(Arrays.asList(k1, k3));
   List<KeyFrame> lok3 = new ArrayList(Arrays.asList(k1, k3, k4));
   IShape r1 = new Rectangle("r1", 15, 40, c1, p1, lok1);
+  IShape diffR1 = new Rectangle("r7", 20, 60, c2, p2, lok2);
+  IShape r1Same = new Rectangle("r1", 15, 40, c1, p1, lok1);
   IShape r2 = new Rectangle("r1", 15, 40, c1, p1, lok2);
   IShape r3 = new Rectangle("r1", 15, 40, c1, p2, lok1);
-  IShape r4 = new Rectangle("r1", 15.1 , 40, c1, p1, lok1);
+  IShape r4 = new Rectangle("r1", 15.1, 40, c1, p1, lok1);
   IShape r5 = new Rectangle("r1", 15, 50, c1, p1, lok1);
   IShape r6 = new Rectangle("r6", 15, 40, c1, p1, lok2);
   IShape o1 = new Oval("o1", 20, 40, c1, p1, lok2);
-  IShape o1a = new Oval("o1", 20, 40, c1, p1, lok4);
   IShape o2 = new Oval("o2", 10, 5, c2, p2, lok3);
-  IShape o2a = new Oval("o2", 10, 5, c2, p2, lok5);
+  IShape o2Same = new Oval("o2", 10, 5, c2, p2, lok3);
+  IShape o1WithDiffName = new Oval("o1NotSame", 20, 40, c1, p1, lok2);
+  IShape o1WithDiffWidth = new Oval("o1", 30, 40, c1, p1, lok2);
+  IShape o1WithDiffPos = new Oval("o1", 20, 40, c1, p2, lok2);
+  IShape o1WithDiffColor = new Oval("o1", 20, 40, c2, p1, lok2);
+  IShape o1WithDiffPosn = new Oval("o1", 20, 40, c1, p2, lok2);
+  IShape o1WithDiffKeyFrames = new Oval("o1", 20, 40, c1, p1, lok3);
 
   List<IShape> los1 = new ArrayList<>(Arrays.asList(r1, o1, o2));
   List<IShape> los2 = new ArrayList<>(Arrays.asList(r1, o1, o2, r6));
-  List<IShape> los3 = new ArrayList<>(Arrays.asList(r1, o1a, o2a));
 
   IAnimationOperations model1 = new AnimationModel(los1);
   IAnimationOperations model2 = new AnimationModel(los2);
@@ -56,10 +70,10 @@ public class AnimationModelTest {
 
   @Test
   public void getPosTest() {
-  assertEquals(r1.getPos(), p1);
+    assertEquals(r1.getPos(), p1);
   }
 
-  @Test (expected = IllegalArgumentException.class)
+  @Test(expected = IllegalArgumentException.class)
   public void addKeyFrameAtSameTickFalseTest() {
     r1.addKeyFrame(k2);
   }
@@ -103,25 +117,91 @@ public class AnimationModelTest {
 
   @Test
   public void changeLowWLengthTest() {
-    r1.changeLength("w", 0.1);
+    r1.setLength("w", 15.1);
     assertEquals(r1, r4);
   }
 
   @Test
   public void changeUpperWLengthTest() {
-    r1.changeLength("W", 0.1);
+    r1.setLength("W", 15.1);
     assertEquals(r1, r4);
   }
 
   @Test
   public void changeLowHLengthTest() {
-    r1.changeLength("h", 10);
+    r1.setLength("h", 50);
     assertEquals(r1, r5);
   }
 
   @Test
+  public void getKeyFrameYTest() {
+    assertEquals(k1.getY(), 40, 0.0001);
+  }
+
+  @Test
+  public void getKeyFrameWTest() {
+    assertEquals(k1.getW(), 10, 0.0001);
+  }
+
+  @Test
+  public void getKeyFrameHTest() {
+    assertEquals(k1.getH(), 20, 0.0001);
+  }
+
+  @Test
+  public void getTimeTest() {
+    assertEquals(k1.getTime(), 1);
+  }
+
+  @Test
+  public void keyToStringTest() {
+    assertEquals(k1.keyToString(),
+        "1 15 40 10.0 20.0 100 0 20");
+  }
+
+  @Test
+  public void getOvalShapeTest() {
+    assertEquals(o1.getShape(),
+        new Oval("", 0.0001, 0.0001, new RGBColor(0, 0, 0),
+            new Posn(0, 0), new ArrayList()));
+
+  }
+
+  @Test
+  public void getPosnXTest() {
+    assertEquals(p1.getX(), 10, 0.0001);
+  }
+
+  @Test
+  public void getPosnYTest() {
+    assertEquals(p1.getY(), 20, 0.0001);
+  }
+
+  @Test
+  public void setPosnXTest() {
+    p1.setX(5);
+    assertEquals(p1, p3);
+  }
+
+  @Test
+  public void posToStringTest() {
+    assertEquals(p1.posToString(), "10.0 20.0");
+  }
+
+  @Test
+  public void setPosnYTest() {
+    p1.setY(100);
+    assertEquals(p1, p4);
+  }
+
+  @Test
+  public void colorAsStringTest() {
+    assertEquals(c1.asString(), "100 0 20");
+  }
+
+  @Test
   public void changeUpperHLengthTest() {
-    r1.changeLength("H", 10);
+    r1.setLength("H", 50);
     assertEquals(r1, r5);
   }
 
@@ -129,22 +209,6 @@ public class AnimationModelTest {
   public void changeColorTest() {
     r1.changeColor(c2);
     assertEquals(r1.getColor(), c2);
-  }
-
-  @Test
-  public void createRectTest(){
-    assertEquals(Rectangle.createRect("r1", 30, 60, c1, p1, lok1),
-        new Rectangle("r1", 30, 60, c1, p1, lok1));
-  }
-
-  @Test (expected = IllegalArgumentException.class)
-  public void createIllegalRectNegativeWTest() {
-    Rectangle.createRect("invalidRect", -1, 60.2, c1, p1, lok1);
-  }
-
-  @Test (expected = IllegalArgumentException.class)
-  public void createIllegalRectNegativeHTest() {
-    Rectangle.createRect("invalidRect", 100.002, -60.2, c1, p1, lok1);
   }
 
   @Test
@@ -158,68 +222,12 @@ public class AnimationModelTest {
   }
 
   @Test
-  public void getKeyFrameY() {
-  }
-
-  @Test
-  public void getKeyFrameW() {
-  }
-
-  @Test
-  public void getKeyFrameH() {
-  }
-
-  @Test
-  public void getTime() {
-  }
-
-  @Test
-  public void keyToString() {
-  }
-
-  @Test
-  public void createOval() {
-  }
-
-  @Test
-  public void getOvalShape() {
-  }
-
-  @Test
-  public void getPosnXTest() {
-  }
-
-  @Test
-  public void getPosnYTest() {
-  }
-
-  @Test
-  public void setPosnXTest() {
-  }
-
-  @Test
-  public void posToStringTest() {
-  }
-
-  @Test
-  public void setPosnYTest() {
-  }
-
-  @Test
-  public void colorAsStringTest() {
-  }
-
-  @Test
-  public void testEqualsTest() {
-  }
-
-  @Test
   public void add() {
     model1.add(r6);
     assertEquals(model1.getShapes(), los2);
   }
 
-  @Test (expected = IllegalArgumentException.class)
+  @Test(expected = IllegalArgumentException.class)
   public void invlidAdd() {
     model1.add(r2);
   }
@@ -230,21 +238,110 @@ public class AnimationModelTest {
     assertEquals(model2.getShapes(), los1);
   }
 
-  @Test
+  @Test(expected = IllegalArgumentException.class)
   public void invalidRemove() {
     model2.remove("r100");
   }
 
   @Test
+  public void getStateInBetweenTest() {
+    model1.getState(3);
+    List<IShape> los = model1.getState(1);
+    assertEquals(c1, los.get(0).getColor());
+    assertEquals(10, los.get(0).getWOrH("w"), 0.0001);
+    assertEquals(20, los.get(0).getWOrH("h"), 0.0001);
+    assertEquals("r1", los.get(0).getName());
+    assertEquals(15, los.get(0).getPos().getX(), 0.0001);
+    assertEquals(40, los.get(0).getPos().getY(), 0.0001);
+    assertEquals(lok1, los.get(0).getKeyFrames());
+  }
+
+  @Test
   public void getState() {
     List<IShape> los = model1.getState(1);
-    assertEquals(los.get(0).getColor(), c1);
-    assertEquals(los.get(0).getWOrH("w"), 15, 40);
+    assertEquals(c1, los.get(0).getColor());
+    assertEquals(10, los.get(0).getWOrH("w"), 0.0001);
+    assertEquals(20, los.get(0).getWOrH("h"), 0.0001);
+    assertEquals("r1", los.get(0).getName());
+    assertEquals(15, los.get(0).getPos().getX(), 0.0001);
+    assertEquals(40, los.get(0).getPos().getY(), 0.0001);
+    assertEquals(lok1, los.get(0).getKeyFrames());
+  }
+
+  @Test
+  public void keyFrameEqualTest() {
+    assertEquals(k1.equals(sameK1), true);
+  }
+
+  @Test
+  public void testEqualsOval() {
+    assertEquals(o2.equals(o2Same), true);
+  }
+
+  @Test
+  public void keyFrameEqualFalseTest() {
+    assertEquals(k1.equals(diffK1), false);
+  }
+
+  @Test
+  public void keyFrameEqualFalseDiffObjTest() {
+    assertEquals(k1.equals(c1), false);
+  }
+
+  @Test
+  public void posnEqualTest() {
+    assertEquals(p1.equals(sameP1), true);
+  }
+
+  @Test
+  public void posnEqualsYFalseTest() {
+    assertEquals(p1.equals(p4), false);
+  }
+
+  @Test
+  public void posnEqualsXFalseTest() {
+    assertEquals(p1.equals(p3), false);
+  }
+
+  @Test
+  public void posnEqualsNotSameObjectTest() {
+    assertEquals(p1.equals(r1), false);
+  }
+
+  @Test
+  public void testNotEqualOvalName() {
+    assertEquals(o1.equals(o1WithDiffName), false);
+  }
+
+  @Test
+  public void testNotEqualOvalWidth() {
+    assertEquals(o1.equals(o1WithDiffWidth), false);
+  }
+
+  @Test
+  public void testNotEqualOvalPos() {
+    assertEquals(o1.equals(o1WithDiffPos), false);
+  }
+
+  @Test
+  public void testNotEqualOvalColor() {
+    assertEquals(o1.equals(o1WithDiffColor), false);
+  }
+
+  @Test
+  public void testNotEqualOvalPosn() {
+    assertEquals(o1.equals(o1WithDiffPosn), false);
+  }
+
+  @Test
+  public void testNotEqualOvalKeyFrames() {
+    assertEquals(o1.equals(o1WithDiffKeyFrames), false);
   }
 
   @Test
   public void motionToStringNoSuchShapeTest() {
-    assertEquals("", model1.motionToString("r2", 1));
+    assertEquals("",
+        model1.motionToString("r2", 1));
   }
 
   @Test
@@ -253,7 +350,34 @@ public class AnimationModelTest {
             + "end:4 20 40 10.0 20.0 100 0 20",
         model1.motionToString("o1", 1));
   }
-  //all the tests for equals
-  //do I have to test null??
-  //what if there is no that tick in the keyFrames?
+
+  @Test
+  public void testEqualsRectangle() {
+    assertEquals(r1.equals(r1Same), true);
+  }
+
+  @Test
+  public void testEqualsNotSameObject() {
+    assertEquals(r1.equals(o1), false);
+  }
+
+  @Test
+  public void testEqualsNotSameRectangle() {
+    assertEquals(r1.equals(diffR1), false);
+  }
+
+  @Test
+  public void testEqualsSameColor() {
+    assertEquals(c1.equals(c1Same), true);
+  }
+
+  @Test
+  public void testEqualsColorDiffObject() {
+    assertEquals(c1.equals(p1), false);
+  }
+
+  @Test
+  public void testEqualsDiffColor() {
+    assertEquals(c1.equals(c1Diff), false);
+  }
 }

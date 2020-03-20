@@ -20,8 +20,8 @@ public abstract class AShape implements IShape {
    * @param w         the width of the shape
    * @param h         the height of the shape
    * @param color     the color of the shape
-   * @param pos       the position of the shape,
-   *                  if x or y is negative, the Shape is still exist but off-screen
+   * @param pos       the position of the shape, if x or y is negative, the Shape is still exist but
+   *                  off-screen
    * @param keyFrames the current status of the shape
    */
   public AShape(String name, double w, double h, RGBColor color, Posn pos,
@@ -68,7 +68,9 @@ public abstract class AShape implements IShape {
 
   @Override
   public IShape getShape() {
-    return new Rectangle("", 0.0001, 0.0001, new RGBColor(0, 0, 0), new Posn(0, 0), new ArrayList());
+    return new Rectangle("", 0.0001, 0.0001, new RGBColor(0, 0, 0),
+        new Posn(0, 0),
+        new ArrayList());
   }
 
   @Override
@@ -77,15 +79,15 @@ public abstract class AShape implements IShape {
   }
 
   @Override
-  public void changeLength(String wH, double rate) {
+  public void setLength(String wH, double newLength) {
     switch (wH) {
       case "w":
       case "W":
-        this.w += rate;
+        this.w = newLength;
         break;
       case "H":
       case "h":
-        this.h += rate;
+        this.h = newLength;
         break;
       default:
         return;

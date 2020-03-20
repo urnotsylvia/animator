@@ -66,10 +66,10 @@ public interface IShape {
   /**
    * changes the width or length or height of the shape.
    *
-   * @param wH   the width and the height of the shape
-   * @param rate represent how the length should change according to the rate
+   * @param wH        the width and the height of the shape
+   * @param newLength represent how the length should change according to the newLength
    */
-  void changeLength(String wH, double rate);
+  void setLength(String wH, double newLength);
 
   /**
    * changes the color of the shape.
@@ -79,7 +79,8 @@ public interface IShape {
   void changeColor(RGBColor newColor);
 
   /**
-   * change the name of the shape to the given String
+   * change the name of the shape to the given String.
+   *
    * @param name the new name to be change to
    */
   void setName(String name);

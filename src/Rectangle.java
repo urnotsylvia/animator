@@ -1,7 +1,7 @@
 import java.util.List;
 
 /**
- * A class of shape Rectangle in the animation.
+ * Represents a Rectangle in the animation.
  */
 public class Rectangle extends AShape {
 
@@ -18,7 +18,11 @@ public class Rectangle extends AShape {
   public Rectangle(String name, double w, double h, RGBColor color, Posn pos,
       List<KeyFrame> keyFrame) {
     super(name, w, h, color, pos, keyFrame);
+    if (w < 0.0001 || h < 0.0001) {
+      throw new IllegalArgumentException("Invalid height and width to create a valid rectangle");
+    }
   }
+
 
   @Override
   public boolean equals(Object other) {
@@ -37,23 +41,15 @@ public class Rectangle extends AShape {
     }
   }
 
-  /**
-   * To check if it is valid to create the rectangle.
-   *
-   * @param name     the name of the Rectangle
-   * @param w        the width of the Rectangle
-   * @param h        the height of the Rectangle
-   * @param color    the color of the Rectangle
-   * @param pos      the position of the Rectangle
-   * @param keyFrame the keyFrame of the Rectangle
-   * @return a valid Rectangle or IllegalArgumentException
-   */
-  public static Rectangle createRect(String name, double w, double h, RGBColor color, Posn pos,
-      List<KeyFrame> keyFrame) {
-    if (w <= 0.0001 || h <= 0.0001) {
-      throw new IllegalArgumentException("Invalid height and width to create a valid rectangle");
-    } else {
-      return new Rectangle(name, w, h, color, pos, keyFrame);
-    }
+  @Override
+  public int hashCode() {
+    int result = 2;
+    result += 3 * this.name.hashCode();
+    result += 5 * Double.hashCode(this.w);
+    result += 7 * Double.hashCode(this.h);
+    result += 11 * this.pos.hashCode();
+    result += 13 * this.keyFrames.hashCode();
+    result += 17 * this.color.hashCode();
+    return result;
   }
 }

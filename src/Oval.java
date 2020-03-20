@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A class of Shape oval in the animation.
+ * Represents an oval in the animation.
  */
 public class Oval extends AShape {
 
@@ -18,25 +18,8 @@ public class Oval extends AShape {
    */
   public Oval(String name, double w, double h, RGBColor color, Posn pos, List<KeyFrame> keyFrame) {
     super(name, w, h, color, pos, keyFrame);
-  }
-
-  /**
-   * To check if it is valid to create the oval.
-   *
-   * @param name     the name of Oval
-   * @param w        the x radius of the Oval
-   * @param h        the y radius of Oval
-   * @param color    the color of the Oval
-   * @param pos      the position of the Oval
-   * @param keyFrame the keyFrame of the Oval
-   * @return a valid Oval or IllegalArgumentException
-   */
-  public static Oval createOval(String name, double w, double h, RGBColor color, Posn pos,
-      List<KeyFrame> keyFrame) {
-    if (w <= 0.0001 || h <= 0.0001) {
+    if (w < 0.0001 || h < 0.0001) {
       throw new IllegalArgumentException("Invalid radius to create the oval");
-    } else {
-      return new Oval(name, w, h, color, pos, keyFrame);
     }
   }
 
@@ -57,8 +40,21 @@ public class Oval extends AShape {
   }
 
   @Override
+  public int hashCode() {
+    int result = 2;
+    result += 3 * this.name.hashCode();
+    result += 5 * Double.hashCode(this.w);
+    result += 7 * Double.hashCode(this.h);
+    result += 11 * this.pos.hashCode();
+    result += 13 * this.keyFrames.hashCode();
+    result += 17 * this.color.hashCode();
+    return result;
+  }
+
+  @Override
   public IShape getShape() {
-    return new Oval("", 0.0001, 0.0001, new RGBColor(0, 0, 0), new Posn(0, 0), new ArrayList());
+    return new Oval("", 0.0001, 0.0001, new RGBColor(0, 0, 0),
+        new Posn(0, 0), new ArrayList());
   }
 }
 

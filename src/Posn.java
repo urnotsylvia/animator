@@ -49,7 +49,6 @@ public class Posn {
    * to set the x to the value of the new input.
    *
    * @param x represent the new x value
-   * @return the new position with the new x value
    */
   public void setX(double x) {
     this.x = x;
@@ -79,7 +78,15 @@ public class Posn {
       return false;
     } else {
       return (this.x == ((Posn) other).x
-      && this.y == ((Posn) other).y);
+          && this.y == ((Posn) other).y);
     }
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 2;
+    result += 3 * Double.hashCode(this.x);
+    result += 5 * Double.hashCode(this.y);
+    return result;
   }
 }

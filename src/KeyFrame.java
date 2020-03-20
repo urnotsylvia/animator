@@ -1,5 +1,6 @@
 /**
- * The KeyFrame take parts in the animation that represent the basic information of the shape.
+ * The KeyFrame take parts in the animation that represent the basic information of the shape at a
+ * specific tick.
  */
 public class KeyFrame {
 
@@ -49,6 +50,18 @@ public class KeyFrame {
           && this.h <= ((KeyFrame) other).h + 0.0001
           && this.h >= ((KeyFrame) other).h - 0.0001);
     }
+  }
+
+  @Override
+  public int hashCode() {
+    int result = 3;
+    result += 2 * Integer.hashCode(this.time);
+    result += 3 * Integer.hashCode(this.x);
+    result += 5 * Integer.hashCode(this.y);
+    result += 7 * Double.hashCode(this.w);
+    result += 11 * Double.hashCode(this.h);
+    result += 13 * this.color.hashCode();
+    return result;
   }
 
   /**

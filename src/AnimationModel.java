@@ -2,8 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The class AnimationModel that operates every motion of the shape, and store the motion of the
- * shape.
+ * The class AnimationModel and store the status of the Animation.
  */
 public class AnimationModel implements IAnimationOperations {
 
@@ -30,10 +29,15 @@ public class AnimationModel implements IAnimationOperations {
 
   @Override
   public void remove(String name) {
+    boolean isThereTheSame = false;
     for (int i = 0; i < shapes.size(); i++) {
       if (shapes.get(i).getName().equals(name)) {
+        isThereTheSame = true;
         shapes.remove(i);
       }
+    }
+    if (!isThereTheSame) {
+      throw new IllegalArgumentException("there is no such shape");
     }
   }
 
@@ -41,22 +45,26 @@ public class AnimationModel implements IAnimationOperations {
   public List<IShape> getState(int when) {
     List<IShape> allKeysAtThisTick = new ArrayList<>();
     for (IShape s : shapes) {
-      for (KeyFrame k : s.getKeyFrames()) {
+      for (int i = 0; i < s.getKeyFrames().size(); i++) {
+        KeyFrame k = s.getKeyFrames().get(i);
         if (k.getTime() == when) {
-          IShape cur = s.getShape();
-          System.out.println(cur.getWOrH("h"));
-          cur.setName(s.getName());
-          cur.changeColor(k.getColor());
-          cur.changeLength("w", k.getW());
-          cur.changeLength("h", k.getH());
-          cur.getPos().setX(k.getX());
-          cur.getPos().setX(k.getY());
-          System.out.println(cur.getWOrH("w"));
-          allKeysAtThisTick.add(cur);
+          copyAllTheValue(allKeysAtThisTick, s, k);
         }
       }
     }
     return allKeysAtThisTick;
+  }
+
+  private void copyAllTheValue(List<IShape> allKeysAtThisTick, IShape s, KeyFrame k) {
+    IShape cur = s.getShape();
+    cur.setName(s.getName());
+    cur.changeColor(k.getColor());
+    cur.setLength("w", k.getW());
+    cur.setLength("h", k.getH());
+    cur.getPos().setX(k.getX());
+    cur.getPos().setY(k.getY());
+    cur.getKeyFrames().add(k);
+    allKeysAtThisTick.add(cur);
   }
 
   @Override
