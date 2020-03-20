@@ -1,5 +1,13 @@
 import static org.junit.Assert.assertEquals;
 
+import Model.AnimationModel;
+import Model.IAnimationOperations;
+import Model.IShape;
+import Model.KeyFrame;
+import Model.Oval;
+import Model.Posn;
+import Model.RGBColor;
+import Model.Rectangle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,9 +56,16 @@ public class AnimationModelTest {
 
   List<IShape> los1 = new ArrayList<>(Arrays.asList(r1, o1, o2));
   List<IShape> los2 = new ArrayList<>(Arrays.asList(r1, o1, o2, r6));
+  List<IShape> emptyList = new ArrayList<>();
 
   IAnimationOperations model1 = new AnimationModel(los1);
   IAnimationOperations model2 = new AnimationModel(los2);
+  IAnimationOperations emptyModel = new AnimationModel(emptyList);
+
+  @Test
+  public void checkIfEmptyTest() {
+    assertEquals(emptyModel.getShapes(), new ArrayList<>());
+  }
 
   @Test
   public void getColorTest() {

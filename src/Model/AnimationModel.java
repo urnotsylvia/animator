@@ -1,8 +1,10 @@
+package Model;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The class AnimationModel and store the status of the Animation.
+ * The class Model.AnimationModel and store the status of the Animation.
  */
 public class AnimationModel implements IAnimationOperations {
 

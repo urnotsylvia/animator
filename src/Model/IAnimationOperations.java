@@ -1,7 +1,9 @@
+package Model;
+
 import java.util.List;
 
 /**
- * This is the interface of the IAnimationOperations, that representing all the functions in the
+ * This is the interface of the Model.IAnimationOperations, that representing all the functions in the
  * animator.
  */
 public interface IAnimationOperations {

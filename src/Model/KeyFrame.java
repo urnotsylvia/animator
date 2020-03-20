@@ -1,5 +1,7 @@
+package Model;
+
 /**
- * The KeyFrame take parts in the animation that represent the basic information of the shape at a
+ * The Model.KeyFrame take parts in the animation that represent the basic information of the shape at a
  * specific tick.
  */
 public class KeyFrame {
@@ -67,7 +69,7 @@ public class KeyFrame {
   /**
    * return the rgb color of the keyFrame.
    *
-   * @return RGBColor
+   * @return Model.RGBColor
    */
   public RGBColor getColor() {
     return color;

@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,12 +11,12 @@ public class Oval extends AShape {
   /**
    * the constructor to construct the oval.
    *
-   * @param name     the name of Oval
-   * @param w        the vertical radius of the Oval
-   * @param h        the horizontal radius of Oval
-   * @param color    the color of the Oval
-   * @param pos      the position of the Oval
-   * @param keyFrame the keyFrame of the Oval
+   * @param name     the name of Model.Oval
+   * @param w        the vertical radius of the Model.Oval
+   * @param h        the horizontal radius of Model.Oval
+   * @param color    the color of the Model.Oval
+   * @param pos      the position of the Model.Oval
+   * @param keyFrame the keyFrame of the Model.Oval
    */
   public Oval(String name, double w, double h, RGBColor color, Posn pos, List<KeyFrame> keyFrame) {
     super(name, w, h, color, pos, keyFrame);

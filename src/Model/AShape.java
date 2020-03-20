@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,7 @@ public abstract class AShape implements IShape {
   protected List<KeyFrame> keyFrames;
 
   /**
-   * to represent the constructor of the AShape.
+   * to represent the constructor of the Model.AShape.
    *
    * @param name      the name of the shape
    * @param w         the width of the shape

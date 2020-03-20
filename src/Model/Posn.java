@@ -1,5 +1,7 @@
+package Model;
+
 /**
- * To represent the class Posn that represent the position of the shape.
+ * To represent the class Model.Posn that represent the position of the shape.
  */
 public class Posn {
 
@@ -7,10 +9,10 @@ public class Posn {
   private double y;
 
   /**
-   * Constructor of the class Posn.
+   * Constructor of the class Model.Posn.
    *
-   * @param x to represent the X coordinate of Posn
-   * @param y to represent the Y coordinate of Posn
+   * @param x to represent the X coordinate of Model.Posn
+   * @param y to represent the Y coordinate of Model.Posn
    */
   public Posn(double x, double y) {
     this.x = x;
@@ -18,9 +20,9 @@ public class Posn {
   }
 
   /**
-   * Copy constructor of the class Posn.
+   * Copy constructor of the class Model.Posn.
    *
-   * @param other to represent the copy Posn
+   * @param other to represent the copy Model.Posn
    */
   public Posn(Posn other) {
     this.x = other.x;

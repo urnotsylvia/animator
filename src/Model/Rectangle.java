@@ -1,19 +1,21 @@
+package Model;
+
 import java.util.List;
 
 /**
- * Represents a Rectangle in the animation.
+ * Represents a Model.Rectangle in the animation.
  */
 public class Rectangle extends AShape {
 
   /**
    * the constructor to construct the rectangle.
    *
-   * @param name     the name of the Rectangle
-   * @param w        the width of the Rectangle
-   * @param h        the height of the Rectangle
-   * @param color    the color of the Rectangle
-   * @param pos      the position of the Rectangle
-   * @param keyFrame the keyFrame of the Rectangle
+   * @param name     the name of the Model.Rectangle
+   * @param w        the width of the Model.Rectangle
+   * @param h        the height of the Model.Rectangle
+   * @param color    the color of the Model.Rectangle
+   * @param pos      the position of the Model.Rectangle
+   * @param keyFrame the keyFrame of the Model.Rectangle
    */
   public Rectangle(String name, double w, double h, RGBColor color, Posn pos,
       List<KeyFrame> keyFrame) {

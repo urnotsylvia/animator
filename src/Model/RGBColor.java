@@ -1,5 +1,7 @@
+package Model;
+
 /**
- * A class RGBColor to represent the color of the shape in animation.
+ * A class Model.RGBColor to represent the color of the shape in animation.
  */
 public class RGBColor {
 
@@ -8,7 +10,7 @@ public class RGBColor {
   private int blue;
 
   /**
-   * to represent the RGBColor's constructor.
+   * to represent the Model.RGBColor's constructor.
    *
    * @param red   the int format of the rgb color of red
    * @param green the int format of the rgb color of green
