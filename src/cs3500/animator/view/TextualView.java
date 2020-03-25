@@ -13,9 +13,15 @@ import javax.swing.JFrame;
  * The View of the Animation to produce a textual description of the animation that is compliant
  * with the popular SVG (Scalable Vector Graphics) file format.
  */
-public class TextView extends AView {
+public class TextualView extends AView {
 
-  public TextView (IAnimationOperations model, int speed, Appendable output) {
+  /**
+   * Represent the constructor of the textual view.
+   * @param model the initial model that the textual view takes in
+   * @param speed the
+   * @param output
+   */
+  public TextualView(IAnimationOperations model, int speed, Appendable output) {
     super(model, speed, output);
     this.speed = speed;
     this.output = output;
@@ -29,7 +35,7 @@ public class TextView extends AView {
 
   @Override
   public ViewType getViewType() {
-    return ViewType.TEXT;
+    return ViewType.TEXTUAL;
   }
 
   @Override
@@ -56,6 +62,11 @@ public class TextView extends AView {
     }
   }
 
+  /**
+   *
+   * @param unSortedMotions
+   * @return
+   */
   private String sortMotions(List<String> unSortedMotions) {
     String result = "";
     unSortedMotions.sort(new Comparator<String>() {

@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a946191-7843-4308-b482-33b614da41c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/__MACOSX/._src" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__MACOSX/src/._AShape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__MACOSX/src/._AnimationModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__MACOSX/src/._IAnimationOperations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__MACOSX/src/._IShape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__MACOSX/src/._KeyFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__MACOSX/src/._Oval.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__MACOSX/src/._Posn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__MACOSX/src/._RGBColor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__MACOSX/src/._Rectangle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__MACOSX/test/._IShapeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/IShapeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/IShapeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/AnimationViewCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/AnimationViewCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/IView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/IView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/TextView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/TextualView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/animator/view/ViewType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/animator/view/ViewType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +39,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -147,10 +143,11 @@
       <screen x="0" y="0" width="1289" height="819" />
     </state>
     <state x="125" y="0" key="SettingsEditor/0.0.1289.819@0.0.1289.819" timestamp="1583939796711" />
-    <state x="237" y="144" key="Vcs.Push.Dialog.v2" timestamp="1583940132543">
-      <screen x="0" y="0" width="1289" height="819" />
+    <state x="265" y="158" key="Vcs.Push.Dialog.v2" timestamp="1585166629199">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="237" y="144" key="Vcs.Push.Dialog.v2/0.0.1289.819@0.0.1289.819" timestamp="1583940132543" />
+    <state x="265" y="158" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1585166629199" />
     <state x="93" y="93" width="1103" height="633" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1583939992824">
       <screen x="0" y="0" width="1289" height="819" />
     </state>

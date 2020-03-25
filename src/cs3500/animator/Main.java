@@ -7,19 +7,13 @@ import cs3500.animator.Model.AnimationModel.Builder;
 import cs3500.animator.Model.IAnimationOperations;
 import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
-import cs3500.animator.view.DisplayView;
-import cs3500.animator.view.SVGView;
 import cs3500.animator.view.ViewType;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.StringReader;
-import java.nio.CharBuffer;
 import java.util.ArrayList;
 import cs3500.animator.view.IView;
-import cs3500.animator.view.TextView;
 
 /**
  * Run a Animation
@@ -79,9 +73,9 @@ public class Main {
 
     IView view = null;
     switch (viewType) {
-      case "text":
-      case "Text":
-        view = AnimationViewCreator.create(ViewType.TEXT, model, speed, output);
+      case "textual":
+      case "Textual":
+        view = AnimationViewCreator.create(ViewType.TEXTUAL, model, speed, output);
         break;
       case "Display":
       case "display":

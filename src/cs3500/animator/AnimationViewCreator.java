@@ -4,7 +4,7 @@ import cs3500.animator.Model.IAnimationOperations;
 import cs3500.animator.view.DisplayView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
-import cs3500.animator.view.TextView;
+import cs3500.animator.view.TextualView;
 import cs3500.animator.view.ViewType;
 /**
  * The factory class for AnimationView, provides a static method to give a instance of a
@@ -22,8 +22,8 @@ public class AnimationViewCreator {
     switch (t) {
       case DISPLAY:
         return new DisplayView(model, speed, output);
-      case TEXT:
-        return new TextView(model, speed, output);
+      case TEXTUAL:
+        return new TextualView(model, speed, output);
       case SVG:
         return new SVGView(model, speed, output);
       default:
