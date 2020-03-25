@@ -7,7 +7,6 @@ import java.util.List;
  * This is the interface for shape that takes part in the animation.
  */
 public interface IShape {
-
   /**
    * Return the color of this shape.
    *

@@ -10,6 +10,8 @@ import java.util.List;
 public class AnimationModel implements IAnimationOperations {
 
   private final List<IShape> shapes;
+  private final int width;
+  private final int height;
 
   /**
    * to represent the constructor of the model.
@@ -18,35 +20,38 @@ public class AnimationModel implements IAnimationOperations {
    */
   public AnimationModel(List<IShape> shapes) {
     this.shapes = shapes;
+    this.width = 0;
+    this.height = 0;
   }
 
-  public class Builder implements AnimationBuilder<IAnimationOperations> {
+  public static final class Builder implements AnimationBuilder<IAnimationOperations> {
     IAnimationOperations model;
 
-    public Builder (IAnimationOperations model) {
-      this.model = model;
+    public Builder () {
+      this.model = new AnimationModel(new ArrayList<IShape>());
     }
 
     @Override
     public IAnimationOperations build() {
-      return this.model; //or should I make a new model here??????????????????
+      return this.model;
     }
 
     @Override
     public AnimationBuilder<IAnimationOperations> setBounds(int x, int y, int width, int height) {
-      return null; //?????????????????????????
+      return this;
     }
 
     @Override
     public AnimationBuilder<IAnimationOperations> declareShape(String name, String type) {
       this.model.add(name, type);
+      return this;
     }
 
     @Override
     public AnimationBuilder<IAnimationOperations> addMotion(String name, int t1, int x1, int y1,
         int w1, int h1, int r1, int g1, int b1, int t2, int x2, int y2, int w2, int h2, int r2,
         int g2, int b2) {
-      return null;
+      return this;
     }
 
     @Override
@@ -64,7 +69,34 @@ public class AnimationModel implements IAnimationOperations {
       }
     }
 
-    this.shapes.add(new shape);
+    switch (type) {
+      case "Rect":
+      case "rectangle":
+      case "Rectangle":
+        this.shapes.add(new Rectangle(name));
+        break;
+      case "Oval":
+      case"oval":
+        this.shapes.add(new Oval(name));
+        break;
+      default:
+        throw new IllegalArgumentException("invalid shape type");
+    }
+  }
+
+  @Override
+  public void addKeyframe(String name, int t, int x, int y,
+      int w, int h, int r, int g, int b) {
+    boolean exist = false;
+    for (IShape s: shapes) {
+      if (s.getName().equals(name)) {
+        exist = true;
+        s.addKeyFrame(new KeyFrame(t, x, y, w, h, new RGBColor(r, g, b)));
+      }
+    }
+    if (exist == false) {
+      throw new IllegalArgumentException("there is no such shape");
+    }
   }
 
   @Override

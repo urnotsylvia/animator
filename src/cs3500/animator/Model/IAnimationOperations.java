@@ -47,4 +47,19 @@ public interface IAnimationOperations {
    * @throws IllegalArgumentException if there is a conflicting/overlapping motion
    */
   List<IShape> getState(int when);
+
+  /**
+   *
+   * @param name
+   * @param t
+   * @param x
+   * @param y
+   * @param w
+   * @param h
+   * @param r
+   * @param g
+   * @param b
+   */
+  public void addKeyframe(String name, int t, int x, int y,
+      int w, int h, int r, int g, int b);
 }

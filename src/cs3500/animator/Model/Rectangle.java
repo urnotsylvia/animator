@@ -8,6 +8,15 @@ import java.util.List;
 public class Rectangle extends AShape {
 
   /**
+   *
+   * @param name
+   */
+  public Rectangle(String name) {
+    super(name);
+    this.name = name;
+  }
+
+  /**
    * the constructor to construct the rectangle.
    *
    * @param name     the name of the Model.Rectangle

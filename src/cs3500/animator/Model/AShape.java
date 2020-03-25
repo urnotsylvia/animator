@@ -52,6 +52,10 @@ public abstract class AShape implements IShape {
     this.pos = other.pos;
   }
 
+  public AShape(String name) {
+    this.name = name;
+  }
+
   @Override
   public void changePos(Posn newPos) {
     pos.setX(newPos.getX());

@@ -1,13 +1,18 @@
 package cs3500.animator.view;
-import cs3500.animator.Controller.AnimationController;
 import cs3500.animator.Model.IAnimationOperations;
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
 public abstract class AView extends JFrame implements IView {
-  private AnimationPanel panel;
+  protected AnimationPanel panel;
+  protected Timer timer;
+  protected Appendable output;
+  protected int speed;
 
-  public AView (IAnimationOperations model) {
+  public AView (IAnimationOperations model, int speed, Appendable output) {
     super("Animation");
+    this.speed = speed;
+    this.output = output;
 
     setSize(WIDTH, HEIGHT);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

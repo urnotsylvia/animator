@@ -19,8 +19,5 @@ public class AnimationPanel extends JPanel {
     Graphics2D g2 = (Graphics2D) g;
     String result = "";
 
-//    for (int i = 0; i < model.getShapes().size(); i++) {
-//      result = result + "Shape " + model.getShapes().get(i).getName() + model.getShapes().get(i).getShape();
-//    }
   }
 }

@@ -44,6 +44,7 @@ public class AnimationModelTest {
   IShape r4 = new Rectangle("r1", 15.1, 40, c1, p1, lok1);
   IShape r5 = new Rectangle("r1", 15, 50, c1, p1, lok1);
   IShape r6 = new Rectangle("r6", 15, 40, c1, p1, lok2);
+  IShape r7 = new Rectangle("r7");
   IShape o1 = new Oval("o1", 20, 40, c1, p1, lok2);
   IShape o2 = new Oval("o2", 10, 5, c2, p2, lok3);
   IShape o2Same = new Oval("o2", 10, 5, c2, p2, lok3);
@@ -56,6 +57,7 @@ public class AnimationModelTest {
 
   List<IShape> los1 = new ArrayList<>(Arrays.asList(r1, o1, o2));
   List<IShape> los2 = new ArrayList<>(Arrays.asList(r1, o1, o2, r6));
+  List<IShape> los3 = new ArrayList<>(Arrays.asList(r1, o1, o2, r7));
   List<IShape> emptyList = new ArrayList<>();
 
   IAnimationOperations model1 = new AnimationModel(los1);
@@ -249,14 +251,14 @@ public class AnimationModelTest {
   }
 
   @Test
-  public void add() {
-    model1.add(r6);
-    assertEquals(model1.getShapes(), los2);
+  public void addShapeTest() {
+    model1.add("r7", "Rect");
+    assertEquals(model1.getShapes().contains(r7), true);
   }
 
   @Test(expected = IllegalArgumentException.class)
   public void invlidAdd() {
-    model1.add(r2);
+    model1.add("r1", "Rect");
   }
 
   @Test

@@ -1,16 +1,25 @@
-import Controller.AnimationController;
-import Controller.IController;
-import Model.AnimationModel;
-import Model.IAnimationOperations;
-import Model.IShape;
+package cs3500.animator;
+
 import cs3500.animator.Controller.AnimationController;
 import cs3500.animator.Controller.IController;
+import cs3500.animator.Model.AnimationModel;
+import cs3500.animator.Model.AnimationModel.Builder;
+import cs3500.animator.Model.IAnimationOperations;
 import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
+import cs3500.animator.view.DisplayView;
+import cs3500.animator.view.SVGView;
+import cs3500.animator.view.ViewType;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringReader;
+import java.nio.CharBuffer;
 import java.util.ArrayList;
-import java.util.Timer;
-import view.IView;
-import view.TextView;
+import cs3500.animator.view.IView;
+import cs3500.animator.view.TextView;
 
 /**
  * Run a Animation
@@ -20,28 +29,74 @@ public class Main {
    * Run a Tic Tac Toe game interactively.
    */
   public static void main(String[] args) {
-    // Old News: console-based game:
-    //new TicTacToeConsoleController(new InputStreamReader(System.in),
-    //    System.out).playGame(new TicTacToeModel());
 
-    // New Hotness: Graphical User Interface:
-    // 1. Create an instance of the model.
-    IAnimationOperations model = new AnimationModel(new ArrayList<IShape>());
+    IAnimationOperations model = new AnimationModel(new ArrayList<>());
 
-    // 2. Create an instance of the view.
-    IView view = new TextView();
-    Timer timer = new Timer();
+    Readable fileReader;
+    Appendable output;
+    String fileName = "";
+    String viewType = "";
+    int speed = 0;
+    String out = "";
+
+    //parse the file and look for the file Name (the argument next to "in")
+    for (int i = 0; i < args.length - 1; i++) {
+      switch (args[i]) {
+        case "in":
+        fileName = args[i + 1];
+        break;
+        case "view":
+          viewType = args[i + 1];
+          break;
+        case "speed":
+          speed = Integer.parseInt(args[i + 1]);
+          break;
+        case "out":
+          out = args[i + 1]; //why is not accessing?
+          break;
+        default:
+          break;
+      }
+    }
+
+    try {
+      fileReader = new FileReader(fileName);
+    } catch (FileNotFoundException fne) {
+      throw new IllegalArgumentException("bad file name");
+    }
+    //-in "name-of-animation-file (file name)" -view "type-of-view" -out "where-output-show-go"
+    // -speed "integer-ticks-per-second"
 
 
+    try {
+      output = new FileWriter("where-output-show-go");
+    } catch (IOException ioe) {
+      throw new IllegalArgumentException("no such file"); //should this be IAE?
+    }
     AnimationReader reader = new AnimationReader();
-    AnimationBuilder builder;
-    reader.parseFile(readable, builder);
-    //builder
+    AnimationBuilder builder = new Builder();
+    reader.parseFile(fileReader, builder);
 
-    // 3. Create an instance of the controller, passing the view to its constructor.
+    IView view = null;
+    switch (viewType) {
+      case "text":
+      case "Text":
+        view = AnimationViewCreator.create(ViewType.TEXT, model, speed, output);
+        break;
+      case "Display":
+      case "display":
+        view = AnimationViewCreator.create(ViewType.DISPLAY, model, speed, output);
+        break;
+      case "SVG":
+      case "svg":
+        view = AnimationViewCreator.create(ViewType.SVG, model, speed, output);
+        break;
+      default:
+        throw new IllegalArgumentException("invalid view:(");
+    }
+
     IController controller = new AnimationController(model, view);
 
-    // 4. Call playGame() on the controller.
     controller.playAnimation(model);
   }
 }

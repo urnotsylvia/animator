@@ -1,11 +1,20 @@
 package cs3500.animator.view;
 
 import cs3500.animator.Model.IAnimationOperations;
+import javax.swing.JFrame;
 
 public class SVGView extends AView {
 
-  public SVGView(IAnimationOperations model) {
-    super(model);
+  public SVGView (IAnimationOperations model, int speed, Appendable output) {
+    super(model, speed, output);
+    this.speed = speed;
+    this.output = output;
+
+    setSize(WIDTH, HEIGHT);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    panel = new AnimationPanel(model);
+    this.add(panel);
   }
   //use
 
@@ -16,7 +25,7 @@ public class SVGView extends AView {
   }
 
   @Override
-  public void playAnimation(IAnimationOperations m) {
+  public void showAnimation(IAnimationOperations m) {
 
   }
 }
