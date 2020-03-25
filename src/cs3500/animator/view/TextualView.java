@@ -28,9 +28,6 @@ public class TextualView extends AView {
 
     setSize(WIDTH, HEIGHT);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    panel = new AnimationPanel(model);
-    this.add(panel);
   }
 
   @Override
@@ -41,10 +38,12 @@ public class TextualView extends AView {
   @Override
   public void showAnimation(IAnimationOperations m) {
     String curMotionToString = "";
-    String result = "";
+    String result = "canvas \n"; //need to finish setBound in model first
+
     List<String> unSortedMotions = new ArrayList<>();
     for (int i = 0; i < m.getShapes().size(); i++) {
       IShape curShape = m.getShapes().get(i);
+      result = result + curShape.getName() + curShape.getShapeAsString() + "\n";
       for (int k = 0; k < curShape.getKeyFrames().size(); k++) {
         KeyFrame curKey = curShape.getKeyFrames().get(k);
         KeyFrame nextKey = curShape.getKeyFrames().get(k + 1);
@@ -54,7 +53,7 @@ public class TextualView extends AView {
         unSortedMotions.add(curMotionToString);
       }
     }
-    result = sortMotions(unSortedMotions);
+    result = result + sortMotions(unSortedMotions);
     try {
       output.append(result);
     } catch (IOException ioe) {
@@ -63,8 +62,8 @@ public class TextualView extends AView {
   }
 
   /**
-   *
-   * @param unSortedMotions
+   * sort the list of motions based on the start time, from small to big
+   * @param unSortedMotions list of motion that need to be sorted
    * @return
    */
   private String sortMotions(List<String> unSortedMotions) {

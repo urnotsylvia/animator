@@ -34,6 +34,16 @@ public class RGBColor {
     return this.red + " " + this.green + " " + this.blue;
   }
 
+  /**
+   * In order to output the RGBcolor as a String.
+   *
+   * @return the string format of the color
+   */
+  public String asRGBString() {
+    return "rgb(" + this.red + "," + this.green + "," + this.blue +")";
+  }
+
+
   @Override
   public boolean equals(Object other) {
     if (!(other instanceof RGBColor)) {

@@ -1,4 +1,7 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import cs3500.animator.Model.AnimationModel;
 import cs3500.animator.Model.IAnimationOperations;
@@ -103,9 +106,9 @@ public class AnimationModelTest {
 
   @Test
   public void dropKeyFrameTest() {
-    assertEquals(true, r2.getKeyFrames().contains(k3));
+    assertTrue(r2.getKeyFrames().contains(k3));
     r2.dropKeyFrame(4);
-    assertEquals(false, r2.getKeyFrames().contains(k3));
+    assertFalse(r2.getKeyFrames().contains(k3));
   }
 
   @Test (expected = IllegalArgumentException.class)
@@ -229,6 +232,11 @@ public class AnimationModelTest {
   }
 
   @Test
+  public void colorAsRGBStringTest() {
+    assertEquals(c1.asRGBString(), "rgb(100,0,20)");
+  }
+
+  @Test
   public void changeUpperHLengthTest() {
     r1.setLength("H", 50);
     assertEquals(r1, r5);
@@ -253,7 +261,7 @@ public class AnimationModelTest {
   @Test
   public void addShapeTest() {
     model1.add("r7", "Rect");
-    assertEquals(model1.getShapes().contains(r7), true);
+    assertTrue(model1.getShapes().contains(r7));
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -299,72 +307,72 @@ public class AnimationModelTest {
 
   @Test
   public void keyFrameEqualTest() {
-    assertEquals(k1.equals(sameK1), true);
+    assertEquals(k1, sameK1);
   }
 
   @Test
   public void testEqualsOval() {
-    assertEquals(o2.equals(o2Same), true);
+    assertEquals(o2, o2Same);
   }
 
   @Test
   public void keyFrameEqualFalseTest() {
-    assertEquals(k1.equals(diffK1), false);
+    assertNotEquals(k1, diffK1);
   }
 
   @Test
   public void keyFrameEqualFalseDiffObjTest() {
-    assertEquals(k1.equals(c1), false);
+    assertNotEquals(k1, c1);
   }
 
   @Test
   public void posnEqualTest() {
-    assertEquals(p1.equals(sameP1), true);
+    assertEquals(p1, sameP1);
   }
 
   @Test
   public void posnEqualsYFalseTest() {
-    assertEquals(p1.equals(p4), false);
+    assertNotEquals(p1, p4);
   }
 
   @Test
   public void posnEqualsXFalseTest() {
-    assertEquals(p1.equals(p3), false);
+    assertNotEquals(p1, p3);
   }
 
   @Test
   public void posnEqualsNotSameObjectTest() {
-    assertEquals(p1.equals(r1), false);
+    assertNotEquals(p1, r1);
   }
 
   @Test
   public void testNotEqualOvalName() {
-    assertEquals(o1.equals(o1WithDiffName), false);
+    assertNotEquals(o1, o1WithDiffName);
   }
 
   @Test
   public void testNotEqualOvalWidth() {
-    assertEquals(o1.equals(o1WithDiffWidth), false);
+    assertNotEquals(o1, o1WithDiffWidth);
   }
 
   @Test
   public void testNotEqualOvalPos() {
-    assertEquals(o1.equals(o1WithDiffPos), false);
+    assertNotEquals(o1, o1WithDiffPos);
   }
 
   @Test
   public void testNotEqualOvalColor() {
-    assertEquals(o1.equals(o1WithDiffColor), false);
+    assertNotEquals(o1, o1WithDiffColor);
   }
 
   @Test
   public void testNotEqualOvalPosn() {
-    assertEquals(o1.equals(o1WithDiffPosn), false);
+    assertNotEquals(o1, o1WithDiffPosn);
   }
 
   @Test
   public void testNotEqualOvalKeyFrames() {
-    assertEquals(o1.equals(o1WithDiffKeyFrames), false);
+    assertNotEquals(o1, o1WithDiffKeyFrames);
   }
 
   @Test
@@ -382,31 +390,31 @@ public class AnimationModelTest {
 
   @Test
   public void testEqualsRectangle() {
-    assertEquals(r1.equals(r1Same), true);
+    assertEquals(r1, r1Same);
   }
 
   @Test
   public void testEqualsNotSameObject() {
-    assertEquals(r1.equals(o1), false);
+    assertNotEquals(r1, o1);
   }
 
   @Test
   public void testEqualsNotSameRectangle() {
-    assertEquals(r1.equals(diffR1), false);
+    assertNotEquals(r1, diffR1);
   }
 
   @Test
   public void testEqualsSameColor() {
-    assertEquals(c1.equals(c1Same), true);
+    assertEquals(c1, c1Same);
   }
 
   @Test
   public void testEqualsColorDiffObject() {
-    assertEquals(c1.equals(p1), false);
+    assertNotEquals(c1, p1);
   }
 
   @Test
   public void testEqualsDiffColor() {
-    assertEquals(c1.equals(c1Diff), false);
+    assertNotEquals(c1, c1Diff);
   }
 }

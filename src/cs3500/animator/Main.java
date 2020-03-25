@@ -63,7 +63,7 @@ public class Main {
 
 
     try {
-      output = new FileWriter("where-output-show-go");
+      output = new FileWriter(out);
     } catch (IOException ioe) {
       throw new IllegalArgumentException("no such file"); //should this be IAE?
     }
@@ -93,5 +93,4 @@ public class Main {
 
     controller.playAnimation(model);
   }
-  //
 }
