@@ -1,4 +1,4 @@
-package Model;
+package cs3500.animator.Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,6 +94,20 @@ public abstract class AShape implements IShape {
       default:
         return;
     }
+  }
+
+  @Override
+  public void dropKeyFrame(int time) {
+    boolean flag = false;
+    for (int i =0; i < keyFrames.size(); i++) {
+      if (keyFrames.get(i).getTime() == time) {
+        flag = true;
+        keyFrames.remove(i);
+      }
+    }
+      if (flag == false) {
+        throw new IllegalArgumentException("no such keyFrame, cannot drop");
+      }
   }
 
   @Override

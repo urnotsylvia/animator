@@ -1,4 +1,4 @@
-package Model;
+package cs3500.animator.Model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +51,11 @@ public class Oval extends AShape {
     result += 13 * this.keyFrames.hashCode();
     result += 17 * this.color.hashCode();
     return result;
+  }
+
+  @Override
+  public String getShapeAsString() {
+    return "Oval";
   }
 
   @Override

@@ -1,4 +1,4 @@
-package Model;
+package cs3500.animator.Model;
 
 /**
  * A class Model.RGBColor to represent the color of the shape in animation.

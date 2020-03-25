@@ -1,4 +1,4 @@
-package Model;
+package cs3500.animator.Model;
 
 import java.util.List;
 
@@ -11,9 +11,10 @@ public interface IAnimationOperations {
   /**
    * Add the shape to the list of keyFrame.
    *
-   * @param shape represent the new shape that tend to be add to the list of shapes
+   * @param name the name of the new shape
+   * @param type the type of the shape
    */
-  void add(IShape shape);
+  void add(String name, String type);
 
   /**
    * Remove the shape from the list of shape.

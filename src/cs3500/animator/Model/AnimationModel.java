@@ -1,5 +1,6 @@
-package Model;
+package cs3500.animator.Model;
 
+import cs3500.animator.util.AnimationBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,18 +20,51 @@ public class AnimationModel implements IAnimationOperations {
     this.shapes = shapes;
   }
 
-//  public class Builder implements AnimationBuilder<> {
-//    ///////////////////////////////////////////////////////////////////////////////////some thing from the starter code
-//  }
+  public class Builder implements AnimationBuilder<IAnimationOperations> {
+    IAnimationOperations model;
+
+    public Builder (IAnimationOperations model) {
+      this.model = model;
+    }
+
+    @Override
+    public IAnimationOperations build() {
+      return this.model; //or should I make a new model here??????????????????
+    }
+
+    @Override
+    public AnimationBuilder<IAnimationOperations> setBounds(int x, int y, int width, int height) {
+      return null; //?????????????????????????
+    }
+
+    @Override
+    public AnimationBuilder<IAnimationOperations> declareShape(String name, String type) {
+      this.model.add(name, type);
+    }
+
+    @Override
+    public AnimationBuilder<IAnimationOperations> addMotion(String name, int t1, int x1, int y1,
+        int w1, int h1, int r1, int g1, int b1, int t2, int x2, int y2, int w2, int h2, int r2,
+        int g2, int b2) {
+      return null;
+    }
+
+    @Override
+    public AnimationBuilder<IAnimationOperations> addKeyframe(String name, int t, int x, int y,
+        int w, int h, int r, int g, int b) {
+      return null;
+    }
+  }
 
   @Override
-  public void add(IShape shape) {
+  public void add(String name, String type) {
     for (IShape s : this.shapes) {
-      if (s.getName().equals(shape.getName())) {
+      if (s.getName().equals(name)) {
         throw new IllegalArgumentException("This shape is already exists, cannot add this shape.");
       }
     }
-    this.shapes.add(shape);
+
+    this.shapes.add(new shape);
   }
 
   @Override

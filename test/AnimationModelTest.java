@@ -1,13 +1,13 @@
 import static org.junit.Assert.assertEquals;
 
-import Model.AnimationModel;
-import Model.IAnimationOperations;
-import Model.IShape;
-import Model.KeyFrame;
-import Model.Oval;
-import Model.Posn;
-import Model.RGBColor;
-import Model.Rectangle;
+import cs3500.animator.Model.AnimationModel;
+import cs3500.animator.Model.IAnimationOperations;
+import cs3500.animator.Model.IShape;
+import cs3500.animator.Model.KeyFrame;
+import cs3500.animator.Model.Oval;
+import cs3500.animator.Model.Posn;
+import cs3500.animator.Model.RGBColor;
+import cs3500.animator.Model.Rectangle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -97,6 +97,18 @@ public class AnimationModelTest {
   public void addKeyFrameTest() {
     r1.addKeyFrame(k3);
     assertEquals(r1, r2);
+  }
+
+  @Test
+  public void dropKeyFrameTest() {
+    assertEquals(true, r2.getKeyFrames().contains(k3));
+    r2.dropKeyFrame(4);
+    assertEquals(false, r2.getKeyFrames().contains(k3));
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void dropKeyFalseTest() {
+    r2.dropKeyFrame(100);
   }
 
   @Test
