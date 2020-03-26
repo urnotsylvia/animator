@@ -9,7 +9,7 @@ public class Posn {
   private double y;
 
   /**
-   * Constructor of the class Model.Posn.
+   * Constructor of the class Posn.
    *
    * @param x to represent the X coordinate of Model.Posn
    * @param y to represent the Y coordinate of Model.Posn

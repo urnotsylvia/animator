@@ -6,9 +6,10 @@ import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextualView;
 import cs3500.animator.view.ViewType;
+
 /**
- * The factory class for AnimationView, provides a static method to give a instance of a
- * Animation IView.
+ * The factory class for AnimationView, provides a static method to give a instance of a Animation
+ * IView.
  */
 public class AnimationViewCreator {
 

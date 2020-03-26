@@ -40,7 +40,7 @@ public abstract class AShape implements IShape {
   }
 
   /**
-   * to represent the copy of the constructor of the shape.
+   * constructs the shape.
    *
    * @param other the other copy shape
    */
@@ -48,10 +48,15 @@ public abstract class AShape implements IShape {
     this.name = other.name;
     this.color = other.color;
     this.w = other.w;
-    this.w = other.w;
+    this.h = other.h;
     this.pos = other.pos;
   }
 
+  /**
+   * constructs the shape with given name
+   *
+   * @param name the name of the shape
+   */
   public AShape(String name) {
     this.name = name;
   }
@@ -68,6 +73,8 @@ public abstract class AShape implements IShape {
       if (keyFrames.get(i).getTime() == newKey.getTime()) {
         if (!keyFrames.get(i).keyToString().equals(newKey.keyToString())) {
           throw new IllegalArgumentException("this tick has already been taken");
+        } else {
+          return;
         }
       }
     }
@@ -105,15 +112,15 @@ public abstract class AShape implements IShape {
   @Override
   public void dropKeyFrame(int time) {
     boolean flag = false;
-    for (int i =0; i < keyFrames.size(); i++) {
+    for (int i = 0; i < keyFrames.size(); i++) {
       if (keyFrames.get(i).getTime() == time) {
         flag = true;
         keyFrames.remove(i);
       }
     }
-      if (flag == false) {
-        throw new IllegalArgumentException("no such keyFrame, cannot drop");
-      }
+    if (flag == false) {
+      throw new IllegalArgumentException("no such keyFrame, cannot drop");
+    }
   }
 
   @Override

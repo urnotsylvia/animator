@@ -1,11 +1,10 @@
 package cs3500.animator.Model;
 
-import cs3500.animator.util.AnimationBuilder;
 import java.util.List;
 
 /**
- * This is the interface of the Model.IAnimationOperations, that representing all the functions in the
- * animator.
+ * This is the interface of the Model.IAnimationOperations, that representing all the functions in
+ * the animator.
  */
 public interface IAnimationOperations {
 
@@ -16,6 +15,14 @@ public interface IAnimationOperations {
    * @param type the type of the shape
    */
   void add(String name, String type);
+
+  /**
+   * get the attribute that is part of the bound according to the String given
+   *
+   * @param i the String that represents the attribute name, can be one of x, y, w, h
+   * @return the value of the attribute
+   */
+  int getBound(String i);
 
   /**
    * Remove the shape from the list of shape.
@@ -50,21 +57,41 @@ public interface IAnimationOperations {
   List<IShape> getState(int when);
 
   /**
+   * get a list of shape that has each key associated with a shape
    *
-   * @param name
-   * @param t
-   * @param x
-   * @param y
-   * @param w
-   * @param h
-   * @param r
-   * @param g
-   * @param b
+   * @return a list of shapes with the active keyFrame
+   */
+  List<IShape> getShapesWithAllKeys();
+
+  /**
+   * @param name the name of the shape that keyFrame need to be added to
+   * @param t    time
+   * @param x    x
+   * @param y    y
+   * @param w    width
+   * @param h    height
+   * @param r    red in RGBColor
+   * @param g    green in RGBColor
+   * @param b    blue in RGBColor
    */
   void addKeyframe(String name, int t, int x, int y,
       int w, int h, int r, int g, int b);
 
+  /**
+   * specify the bound with given attributes values
+   *
+   * @param x      The leftmost x value
+   * @param y      The topmost y value
+   * @param width  The width of the bounding box
+   * @param height The height of the bounding box
+   * @throws IllegalArgumentException if any value of the attribute is negative
+   */
   void setBounds(int x, int y, int width, int height);
 
-  String getBoundsAsString ();
+  /**
+   * return the bound information as a string
+   *
+   * @return string that represents the 4 attributes of the bounding
+   */
+  String getBoundsAsString();
 }

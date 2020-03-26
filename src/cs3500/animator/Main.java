@@ -2,7 +2,6 @@ package cs3500.animator;
 
 import cs3500.animator.Controller.AnimationController;
 import cs3500.animator.Controller.IController;
-import cs3500.animator.Model.AnimationModel;
 import cs3500.animator.Model.AnimationModel.Builder;
 import cs3500.animator.Model.IAnimationOperations;
 import cs3500.animator.util.AnimationBuilder;
@@ -12,13 +11,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import cs3500.animator.view.IView;
 
 /**
  * Run a Animation
  */
 public class Main {
+
   /**
    * Run a Tic Tac Toe game interactively.
    */
@@ -37,8 +36,8 @@ public class Main {
     for (int i = 0; i < args.length - 1; i++) {
       switch (args[i]) {
         case "-in":
-        fileName = args[i + 1];
-        break;
+          fileName = args[i + 1];
+          break;
         case "-view":
           viewType = args[i + 1];
           break;
@@ -79,7 +78,7 @@ public class Main {
         break;
       case "Display":
       case "display":
-        //view = AnimationViewCreator.create(ViewType.DISPLAY, model, speed, output);
+        view = AnimationViewCreator.create(ViewType.DISPLAY, model, speed, output);
         break;
       case "SVG":
       case "svg":

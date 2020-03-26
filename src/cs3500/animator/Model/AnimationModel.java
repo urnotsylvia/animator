@@ -16,7 +16,7 @@ public class AnimationModel implements IAnimationOperations {
   private int height;
 
   /**
-   * to represent the constructor of the model.
+   * constructs the model and initialize the values.
    *
    * @param shapes the list of the shapes that the model takes in
    */
@@ -28,10 +28,17 @@ public class AnimationModel implements IAnimationOperations {
     this.height = 0;
   }
 
+  /**
+   * the builder that build the model according to the operations after the reader parse the file
+   */
   public static final class Builder implements AnimationBuilder<IAnimationOperations> {
+
     IAnimationOperations model;
 
-    public Builder () {
+    /**
+     * constructs the builder that takes in the model
+     */
+    public Builder() {
       this.model = new AnimationModel(new ArrayList<IShape>());
     }
 
@@ -71,6 +78,9 @@ public class AnimationModel implements IAnimationOperations {
 
   @Override
   public void setBounds(int x, int y, int width, int height) {
+    if (x <= 0 || y <= 0 || width <= 0 || height <= 0) {
+      throw new IllegalArgumentException("bound can only be positive number");
+    }
     this.x = x;
     this.y = y;
     this.width = width;
@@ -92,7 +102,7 @@ public class AnimationModel implements IAnimationOperations {
         this.shapes.add(new Rectangle(name));
         break;
       case "Oval":
-      case"oval":
+      case "oval":
         this.shapes.add(new Oval(name));
         break;
       default:
@@ -101,15 +111,32 @@ public class AnimationModel implements IAnimationOperations {
   }
 
   @Override
-  public String getBoundsAsString () {
-   return  this.x + " " + this.y + " " + this.width + " " + this.height;
+  public String getBoundsAsString() {
+    return this.x + " " + this.y + " " + this.width + " " + this.height;
+  }
+
+  @Override
+  public int getBound(String i) {
+    switch (i) {
+      case "x":
+        return this.x;
+      case "y":
+        return this.y;
+      case "w":
+        return this.width;
+      case "h":
+        return this.height;
+      default:
+        throw new IllegalArgumentException("invalid attribute");
+
+    }
   }
 
   @Override
   public void addKeyframe(String name, int t, int x, int y,
       int w, int h, int r, int g, int b) {
     boolean exist = false;
-    for (IShape s: shapes) {
+    for (IShape s : shapes) {
       if (s.getName().equals(name)) {
         exist = true;
         s.addKeyFrame(new KeyFrame(t, x, y, w, h, new RGBColor(r, g, b)));
@@ -148,7 +175,26 @@ public class AnimationModel implements IAnimationOperations {
     return allKeysAtThisTick;
   }
 
-  private void copyAllTheValue(List<IShape> allKeysAtThisTick, IShape s, KeyFrame k) {
+  @Override
+  public List<IShape> getShapesWithAllKeys() {
+    List<IShape> allKeys = new ArrayList<>();
+    for (IShape s : shapes) {
+      for (int i = 0; i < s.getKeyFrames().size(); i++) {
+        KeyFrame k = s.getKeyFrames().get(i);
+        copyAllTheValue(allKeys, s, k);
+      }
+    }
+    return allKeys;
+  }
+
+  /**
+   * make a copy of the shape and add it to the given list
+   *
+   * @param list
+   * @param s    the shase need to be copied
+   * @param k    the keyFrame of the shape
+   */
+  private void copyAllTheValue(List<IShape> list, IShape s, KeyFrame k) {
     IShape cur = s.getShape();
     cur.setName(s.getName());
     cur.changeColor(k.getColor());
@@ -157,13 +203,13 @@ public class AnimationModel implements IAnimationOperations {
     cur.getPos().setX(k.getX());
     cur.getPos().setY(k.getY());
     cur.getKeyFrames().add(k);
-    allKeysAtThisTick.add(cur);
+    list.add(cur);
   }
 
   @Override
   public List<IShape> getShapes() {
     List<IShape> copy = new ArrayList<>();
-    for (IShape s: shapes) {
+    for (IShape s : shapes) {
       copy.add(s);
     }
     return copy;

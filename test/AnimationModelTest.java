@@ -11,6 +11,9 @@ import cs3500.animator.Model.Oval;
 import cs3500.animator.Model.Posn;
 import cs3500.animator.Model.RGBColor;
 import cs3500.animator.Model.Rectangle;
+import cs3500.animator.view.IView;
+import cs3500.animator.view.SVGView;
+import cs3500.animator.view.TextualView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -65,13 +68,44 @@ public class AnimationModelTest {
 
   List<IShape> los1 = new ArrayList<>(Arrays.asList(r1, o1, o2));
   List<IShape> los2 = new ArrayList<>(Arrays.asList(r1, o1, o2, r6));
-  List<IShape> los3 = new ArrayList<>(Arrays.asList(r1, o1, o2, r7));
   List<IShape> los4 = new ArrayList<>(Arrays.asList(r1a, o1, o2));
   List<IShape> emptyList = new ArrayList<>();
 
   IAnimationOperations model1 = new AnimationModel(los1);
   IAnimationOperations model2 = new AnimationModel(los2);
   IAnimationOperations emptyModel = new AnimationModel(emptyList);
+
+  Appendable out = new StringBuilder();
+
+
+  @Test
+  public void textViewOutputTest() {
+    IView textual = new TextualView(model1, 10, out);
+    model1.setBounds(1, 2, 3, 4);
+    textual.showAnimation();
+    assertEquals("canvas 1 2 3 4\n"
+        + "shape r1 Rectangle\n"
+        + "shape o1 Oval\n"
+        + "shape o2 Oval\n"
+        + "motion o1 1 15 40 10 20 100 0 20  4 20 40 10 20 100 0 20\n"
+        + "motion o2 1 15 40 10 20 100 0 20  4 20 40 10 20 100 0 20\n"
+        + "motion o2 4 20 40 10 20 100 0 20  9 20 40 10 20 10 100 100\n", out.toString());
+  }
+
+  @Test
+  public void textSVGoOutputTest() {
+    IView textual = new SVGView(model1, 10, out);
+    model1.setBounds(100, 10, 20, 9);
+    textual.showAnimation();
+    assertEquals(
+        "\t<rect id=\"r1\" x=\"10.0\" y=\"20.0\" width=\"15.0\" height=\"40.0\" fill=\"rgb(100 0 20)\" visibility=\"visible\" />\n"
+            + "\t<ellipse id=\"o1\" x=\"10.0\" y=\"20.0\" width=\"20.0\" height=\"40.0\" fill=\"rgb(100 0 20)\" visibility=\"visible\" />\n"
+            + "\t\t<animation attributeType=\"xml\" begin=\"base.begin+10ms\" dur=\"30ms\" attributeName=x\" from=\"15\" to=20\" fill=\"freeze\" />\n"
+            + "\t<ellipse id=\"o2\" x=\"20.0\" y=\"30.0\" width=\"10.0\" height=\"5.0\" fill=\"rgb(10 100 100)\" visibility=\"visible\" />\n"
+            + "\t\t<animation attributeType=\"xml\" begin=\"base.begin+10ms\" dur=\"30ms\" attributeName=x\" from=\"15\" to=20\" fill=\"freeze\" />\n"
+            + "\t\t<animate attributeName=\"fill\" values=\"10;100;100\" dur=\"5s\" repeatCount=\"indefinite\" />\n",
+        out.toString());
+  }
 
   @Test
   public void checkIfEmptyTest() {
@@ -95,6 +129,38 @@ public class AnimationModelTest {
   }
 
   @Test
+  public void getBoundTest() {
+    model1.setBounds(100, 10, 1, 20);
+    assertEquals(100, model1.getBound("x"));
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void getBoundFalseTest() {
+    model1.setBounds(100, 10, 1, 20);
+    model1.getBound("k");
+  }
+
+  @Test
+  public void setBoundTest() {
+    model1.setBounds(100, 10, 1, 20);
+    assertEquals(100, model1.getBound("x"));
+    assertEquals(10, model1.getBound("y"));
+    assertEquals(1, model1.getBound("w"));
+    assertEquals(20, model1.getBound("h"));
+  }
+
+  @Test
+  public void getBoundAsStringTest() {
+    model1.setBounds(100, 10, 1, 20);
+    assertEquals("100 10 1 20", model1.getBoundsAsString());
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void setBoundNegativeTest() {
+    model1.setBounds(-100, 10, 1, 20);
+  }
+
+  @Test
   public void getPosTest() {
     assertEquals(r1.getPos(), p1);
   }
@@ -113,11 +179,11 @@ public class AnimationModelTest {
   @Test
   public void addKeyFrameToModelTest() {
     model1.addKeyframe("r1", 10, 20, 10,
-    10, 10, 10, 20, 100);
+        10, 10, 10, 20, 100);
     assertEquals(model1.getShapes(), los4);
   }
 
-  @Test (expected = IllegalArgumentException.class)
+  @Test(expected = IllegalArgumentException.class)
   public void addKeyFrameToModelFalseTest() {
     model1.addKeyframe("r10", 10, 20, 10,
         10, 10, 10, 20, 100);
@@ -130,7 +196,7 @@ public class AnimationModelTest {
     assertFalse(r2.getKeyFrames().contains(k3));
   }
 
-  @Test (expected = IllegalArgumentException.class)
+  @Test(expected = IllegalArgumentException.class)
   public void dropKeyFalseTest() {
     r2.dropKeyFrame(100);
   }
@@ -206,8 +272,7 @@ public class AnimationModelTest {
 
   @Test
   public void keyToStringTest() {
-    assertEquals(k1.keyToString(),
-        "1 15 40 10.0 20.0 100 0 20");
+    assertEquals("1 15 40 10 20 100 0 20", k1.keyToString());
   }
 
   @Test
@@ -402,8 +467,8 @@ public class AnimationModelTest {
 
   @Test
   public void motionToStringTest() {
-    assertEquals("motion o1 start:1 15 40 10.0 20.0 100 0 20 "
-            + "end:4 20 40 10.0 20.0 100 0 20",
+    assertEquals("motion o1 start:1 15 40 10 20 100 0 20 "
+            + "end:4 20 40 10 20 100 0 20",
         model1.motionToString("o1", 1));
   }
 

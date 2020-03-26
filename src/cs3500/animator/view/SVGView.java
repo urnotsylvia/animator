@@ -7,15 +7,17 @@ import java.io.IOException;
 
 public class SVGView extends AView {
 
+  /**
+   * constructs the view given model, speed and the appendable to output
+   *
+   * @param model  the animation model
+   * @param speed  the speed
+   * @param output the output file
+   */
   public SVGView(IAnimationOperations model, int speed, Appendable output) {
     super(model, speed, output);
     this.speed = speed;
     this.output = output;
-  }
-
-  @Override
-  public ViewType getViewType() {
-    return ViewType.SVG;
   }
 
   @Override
@@ -35,7 +37,7 @@ public class SVGView extends AView {
         default:
           throw new IllegalArgumentException("no such shape type");
       }
-      result = result + getShapeAsSVGString(shapeType, curShape);
+      result = result + "\t" + getShapeAsSVGString(shapeType, curShape);
       for (int k = 0; k < curShape.getKeyFrames().size() - 1; k++) {
         KeyFrame curKey = curShape.getKeyFrames().get(k);
         KeyFrame nextKey = curShape.getKeyFrames().get(k + 1);
@@ -59,7 +61,7 @@ public class SVGView extends AView {
     int arr2Index = 1;
     while (arr2Index < arr2.length) {
       for (int i = 1; i < arr1.length; i++) {
-        if (arr1[i] == arr2[arr2Index]) {
+        if (!arr1[i].equals(arr2[arr2Index])) {
           switch (i) {
             case 1:
               changeAttribute = "x";
@@ -82,13 +84,15 @@ public class SVGView extends AView {
               throw new IllegalArgumentException("not a valid attribute");
           }
           if (changeAttribute.equals("fill")) {
-            result = result + "<animate attributeName=\"fill\" values=\""
-          + arr2[5] + ";" + arr2[6] + ";" + arr2[7]
-                + "\" dur=\"" + (Integer.parseInt(arr2[0]) - Integer.parseInt(arr1[0]))
-                + "s\" repeatCount=\"indefinite\" />\n";
+            if (i == 5) {
+              result = result + "\t\t<animate attributeName=\"fill\" values=\""
+                  + arr2[5] + ";" + arr2[6] + ";" + arr2[7]
+                  + "\" dur=\"" + (Integer.parseInt(arr2[0]) - Integer.parseInt(arr1[0]))
+                  + "s\" repeatCount=\"indefinite\" />\n";
+            }
           }
           else {
-            result = result + "<animation attributeType=\"xml\" "
+            result = result + "\t\t<animation attributeType=\"xml\" "
                 + "begin=\"base.begin+" + (speed * curKey.getTime()) + "ms\" "
                 + "dur=\"" + (speed * (nextKey.getTime() - curKey.getTime())) + "ms\" "
                 + "attributeName=" + changeAttribute

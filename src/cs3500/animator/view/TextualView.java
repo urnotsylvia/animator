@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
 /**
  * The View of the Animation to produce a textual description of the animation that is compliant
  * with the popular SVG (Scalable Vector Graphics) file format.
@@ -14,10 +15,11 @@ import java.util.List;
 public class TextualView extends AView {
 
   /**
-   * Represent the constructor of the textual view.
-   * @param model the initial model that the textual view takes in
-   * @param speed the
-   * @param output
+   * constructs the view given model, speed and the appendable to output
+   *
+   * @param model  the animation model
+   * @param speed  the speed
+   * @param output the output file
    */
   public TextualView(IAnimationOperations model, int speed, Appendable output) {
     super(model, speed, output);
@@ -27,14 +29,10 @@ public class TextualView extends AView {
   }
 
   @Override
-  public ViewType getViewType() {
-    return ViewType.TEXTUAL;
-  }
-
-  @Override
   public void showAnimation() {
     String curMotionToString = "";
-    String result = "canvas \n" + this.model.getBoundsAsString(); //need to finish setBound in model first
+    String result =
+        "canvas " + this.model.getBoundsAsString() + "\n"; //need to finish setBound in model first
 
     List<String> unSortedMotions = new ArrayList<>();
     for (int i = 0; i < this.model.getShapes().size(); i++) {
@@ -53,7 +51,6 @@ public class TextualView extends AView {
     result = result + sortMotions(unSortedMotions);
     try {
       output.append(result);
-      System.out.println(result);
     } catch (IOException ioe) {
       throw new IllegalArgumentException("failed to append:("); //what is IOE, should throw IAE?
     }
@@ -61,8 +58,9 @@ public class TextualView extends AView {
 
   /**
    * sort the list of motions based on the start time, from small to big
+   *
    * @param unSortedMotions list of motion that need to be sorted
-   * @return
+   * @return the sorted Motions as a String
    */
   private String sortMotions(List<String> unSortedMotions) {
     String result = "";
@@ -73,7 +71,7 @@ public class TextualView extends AView {
         return Integer.parseInt(arr1[2]) - Integer.parseInt(arr2[2]);
       }
     });
-    for (String s: unSortedMotions) {
+    for (String s : unSortedMotions) {
       result = result + s;
     }
     return result;

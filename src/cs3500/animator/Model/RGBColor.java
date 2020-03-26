@@ -26,6 +26,25 @@ public class RGBColor {
   }
 
   /**
+   * get the attribute of the RGB color based on the string given
+   *
+   * @param color red, blue or green attribute
+   * @return the number that represents the color attribute
+   */
+  public int getRGB(String color) {
+    switch (color) {
+      case "r":
+        return this.red;
+      case "g":
+        return this.green;
+      case "b":
+        return this.blue;
+      default:
+        throw new IllegalArgumentException("invalid color:(");
+    }
+  }
+
+  /**
    * In order to output the RGBcolor in the string format.
    *
    * @return the string format of the color
@@ -40,7 +59,7 @@ public class RGBColor {
    * @return the string format of the color
    */
   public String asRGBString() {
-    return "rgb(" + this.red + "," + this.green + "," + this.blue +")";
+    return "rgb(" + this.red + "," + this.green + "," + this.blue + ")";
   }
 
 

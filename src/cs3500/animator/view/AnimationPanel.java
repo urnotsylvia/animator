@@ -3,68 +3,110 @@ package cs3500.animator.view;
 import cs3500.animator.Model.IAnimationOperations;
 import cs3500.animator.Model.IShape;
 import cs3500.animator.Model.KeyFrame;
-import cs3500.animator.Model.Oval;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class AnimationPanel extends JPanel {
+/**
+ * draw the animation each tick
+ */
+public class AnimationPanel extends JPanel implements ActionListener {
+
   private IAnimationOperations model;
   private Timer timer;
   private int curTime = 1;
 
+  /**
+   * constructs the panel that given model and speed
+   *
+   * @param model the animation model
+   * @param speed the rate that specifies how many tick per ms
+   */
   public AnimationPanel(IAnimationOperations model, int speed) {
     this.model = model;
-    //this.timer = new Timer(1000/speed, taskPerformer).start();
+    this.timer = new Timer(500 / speed, this);
+    this.timer.start();
   }
 
-/*
+  @Override
+  public void actionPerformed(ActionEvent evt) {
+    //Perform a task
+    curTime++;
+    this.repaint();
+  }
+
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D) g;
-    ActionListener taskPerformer = new ActionListener() {
-      public void actionPerformed(ActionEvent evt) {
-        //...Perform a task...
-        curTime ++;
-        List<IShape> curShapes = model.getState(curTime);
-        for (IShape s: curShapes) {
-          for (int i = 0; i < s.getKeyFrames().size(); i++) {
-            //find the corresponding tick
-            if (s.getKeyFrames().get(i).getTime() == curTime) {
-              switch (s.getShapeAsString()) {
-                case "Rectangle":
-                  //draw the shape with all the values
-                  g2.draw(new Rectangle());
-                  break;
-                case "Oval":
-                  g2.draw(new Oval());
-                  break;
-                default:
-                  throw new IllegalArgumentException("no such shape");
-              }
-              else {
-                //find the previous keyFrame and the next keyFrame and use the math to calculate all thevalues
-                if (curTime > s.getKeyFrames().get(i - 1).getTime()
-                && curTime < s.getKeyFrames().get(i).getTime()) {
-                //tweening
-                }
-              }
-            }
+    List<IShape> shapes = model.getShapesWithAllKeys();
+    for (int i = 0; i < shapes.size() - 1; i++) {
+      //find the corresponding tick
+      KeyFrame curKey = shapes.get(i).getKeyFrames().get(0);
+      if (curKey.getTime() == curTime) {
+        g2.setColor(new Color(curKey.getColor().getRGB("r"),
+            curKey.getColor().getRGB("g"),
+            curKey.getColor().getRGB("b")));
+        switch (shapes.get(i).getShapeAsString()) {
+          case "Rectangle":
+            g2.fillRect(curKey.getX(), curKey.getY(),
+                curKey.getW(), curKey.getH());
+            break;
+          case "Oval":
+            g2.fillOval(curKey.getX(), curKey.getY(),
+                curKey.getW(), curKey.getH());
+            break;
+          default:
+            throw new IllegalArgumentException("no such shape");
+        }
+      } else {
+        int tA = curKey.getTime();
+        int tB = shapes.get(i + 1).getKeyFrames().get(0).getTime();
+        //find the previous keyFrame and the next keyFrame and use the math to calculate all the values
+        if (curTime > tA
+            && curTime < tB) {
+          //tweening color
+          g2.setColor(new Color(((getTweening(curKey.getColor().getRGB("r"),
+              shapes.get(i + 1).getKeyFrames().get(0).getColor().getRGB("r"), tA, tB))),
+              getTweening(curKey.getColor().getRGB("g"),
+                  shapes.get(i + 1).getKeyFrames().get(0).getColor().getRGB("g"), tA, tB),
+              getTweening(curKey.getColor().getRGB("b"),
+                  shapes.get(i + 1).getKeyFrames().get(0).getColor().getRGB("b"), tA, tB)));
+
+          switch (shapes.get(i).getShapeAsString()) {
+            case "Rectangle":
+              g2.fillRect(curKey.getX(), curKey.getY(),
+                  curKey.getW(), curKey.getH());
+              break;
+            case "Oval":
+              g2.fillOval(curKey.getX(), curKey.getY(),
+                  curKey.getW(), curKey.getH());
+              break;
+            default:
+              throw new IllegalArgumentException("no such shape");
           }
         }
       }
-    };
-
-
-
-    //get the
-
+    }
   }
-  */
+
+  /**
+   * calculated the value if there is no existing keyFrame that associates with it
+   *
+   * @param n1 n1
+   * @param n2 n2
+   * @param t1 time 1
+   * @param t2 time 2
+   * @return int that represents the value
+   */
+  private int getTweening(int n1, int n2, int t1, int t2) {
+    double rate1 = (t2 - curTime) / (t2 - t1);
+    double rate2 = (curTime - t1) / (t2 - t1);
+    return (int) (n1 * rate1 - n2 * rate2);
+  }
 }

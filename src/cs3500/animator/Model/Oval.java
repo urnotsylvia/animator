@@ -9,13 +9,14 @@ import java.util.List;
 public class Oval extends AShape {
 
   /**
-   *
-   * @param name
+   * constructs the Oval given name
+   * @param name the name of the oval
    */
   public Oval(String name) {
     super(name);
     this.name = name;
   }
+
   /**
    * the constructor to construct the oval.
    *

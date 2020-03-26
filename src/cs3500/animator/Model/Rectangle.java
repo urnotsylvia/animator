@@ -9,8 +9,9 @@ import java.util.List;
 public class Rectangle extends AShape {
 
   /**
+   * constructs the rectangle with the given name
    *
-   * @param name
+   * @param name the name of the rectangle
    */
   public Rectangle(String name) {
     super(name);
@@ -39,7 +40,6 @@ public class Rectangle extends AShape {
       throw new IllegalArgumentException("Invalid height and width to create a valid rectangle");
     }
   }
-
 
   @Override
   public boolean equals(Object other) {

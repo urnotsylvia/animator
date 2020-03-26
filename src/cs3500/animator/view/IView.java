@@ -7,12 +7,5 @@ public interface IView {
    */
   void makeVisible();
 
-  /**
-   * Return the viewType from the view.
-   * @return the viewType
-   */
-  ViewType getViewType();
-
-
   void showAnimation();
 }

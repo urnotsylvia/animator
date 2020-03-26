@@ -7,6 +7,7 @@ import java.util.List;
  * This is the interface for shape that takes part in the animation.
  */
 public interface IShape {
+
   /**
    * Return the color of this shape.
    *
@@ -16,6 +17,7 @@ public interface IShape {
 
   /**
    * drops the keyFrame based on the given time
+   *
    * @param time the time of the keyFrame to be drop
    */
   void dropKeyFrame(int time);
@@ -28,7 +30,6 @@ public interface IShape {
   String getName();
 
   /**
-   *
    * @return the corresponding shape based on its type as a String
    */
   String getShapeAsString();

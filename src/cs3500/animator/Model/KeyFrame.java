@@ -9,8 +9,8 @@ public class KeyFrame {
   private int time;
   private int x;
   private int y;
-  private double w;
-  private double h;
+  private int w;
+  private int h;
   private RGBColor color;
 
   /**
@@ -80,7 +80,7 @@ public class KeyFrame {
    *
    * @return x position
    */
-  public double getX() {
+  public int getX() {
     return x;
   }
 
@@ -89,7 +89,7 @@ public class KeyFrame {
    *
    * @return y position
    */
-  public double getY() {
+  public int getY() {
     return y;
   }
 
@@ -98,7 +98,7 @@ public class KeyFrame {
    *
    * @return w
    */
-  public double getW() {
+  public int getW() {
     return w;
   }
 
@@ -107,7 +107,7 @@ public class KeyFrame {
    *
    * @return h
    */
-  public double getH() {
+  public int getH() {
     return h;
   }
 
