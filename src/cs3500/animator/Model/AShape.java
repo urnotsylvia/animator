@@ -66,7 +66,9 @@ public abstract class AShape implements IShape {
   public void addKeyFrame(KeyFrame newKey) {
     for (int i = 0; i < keyFrames.size(); i++) {
       if (keyFrames.get(i).getTime() == newKey.getTime()) {
-        throw new IllegalArgumentException("this tick has already been taken");
+        if (!keyFrames.get(i).keyToString().equals(newKey.keyToString())) {
+          throw new IllegalArgumentException("this tick has already been taken");
+        }
       }
     }
     keyFrames.add(newKey);

@@ -15,3 +15,7 @@ I don't need to worry about the overlapping and consistent status, only worry ab
 I also have getState method in AnimationModel to get the list of shapes in the animation with the keyFrame that represent the status at the given time.
 
 View:
+I have a IView interface that has showAnimation(), which is telling the view what to show, and makeVisible() method, which is make the view to show in the JFrame.
+And I have a abstract class AView implements the IView that includes the makeVisible().
+There different views extends the AView: TextualView, DisplayView, SVGView.
+TextualView is tualstweu asggwrbhhhsh

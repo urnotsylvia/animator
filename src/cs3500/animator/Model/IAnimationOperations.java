@@ -1,5 +1,6 @@
 package cs3500.animator.Model;
 
+import cs3500.animator.util.AnimationBuilder;
 import java.util.List;
 
 /**
@@ -60,6 +61,10 @@ public interface IAnimationOperations {
    * @param g
    * @param b
    */
-  public void addKeyframe(String name, int t, int x, int y,
+  void addKeyframe(String name, int t, int x, int y,
       int w, int h, int r, int g, int b);
+
+  void setBounds(int x, int y, int width, int height);
+
+  String getBoundsAsString ();
 }

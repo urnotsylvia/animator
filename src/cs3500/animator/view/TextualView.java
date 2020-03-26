@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import javax.swing.JFrame;
-
 /**
  * The View of the Animation to produce a textual description of the animation that is compliant
  * with the popular SVG (Scalable Vector Graphics) file format.
@@ -26,9 +24,6 @@ public class TextualView extends AView {
     this.model = model;
     this.speed = speed;
     this.output = output;
-
-    setSize(WIDTH, HEIGHT);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
 
   @Override
@@ -39,14 +34,14 @@ public class TextualView extends AView {
   @Override
   public void showAnimation() {
     String curMotionToString = "";
-    String result = "canvas \n"; //need to finish setBound in model first
+    String result = "canvas \n" + this.model.getBoundsAsString(); //need to finish setBound in model first
 
     List<String> unSortedMotions = new ArrayList<>();
     for (int i = 0; i < this.model.getShapes().size(); i++) {
       IShape curShape = this.model.getShapes().get(i);
       result = result + "shape " + curShape.getName() + " " + curShape.getShapeAsString() + "\n";
-      System.out.println(curShape.getKeyFrames().size());
-      for (int k = 0; k < curShape.getKeyFrames().size(); k++) {
+
+      for (int k = 0; k < curShape.getKeyFrames().size() - 1; k++) {
         KeyFrame curKey = curShape.getKeyFrames().get(k);
         KeyFrame nextKey = curShape.getKeyFrames().get(k + 1);
         //motion disk1 1 190 180 20 30 0 49 90  1 190 180 20 30 0 49 90
@@ -58,7 +53,7 @@ public class TextualView extends AView {
     result = result + sortMotions(unSortedMotions);
     try {
       output.append(result);
-      System.out.println(result + "this");
+      System.out.println(result);
     } catch (IOException ioe) {
       throw new IllegalArgumentException("failed to append:("); //what is IOE, should throw IAE?
     }

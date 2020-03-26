@@ -1,3 +1,4 @@
+
 package cs3500.animator.view;
 import cs3500.animator.Model.IAnimationOperations;
 import javax.swing.JFrame;
@@ -19,7 +20,7 @@ public abstract class AView extends JFrame implements IView {
     setSize(WIDTH, HEIGHT);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    panel = new AnimationPanel(model);
+    panel = new AnimationPanel(model, speed);
     this.add(panel);
   }
 

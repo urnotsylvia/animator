@@ -15,10 +15,11 @@ public class DisplayView extends AView {
     setSize(WIDTH, HEIGHT);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    panel = new AnimationPanel(model);
+    panel = new AnimationPanel(model, speed);
     this.add(panel);
   }
 
+  //Timer //swing
   @Override
   public ViewType getViewType() {
     return ViewType.DISPLAY;
@@ -29,3 +30,4 @@ public class DisplayView extends AView {
     this.repaint();
   }
 }
+

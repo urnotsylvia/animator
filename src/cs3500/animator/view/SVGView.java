@@ -4,7 +4,6 @@ import cs3500.animator.Model.IAnimationOperations;
 import cs3500.animator.Model.IShape;
 import cs3500.animator.Model.KeyFrame;
 import java.io.IOException;
-import javax.swing.JFrame;
 
 public class SVGView extends AView {
 
@@ -12,11 +11,8 @@ public class SVGView extends AView {
     super(model, speed, output);
     this.speed = speed;
     this.output = output;
-
-    setSize(WIDTH, HEIGHT);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
-  
+
   @Override
   public ViewType getViewType() {
     return ViewType.SVG;
@@ -40,7 +36,7 @@ public class SVGView extends AView {
           throw new IllegalArgumentException("no such shape type");
       }
       result = result + getShapeAsSVGString(shapeType, curShape);
-      for (int k = 0; k < curShape.getKeyFrames().size(); k++) {
+      for (int k = 0; k < curShape.getKeyFrames().size() - 1; k++) {
         KeyFrame curKey = curShape.getKeyFrames().get(k);
         KeyFrame nextKey = curShape.getKeyFrames().get(k + 1);
         //get the animations for curShape
@@ -50,7 +46,6 @@ public class SVGView extends AView {
     }
     try {
       output.append(result);
-      System.out.println(result + "this");
     } catch (IOException ioe) {
       throw new IllegalArgumentException("failed to append:("); //what is IOE, should throw IAE?
     }
@@ -98,7 +93,7 @@ public class SVGView extends AView {
                 + "dur=\"" + (speed * (nextKey.getTime() - curKey.getTime())) + "ms\" "
                 + "attributeName=" + changeAttribute
                 + "\" from=\"" + arr1[i] + "\" to=" + arr2[arr2Index]
-                + "\" fill=\"freeze\"\n";
+                + "\" fill=\"freeze\" />\n";
           }
         }
         arr2Index++;
@@ -114,6 +109,6 @@ public class SVGView extends AView {
         + "width=\"" + curShape.getWOrH("w") + "\" "
         + "height=\"" + curShape.getWOrH("h") + "\" "
         + "fill=\"rgb(" + curShape.getColor().asString() + ")\" "
-        + "visibility=\"visible\" >\n";
+        + "visibility=\"visible\" />\n";
   }
 }
