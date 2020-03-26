@@ -1,4 +1,5 @@
 package cs3500.animator.view;
+
 import cs3500.animator.Model.IAnimationOperations;
 import javax.swing.JFrame;
 import javax.swing.Timer;
@@ -6,7 +7,7 @@ import javax.swing.Timer;
 public class DisplayView extends AView {
 
 
-  public DisplayView (IAnimationOperations model, int speed, Appendable output) {
+  public DisplayView(IAnimationOperations model, int speed, Appendable output) {
     super(model, speed, output);
     this.speed = speed;
     this.output = output;
@@ -18,14 +19,13 @@ public class DisplayView extends AView {
     this.add(panel);
   }
 
-  //Timer //swing
   @Override
   public ViewType getViewType() {
     return ViewType.DISPLAY;
   }
 
   @Override
-  public void showAnimation(IAnimationOperations m) {
-
+  public void showAnimation() {
+    this.repaint();
   }
 }

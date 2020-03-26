@@ -24,10 +24,10 @@ public class Main {
    */
   public static void main(String[] args) {
 
-    IAnimationOperations model = new AnimationModel(new ArrayList<>());
+    IAnimationOperations model;
 
     Readable fileReader;
-    Appendable output;
+    FileWriter output;
     String fileName = "";
     String viewType = "";
     int speed = 0;
@@ -36,17 +36,17 @@ public class Main {
     //parse the file and look for the file Name (the argument next to "in")
     for (int i = 0; i < args.length - 1; i++) {
       switch (args[i]) {
-        case "in":
+        case "-in":
         fileName = args[i + 1];
         break;
-        case "view":
+        case "-view":
           viewType = args[i + 1];
           break;
-        case "speed":
+        case "-speed":
           speed = Integer.parseInt(args[i + 1]);
           break;
-        case "out":
-          out = args[i + 1]; //why is not accessing?
+        case "-out":
+          out = args[i + 1];
           break;
         default:
           break;
@@ -61,15 +61,15 @@ public class Main {
     //-in "name-of-animation-file (file name)" -view "type-of-view" -out "where-output-show-go"
     // -speed "integer-ticks-per-second"
 
-
     try {
       output = new FileWriter(out);
+
     } catch (IOException ioe) {
       throw new IllegalArgumentException("no such file"); //should this be IAE?
     }
-    AnimationReader reader = new AnimationReader();
-    AnimationBuilder builder = new Builder();
-    reader.parseFile(fileReader, builder);
+
+    AnimationBuilder<IAnimationOperations> builder = new Builder();
+    model = AnimationReader.parseFile(fileReader, builder);
 
     IView view = null;
     switch (viewType) {
@@ -92,5 +92,11 @@ public class Main {
     IController controller = new AnimationController(model, view);
 
     controller.playAnimation(model);
+
+    try {
+      output.close();
+    } catch (IOException ioe) {
+      throw new IllegalArgumentException("invalid close:(");
+    }
   }
 }

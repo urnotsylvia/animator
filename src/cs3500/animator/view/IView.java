@@ -16,5 +16,5 @@ public interface IView {
   ViewType getViewType();
 
 
-  void showAnimation(IAnimationOperations m);
+  void showAnimation();
 }

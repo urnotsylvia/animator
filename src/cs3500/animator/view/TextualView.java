@@ -23,6 +23,7 @@ public class TextualView extends AView {
    */
   public TextualView(IAnimationOperations model, int speed, Appendable output) {
     super(model, speed, output);
+    this.model = model;
     this.speed = speed;
     this.output = output;
 
@@ -36,14 +37,15 @@ public class TextualView extends AView {
   }
 
   @Override
-  public void showAnimation(IAnimationOperations m) {
+  public void showAnimation() {
     String curMotionToString = "";
     String result = "canvas \n"; //need to finish setBound in model first
 
     List<String> unSortedMotions = new ArrayList<>();
-    for (int i = 0; i < m.getShapes().size(); i++) {
-      IShape curShape = m.getShapes().get(i);
-      result = result + curShape.getName() + curShape.getShapeAsString() + "\n";
+    for (int i = 0; i < this.model.getShapes().size(); i++) {
+      IShape curShape = this.model.getShapes().get(i);
+      result = result + "shape " + curShape.getName() + " " + curShape.getShapeAsString() + "\n";
+      System.out.println(curShape.getKeyFrames().size());
       for (int k = 0; k < curShape.getKeyFrames().size(); k++) {
         KeyFrame curKey = curShape.getKeyFrames().get(k);
         KeyFrame nextKey = curShape.getKeyFrames().get(k + 1);
@@ -56,6 +58,7 @@ public class TextualView extends AView {
     result = result + sortMotions(unSortedMotions);
     try {
       output.append(result);
+      System.out.println(result + "this");
     } catch (IOException ioe) {
       throw new IllegalArgumentException("failed to append:("); //what is IOE, should throw IAE?
     }

@@ -25,6 +25,7 @@ public class AnimationModelTest {
   RGBColor c1Same = new RGBColor(100, 0, 20);
   RGBColor c1Diff = new RGBColor(250, 250, 250);
   RGBColor c2 = new RGBColor(10, 100, 100);
+  RGBColor c3 = new RGBColor(10, 20, 100);
   Posn p1 = new Posn(10, 20);
   Posn sameP1 = new Posn(10, 20);
   Posn p2 = new Posn(20, 30);
@@ -36,10 +37,14 @@ public class AnimationModelTest {
   KeyFrame k2 = new KeyFrame(1, 20, 40, 10, 20, c1);
   KeyFrame k3 = new KeyFrame(4, 20, 40, 10, 20, c1);
   KeyFrame k4 = new KeyFrame(9, 20, 40, 10, 20, c2);
+  KeyFrame k5 = new KeyFrame(10, 20, 10,
+      10, 10, c3);
   List<KeyFrame> lok1 = new ArrayList(Arrays.asList(k1));
+  List<KeyFrame> lok1a = new ArrayList(Arrays.asList(k1, k5));
   List<KeyFrame> lok2 = new ArrayList(Arrays.asList(k1, k3));
   List<KeyFrame> lok3 = new ArrayList(Arrays.asList(k1, k3, k4));
   IShape r1 = new Rectangle("r1", 15, 40, c1, p1, lok1);
+  IShape r1a = new Rectangle("r1", 15, 40, c1, p1, lok1a);
   IShape diffR1 = new Rectangle("r7", 20, 60, c2, p2, lok2);
   IShape r1Same = new Rectangle("r1", 15, 40, c1, p1, lok1);
   IShape r2 = new Rectangle("r1", 15, 40, c1, p1, lok2);
@@ -61,6 +66,7 @@ public class AnimationModelTest {
   List<IShape> los1 = new ArrayList<>(Arrays.asList(r1, o1, o2));
   List<IShape> los2 = new ArrayList<>(Arrays.asList(r1, o1, o2, r6));
   List<IShape> los3 = new ArrayList<>(Arrays.asList(r1, o1, o2, r7));
+  List<IShape> los4 = new ArrayList<>(Arrays.asList(r1a, o1, o2));
   List<IShape> emptyList = new ArrayList<>();
 
   IAnimationOperations model1 = new AnimationModel(los1);
@@ -102,6 +108,19 @@ public class AnimationModelTest {
   public void addKeyFrameTest() {
     r1.addKeyFrame(k3);
     assertEquals(r1, r2);
+  }
+
+  @Test
+  public void addKeyFrameToModelTest() {
+    model1.addKeyframe("r1", 10, 20, 10,
+    10, 10, 10, 20, 100);
+    assertEquals(model1.getShapes(), los4);
+  }
+
+  @Test (expected = IllegalArgumentException.class)
+  public void addKeyFrameToModelFalseTest() {
+    model1.addKeyframe("r10", 10, 20, 10,
+        10, 10, 10, 20, 100);
   }
 
   @Test

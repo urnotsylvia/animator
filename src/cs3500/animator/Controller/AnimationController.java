@@ -16,10 +16,6 @@ public AnimationController(IAnimationOperations model, IView view) {
   public void playAnimation(IAnimationOperations m) {
   this.model = m;
   this.view.makeVisible();
+  this.view.showAnimation();
 }
-
-  @Override
-  public void factory() {
-
-  }
 }

@@ -57,7 +57,8 @@ public class AnimationModel implements IAnimationOperations {
     @Override
     public AnimationBuilder<IAnimationOperations> addKeyframe(String name, int t, int x, int y,
         int w, int h, int r, int g, int b) {
-      return null;
+      this.model.addKeyframe(name, t, x, y, w, h, r, g, b);
+      return this;
     }
   }
 
@@ -94,7 +95,7 @@ public class AnimationModel implements IAnimationOperations {
         s.addKeyFrame(new KeyFrame(t, x, y, w, h, new RGBColor(r, g, b)));
       }
     }
-    if (exist == false) {
+    if (!exist) {
       throw new IllegalArgumentException("there is no such shape");
     }
   }

@@ -1,5 +1,6 @@
 package cs3500.animator.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,6 +15,11 @@ public class Rectangle extends AShape {
   public Rectangle(String name) {
     super(name);
     this.name = name;
+    this.color = new RGBColor(0, 0, 0);
+    this.w = 0;
+    this.h = 0;
+    this.pos = new Posn(0, 0);
+    this.keyFrames = new ArrayList<>();
   }
 
   /**
