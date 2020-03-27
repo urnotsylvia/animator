@@ -50,6 +50,7 @@ public abstract class AShape implements IShape {
     this.w = other.w;
     this.h = other.h;
     this.pos = other.pos;
+    this.keyFrames = other.keyFrames;
   }
 
   /**
@@ -69,9 +70,9 @@ public abstract class AShape implements IShape {
 
   @Override
   public void addKeyFrame(KeyFrame newKey) {
-    for (int i = 0; i < keyFrames.size(); i++) {
-      if (keyFrames.get(i).getTime() == newKey.getTime()) {
-        if (!keyFrames.get(i).keyToString().equals(newKey.keyToString())) {
+    for (KeyFrame keyFrame : keyFrames) {
+      if (keyFrame.getTime() == newKey.getTime()) {
+        if (!keyFrame.keyToString().equals(newKey.keyToString())) {
           throw new IllegalArgumentException("this tick has already been taken");
         } else {
           return;
@@ -85,7 +86,7 @@ public abstract class AShape implements IShape {
   public IShape getShape() {
     return new Rectangle("", 0.0001, 0.0001, new RGBColor(0, 0, 0),
         new Posn(0, 0),
-        new ArrayList());
+        new ArrayList<>());
   }
 
   @Override
@@ -105,7 +106,6 @@ public abstract class AShape implements IShape {
         this.h = newLength;
         break;
       default:
-        return;
     }
   }
 

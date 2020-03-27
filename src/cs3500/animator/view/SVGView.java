@@ -9,7 +9,11 @@ import java.io.IOException;
  * shows the animation in the format that is an XML-based format that can be used to describe images
  * and animations.
  */
-public class SVGView extends AView {
+public class SVGView implements IView {
+
+  private Appendable output;
+  private int speed;
+  private IAnimationOperations model;
 
   /**
    * constructs the view given model, speed and the appendable to output.
@@ -19,7 +23,7 @@ public class SVGView extends AView {
    * @param output the output file
    */
   public SVGView(IAnimationOperations model, int speed, Appendable output) {
-    super(model, speed, output);
+    this.model = model;
     this.speed = speed;
     this.output = output;
   }
@@ -27,34 +31,42 @@ public class SVGView extends AView {
   @Override
   public void showAnimation() {
     //<svg width="700" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    String result = "<svg width=\"" + this.model.getBound("w") + "\" height=\""
-        + this.model.getBound("h") + "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n";
-    String shapeType = "";
+    StringBuilder result = new StringBuilder(
+        "<svg width=\"" + this.model.getBound("w") + "\" height=\""
+            + this.model.getBound("h")
+            + "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n\n");
+    String shapeType;
     for (int i = 0; i < this.model.getShapes().size(); i++) {
       IShape curShape = this.model.getShapes().get(i);
 
       switch (curShape.getShapeAsString()) {
-        case "Rectangle":
+        case "rectangle":
           shapeType = "rect";
           break;
-        case "Oval":
+        case "oval":
           shapeType = "ellipse";
           break;
         default:
           throw new IllegalArgumentException("no such shape type");
       }
-      result = result + "\t" + getShapeAsSVGString(shapeType, curShape);
+      result.append("\t").append(getShapeAsSVGString(shapeType, curShape));
       for (int k = 0; k < curShape.getKeyFrames().size() - 1; k++) {
         KeyFrame curKey = curShape.getKeyFrames().get(k);
         KeyFrame nextKey = curShape.getKeyFrames().get(k + 1);
-        result = result + curAnimation(curKey, nextKey);
+        result.append(curAnimation(curKey, nextKey));
       }
+      result.append("\t</").append(shapeType).append(">\n\n");
     }
+    result.append("</svg>");
     try {
-      output.append(result);
+      output.append(result.toString());
     } catch (IOException ioe) {
       throw new IllegalArgumentException("failed to append:("); //what is IOE, should throw IAE?
     }
+  }
+
+  @Override
+  public void makeVisible() {
   }
 
   /**

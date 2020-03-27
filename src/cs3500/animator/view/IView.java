@@ -6,12 +6,12 @@ package cs3500.animator.view;
 public interface IView {
 
   /**
-   * Make the view visible.
-   */
-  void makeVisible();
-
-  /**
-   * show the animation based on the type.
+   * display the animation.
    */
   void showAnimation();
+
+  /**
+   * makes the view visible.
+   */
+  void makeVisible();
 }

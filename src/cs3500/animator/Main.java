@@ -74,21 +74,22 @@ public class Main {
     switch (viewType) {
       case "textual":
       case "Textual":
-        view = AnimationViewCreator.create(ViewType.TEXTUAL, model, speed, output);
+        view = AnimationCreator.create(ViewType.TEXTUAL, model, speed, output);
         break;
       case "Display":
       case "display":
-        view = AnimationViewCreator.create(ViewType.DISPLAY, model, speed, output);
+        view = AnimationCreator.create(ViewType.DISPLAY, model, speed, output);
         break;
       case "SVG":
       case "svg":
-        view = AnimationViewCreator.create(ViewType.SVG, model, speed, output);
+        view = AnimationCreator.create(ViewType.SVG, model, speed, output);
         break;
       default:
         throw new IllegalArgumentException("invalid view:(");
     }
 
     IController controller = new AnimationController(model, view);
+
 
     controller.playAnimation(model);
 

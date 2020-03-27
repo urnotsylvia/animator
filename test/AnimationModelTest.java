@@ -80,7 +80,7 @@ public class AnimationModelTest {
 
   @Test
   public void textViewOutputTest() {
-    IView textual = new TextualView(model1, 10, out);
+    IView textual = new TextualView(model1, out);
     model1.setBounds(1, 2, 3, 4);
     textual.showAnimation();
     assertEquals("canvas 1 2 3 4\n"

@@ -11,7 +11,7 @@ import cs3500.animator.view.ViewType;
  * The factory class for AnimationView, provides a static method to give a instance of a Animation
  * IView.
  */
-public class AnimationViewCreator {
+public class AnimationCreator {
 
   /**
    * creates a corresponding View of the Animation based on the type given.
@@ -22,9 +22,9 @@ public class AnimationViewCreator {
   public static IView create(ViewType t, IAnimationOperations model, int speed, Appendable output) {
     switch (t) {
       case DISPLAY:
-        return new DisplayView(model, speed, output);
+        return new DisplayView(model, speed);
       case TEXTUAL:
-        return new TextualView(model, speed, output);
+        return new TextualView(model, output);
       case SVG:
         return new SVGView(model, speed, output);
       default:

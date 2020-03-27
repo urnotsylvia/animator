@@ -65,13 +65,13 @@ public class Oval extends AShape {
 
   @Override
   public String getShapeAsString() {
-    return "Oval";
+    return "oval";
   }
 
   @Override
   public IShape getShape() {
     return new Oval("", 0.0001, 0.0001, new RGBColor(0, 0, 0),
-        new Posn(0, 0), new ArrayList());
+        new Posn(0, 0), new ArrayList<>());
   }
 }
 

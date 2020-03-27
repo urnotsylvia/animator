@@ -7,24 +7,20 @@ import javax.swing.JScrollPane;
 /**
  * the view that display the animation to visualize it.
  */
-public class DisplayView extends AView {
+public class DisplayView extends JFrame implements IView {
 
   /**
    * constructs the view given model, speed and the appendable to output.
    *
    * @param model  the animation model
    * @param speed  the speed
-   * @param output the output file
    */
-  public DisplayView(IAnimationOperations model, int speed, Appendable output) {
-    super(model, speed, output);
-    this.speed = speed;
-    this.output = output;
+  public DisplayView(IAnimationOperations model, int speed) {
 
-    setSize(WIDTH, HEIGHT);
+    setSize(model.getBound("w"), model.getBound("h"));
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    panel = new AnimationPanel(model, speed);
+    AnimationPanel panel = new AnimationPanel(model, speed);
     panel.getPreferredSize();
     JScrollPane scrollPane = new JScrollPane(panel);
 
@@ -33,6 +29,11 @@ public class DisplayView extends AView {
     this.setSize(model.getBound("w"), model.getBound("h"));
 
     this.setLocation(model.getBound("x"), model.getBound("y"));
+  }
+
+  @Override
+public void makeVisible() {
+    this.setVisible(true);
   }
 
   @Override

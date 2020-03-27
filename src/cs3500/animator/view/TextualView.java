@@ -12,19 +12,19 @@ import java.util.List;
  * The View of the Animation to produce a textual description of the animation that is compliant
  * with the popular SVG (Scalable Vector Graphics) file format.
  */
-public class TextualView extends AView {
+public class TextualView implements IView {
+
+  private Appendable output;
+  private IAnimationOperations model;
 
   /**
    * constructs the view given model, speed and the appendable to output.
    *
    * @param model  the animation model
-   * @param speed  the speed
    * @param output the output file
    */
-  public TextualView(IAnimationOperations model, int speed, Appendable output) {
-    super(model, speed, output);
+  public TextualView(IAnimationOperations model, Appendable output) {
     this.model = model;
-    this.speed = speed;
     this.output = output;
   }
 
@@ -54,6 +54,11 @@ public class TextualView extends AView {
     } catch (IOException ioe) {
       throw new IllegalArgumentException("failed to append:("); //what is IOE, should throw IAE?
     }
+  }
+
+  @Override
+  public void makeVisible() {
+    return;
   }
 
   /**

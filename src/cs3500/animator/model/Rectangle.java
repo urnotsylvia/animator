@@ -72,6 +72,6 @@ public class Rectangle extends AShape {
 
   @Override
   public String getShapeAsString() {
-    return "Rectangle";
+    return "rectangle";
   }
 }
