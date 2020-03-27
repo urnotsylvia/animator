@@ -5,6 +5,9 @@ import cs3500.animator.Model.IShape;
 import cs3500.animator.Model.KeyFrame;
 import java.io.IOException;
 
+/**
+ *
+ */
 public class SVGView extends AView {
 
   /**
@@ -22,7 +25,9 @@ public class SVGView extends AView {
 
   @Override
   public void showAnimation() {
-    String result = "";
+    //<svg width="700" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    String result = "<svg width=\"" + this.model.getBound("w") + "\" height=\""
+        + this.model.getBound("h") + "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n";
     String shapeType = "";
     for (int i = 0; i < this.model.getShapes().size(); i++) {
       IShape curShape = this.model.getShapes().get(i);

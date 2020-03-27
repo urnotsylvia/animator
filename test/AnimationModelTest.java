@@ -98,7 +98,8 @@ public class AnimationModelTest {
     model1.setBounds(100, 10, 20, 9);
     textual.showAnimation();
     assertEquals(
-        "\t<rect id=\"r1\" x=\"10.0\" y=\"20.0\" width=\"15.0\" height=\"40.0\" fill=\"rgb(100 0 20)\" visibility=\"visible\" />\n"
+        "<svg width=\"20\" height=\"9\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n"
+            + "\t<rect id=\"r1\" x=\"10.0\" y=\"20.0\" width=\"15.0\" height=\"40.0\" fill=\"rgb(100 0 20)\" visibility=\"visible\" />\n"
             + "\t<ellipse id=\"o1\" x=\"10.0\" y=\"20.0\" width=\"20.0\" height=\"40.0\" fill=\"rgb(100 0 20)\" visibility=\"visible\" />\n"
             + "\t\t<animation attributeType=\"xml\" begin=\"base.begin+10ms\" dur=\"30ms\" attributeName=x\" from=\"15\" to=20\" fill=\"freeze\" />\n"
             + "\t<ellipse id=\"o2\" x=\"20.0\" y=\"30.0\" width=\"10.0\" height=\"5.0\" fill=\"rgb(10 100 100)\" visibility=\"visible\" />\n"

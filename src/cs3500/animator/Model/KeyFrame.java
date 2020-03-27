@@ -1,8 +1,8 @@
 package cs3500.animator.Model;
 
 /**
- * The Model.KeyFrame take parts in the animation that represent the basic information of the shape at a
- * specific tick.
+ * The Model.KeyFrame take parts in the animation that represent the basic information of the shape
+ * at a specific tick.
  */
 public class KeyFrame {
 

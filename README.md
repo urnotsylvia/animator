@@ -14,8 +14,19 @@ each shape includes a list of keyFrame(which records the status of the shape at 
 I don't need to worry about the overlapping and consistent status, only worry about things like add a new keyframe at an existing time which should be prohibited. 
 I also have getState method in AnimationModel to get the list of shapes in the animation with the keyFrame that represent the status at the given time.
 
+implements the builder in my model so that after the animation reader parse the file, the builder can build the model 
+
+
 View:
 I have a IView interface that has showAnimation(), which is telling the view what to show, and makeVisible() method, which is make the view to show in the JFrame.
 And I have a abstract class AView implements the IView that includes the makeVisible().
 There different views extends the AView: TextualView, DisplayView, SVGView.
-TextualView is tualstweu asggwrbhhhsh
+TextualView shows the animation model in the format same as the imported file
+SVGView shows it in the format that is an XML-based format that can be used to describe images and animations. 
+DisPlayView is visualize by displaying the animation
+added panel to the display view frame, and draw the shapes that associate with the active keyFrames 
+and also display the animation in between
+
+Main class parses the command line to get the imported file, the speed of the tick, where to output and use which view to show the animation
+and then initialize the model and view and ran the project
+
