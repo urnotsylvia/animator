@@ -1,4 +1,4 @@
-package cs3500.animator.Model;
+package cs3500.animator.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +53,7 @@ public abstract class AShape implements IShape {
   }
 
   /**
-   * constructs the shape with given name
+   * constructs the shape with given name.
    *
    * @param name the name of the shape
    */
@@ -118,7 +118,7 @@ public abstract class AShape implements IShape {
         keyFrames.remove(i);
       }
     }
-    if (flag == false) {
+    if (!flag) {
       throw new IllegalArgumentException("no such keyFrame, cannot drop");
     }
   }

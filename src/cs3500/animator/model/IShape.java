@@ -1,4 +1,4 @@
-package cs3500.animator.Model;
+package cs3500.animator.model;
 
 
 import java.util.List;
@@ -16,7 +16,7 @@ public interface IShape {
   RGBColor getColor();
 
   /**
-   * drops the keyFrame based on the given time
+   * drops the keyFrame based on the given time.
    *
    * @param time the time of the keyFrame to be drop
    */
@@ -30,7 +30,9 @@ public interface IShape {
   String getName();
 
   /**
-   * @return the corresponding shape based on its type as a String
+   * get the shape as a string.
+   *
+   * @return the corresponding shape based on its type as a String.
    */
   String getShapeAsString();
 

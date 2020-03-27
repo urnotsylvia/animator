@@ -1,4 +1,4 @@
-package cs3500.animator.Model;
+package cs3500.animator.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public class Rectangle extends AShape {
 
   /**
-   * constructs the rectangle with the given name
+   * constructs the rectangle with the given name.
    *
    * @param name the name of the rectangle
    */

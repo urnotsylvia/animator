@@ -1,4 +1,4 @@
-package cs3500.animator.Model;
+package cs3500.animator.model;
 
 /**
  * The Model.KeyFrame take parts in the animation that represent the basic information of the shape

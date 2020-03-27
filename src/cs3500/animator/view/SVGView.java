@@ -1,17 +1,18 @@
 package cs3500.animator.view;
 
-import cs3500.animator.Model.IAnimationOperations;
-import cs3500.animator.Model.IShape;
-import cs3500.animator.Model.KeyFrame;
+import cs3500.animator.model.IAnimationOperations;
+import cs3500.animator.model.IShape;
+import cs3500.animator.model.KeyFrame;
 import java.io.IOException;
 
 /**
- *
+ * shows the animation in the format that is an XML-based format that can be used to describe images
+ * and animations.
  */
 public class SVGView extends AView {
 
   /**
-   * constructs the view given model, speed and the appendable to output
+   * constructs the view given model, speed and the appendable to output.
    *
    * @param model  the animation model
    * @param speed  the speed
@@ -46,8 +47,6 @@ public class SVGView extends AView {
       for (int k = 0; k < curShape.getKeyFrames().size() - 1; k++) {
         KeyFrame curKey = curShape.getKeyFrames().get(k);
         KeyFrame nextKey = curShape.getKeyFrames().get(k + 1);
-        //get the animations for curShape
-        //<animate attributeType="xml" begin="base.begin+1000ms" dur="4000ms" attributeName="x" from="200" to="300" fill="freeze" />
         result = result + curAnimation(curKey, nextKey);
       }
     }
@@ -58,6 +57,13 @@ public class SVGView extends AView {
     }
   }
 
+  /**
+   * return the current motion to the string.
+   *
+   * @param curKey  the current keyFrame
+   * @param nextKey the keyFrame next to the current KeyFrame
+   * @return the current motion to the string
+   */
   private String curAnimation(KeyFrame curKey, KeyFrame nextKey) {
     String result = "";
     String[] arr1 = curKey.keyToString().split(" ");
@@ -95,8 +101,7 @@ public class SVGView extends AView {
                   + "\" dur=\"" + (Integer.parseInt(arr2[0]) - Integer.parseInt(arr1[0]))
                   + "s\" repeatCount=\"indefinite\" />\n";
             }
-          }
-          else {
+          } else {
             result = result + "\t\t<animation attributeType=\"xml\" "
                 + "begin=\"base.begin+" + (speed * curKey.getTime()) + "ms\" "
                 + "dur=\"" + (speed * (nextKey.getTime() - curKey.getTime())) + "ms\" "
@@ -111,7 +116,13 @@ public class SVGView extends AView {
     return result;
   }
 
-  //<rect id="P" x="200" y="200" width="50" height="100" fill="rgb(128,0,128)" visibility="visible" >
+  /**
+   * return the shapes in the model as a String using SVG format.
+   *
+   * @param shapeType shape type
+   * @param curShape  the current shape
+   * @return the shapes in the model as a String
+   */
   private String getShapeAsSVGString(String shapeType, IShape curShape) {
     return "<" + shapeType + " id=\"" + curShape.getName() + "\" "
         + "x=\"" + curShape.getPos().getX() + "\" " + "y=\"" + curShape.getPos().getY() + "\" "

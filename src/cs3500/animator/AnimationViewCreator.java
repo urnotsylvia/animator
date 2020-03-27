@@ -1,6 +1,6 @@
 package cs3500.animator;
 
-import cs3500.animator.Model.IAnimationOperations;
+import cs3500.animator.model.IAnimationOperations;
 import cs3500.animator.view.DisplayView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;

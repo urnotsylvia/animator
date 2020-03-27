@@ -1,11 +1,11 @@
 package cs3500.animator.view;
 
-import cs3500.animator.Model.IAnimationOperations;
+import cs3500.animator.model.IAnimationOperations;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
 /**
- * the view that shows the aimation in different types
+ * the view that shows the aimation in different types.
  */
 public abstract class AView extends JFrame implements IView {
 
@@ -16,7 +16,7 @@ public abstract class AView extends JFrame implements IView {
   protected IAnimationOperations model;
 
   /**
-   * constructs the view given model, speed and the appendable to output
+   * constructs the view given model, speed and the appendable to output.
    *
    * @param model  the animation model
    * @param speed  the speed

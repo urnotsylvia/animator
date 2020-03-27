@@ -1,8 +1,8 @@
 package cs3500.animator.view;
 
-import cs3500.animator.Model.IAnimationOperations;
-import cs3500.animator.Model.IShape;
-import cs3500.animator.Model.KeyFrame;
+import cs3500.animator.model.IAnimationOperations;
+import cs3500.animator.model.IShape;
+import cs3500.animator.model.KeyFrame;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -15,7 +15,7 @@ import java.util.List;
 public class TextualView extends AView {
 
   /**
-   * constructs the view given model, speed and the appendable to output
+   * constructs the view given model, speed and the appendable to output.
    *
    * @param model  the animation model
    * @param speed  the speed
@@ -57,7 +57,7 @@ public class TextualView extends AView {
   }
 
   /**
-   * sort the list of motions based on the start time, from small to big
+   * sort the list of motions based on the start time, from small to big.
    *
    * @param unSortedMotions list of motion that need to be sorted
    * @return the sorted Motions as a String

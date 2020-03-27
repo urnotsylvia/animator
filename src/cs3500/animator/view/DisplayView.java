@@ -1,18 +1,16 @@
 package cs3500.animator.view;
 
-import cs3500.animator.Model.IAnimationOperations;
+import cs3500.animator.model.IAnimationOperations;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 /**
- * the view that display the animation to visualize it
+ * the view that display the animation to visualize it.
  */
 public class DisplayView extends AView {
 
-  private JScrollPane scrollPane;
-
   /**
-   * constructs the view given model, speed and the appendable to output
+   * constructs the view given model, speed and the appendable to output.
    *
    * @param model  the animation model
    * @param speed  the speed
@@ -28,7 +26,7 @@ public class DisplayView extends AView {
 
     panel = new AnimationPanel(model, speed);
     panel.getPreferredSize();
-    scrollPane = new JScrollPane(panel);
+    JScrollPane scrollPane = new JScrollPane(panel);
 
     this.add(scrollPane);
 

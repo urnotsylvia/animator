@@ -1,4 +1,4 @@
-package cs3500.animator.Model;
+package cs3500.animator.model;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface IAnimationOperations {
   void add(String name, String type);
 
   /**
-   * get the attribute that is part of the bound according to the String given
+   * get the attribute that is part of the bound according to the String given.
    *
    * @param i the String that represents the attribute name, can be one of x, y, w, h
    * @return the value of the attribute
@@ -57,13 +57,14 @@ public interface IAnimationOperations {
   List<IShape> getState(int when);
 
   /**
-   * get a list of shape that has each key associated with a shape
+   * get a list of shape that has each key associated with a shape.
    *
    * @return a list of shapes with the active keyFrame
    */
   List<IShape> getShapesWithAllKeys();
 
   /**
+   * add the keyFrame with given values to the shape of given name.
    * @param name the name of the shape that keyFrame need to be added to
    * @param t    time
    * @param x    x
@@ -78,7 +79,7 @@ public interface IAnimationOperations {
       int w, int h, int r, int g, int b);
 
   /**
-   * specify the bound with given attributes values
+   * specify the bound with given attributes values.
    *
    * @param x      The leftmost x value
    * @param y      The topmost y value
@@ -89,7 +90,7 @@ public interface IAnimationOperations {
   void setBounds(int x, int y, int width, int height);
 
   /**
-   * return the bound information as a string
+   * return the bound information as a string.
    *
    * @return string that represents the 4 attributes of the bounding
    */

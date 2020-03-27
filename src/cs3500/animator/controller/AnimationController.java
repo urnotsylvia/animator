@@ -1,10 +1,10 @@
-package cs3500.animator.Controller;
+package cs3500.animator.controller;
 
-import cs3500.animator.Model.IAnimationOperations;
+import cs3500.animator.model.IAnimationOperations;
 import cs3500.animator.view.IView;
 
 /**
- * the Controller that start the animation
+ * the Controller that start the animation.
  */
 public class AnimationController implements IController {
 
@@ -12,7 +12,7 @@ public class AnimationController implements IController {
   private IView view;
 
   /**
-   * constructs the controller
+   * constructs the controller.
    *
    * @param model the model that stores all the data of the animation
    * @param view  the view that shows the animation

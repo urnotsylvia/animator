@@ -1,4 +1,4 @@
-package cs3500.animator.Model;
+package cs3500.animator.model;
 
 import cs3500.animator.util.AnimationBuilder;
 import java.util.ArrayList;
@@ -29,14 +29,14 @@ public class AnimationModel implements IAnimationOperations {
   }
 
   /**
-   * the builder that build the model according to the operations after the reader parse the file
+   * the builder that build the model according to the operations after the reader parse the file.
    */
   public static final class Builder implements AnimationBuilder<IAnimationOperations> {
 
     IAnimationOperations model;
 
     /**
-     * constructs the builder that takes in the model
+     * constructs the builder that takes in the model.
      */
     public Builder() {
       this.model = new AnimationModel(new ArrayList<IShape>());
@@ -188,9 +188,9 @@ public class AnimationModel implements IAnimationOperations {
   }
 
   /**
-   * make a copy of the shape and add it to the given list
+   * make a copy of the shape and add it to the given list.
    *
-   * @param list
+   * @param list the list of shapes
    * @param s    the shase need to be copied
    * @param k    the keyFrame of the shape
    */

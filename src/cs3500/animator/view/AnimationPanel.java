@@ -1,8 +1,8 @@
 package cs3500.animator.view;
 
-import cs3500.animator.Model.IAnimationOperations;
-import cs3500.animator.Model.IShape;
-import cs3500.animator.Model.KeyFrame;
+import cs3500.animator.model.IAnimationOperations;
+import cs3500.animator.model.IShape;
+import cs3500.animator.model.KeyFrame;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -13,24 +13,23 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
- * draw the animation each tick
+ * draw the animation each tick.
  */
 public class AnimationPanel extends JPanel implements ActionListener {
 
   private IAnimationOperations model;
-  private Timer timer;
   private int curTime = 1;
 
   /**
-   * constructs the panel that given model and speed
+   * constructs the panel that given model and speed.
    *
    * @param model the animation model
    * @param speed the rate that specifies how many tick per ms
    */
   public AnimationPanel(IAnimationOperations model, int speed) {
     this.model = model;
-    this.timer = new Timer(500 / speed, this);
-    this.timer.start();
+    Timer timer = new Timer(500 / speed, this);
+    timer.start();
   }
 
   @Override
@@ -67,7 +66,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
       } else {
         int tA = curKey.getTime();
         int tB = shapes.get(i + 1).getKeyFrames().get(0).getTime();
-        //find the previous keyFrame and the next keyFrame and use the math to calculate all the values
         if (curTime > tA
             && curTime < tB) {
           //tweening color
@@ -96,7 +94,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
   }
 
   /**
-   * calculated the value if there is no existing keyFrame that associates with it
+   * calculated the value if there is no existing keyFrame that associates with it.
    *
    * @param n1 n1
    * @param n2 n2

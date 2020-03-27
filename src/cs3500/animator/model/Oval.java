@@ -1,4 +1,4 @@
-package cs3500.animator.Model;
+package cs3500.animator.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,8 @@ import java.util.List;
 public class Oval extends AShape {
 
   /**
-   * constructs the Oval given name
+   * constructs the Oval given name.
+   *
    * @param name the name of the oval
    */
   public Oval(String name) {

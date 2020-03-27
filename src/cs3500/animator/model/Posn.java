@@ -1,4 +1,4 @@
-package cs3500.animator.Model;
+package cs3500.animator.model;
 
 /**
  * To represent the class Model.Posn that represent the position of the shape.

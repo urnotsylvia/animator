@@ -3,14 +3,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
-import cs3500.animator.Model.AnimationModel;
-import cs3500.animator.Model.IAnimationOperations;
-import cs3500.animator.Model.IShape;
-import cs3500.animator.Model.KeyFrame;
-import cs3500.animator.Model.Oval;
-import cs3500.animator.Model.Posn;
-import cs3500.animator.Model.RGBColor;
-import cs3500.animator.Model.Rectangle;
+import cs3500.animator.model.AnimationModel;
+import cs3500.animator.model.IAnimationOperations;
+import cs3500.animator.model.IShape;
+import cs3500.animator.model.KeyFrame;
+import cs3500.animator.model.Oval;
+import cs3500.animator.model.Posn;
+import cs3500.animator.model.RGBColor;
+import cs3500.animator.model.Rectangle;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextualView;
@@ -98,13 +98,20 @@ public class AnimationModelTest {
     model1.setBounds(100, 10, 20, 9);
     textual.showAnimation();
     assertEquals(
-        "<svg width=\"20\" height=\"9\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n"
-            + "\t<rect id=\"r1\" x=\"10.0\" y=\"20.0\" width=\"15.0\" height=\"40.0\" fill=\"rgb(100 0 20)\" visibility=\"visible\" />\n"
-            + "\t<ellipse id=\"o1\" x=\"10.0\" y=\"20.0\" width=\"20.0\" height=\"40.0\" fill=\"rgb(100 0 20)\" visibility=\"visible\" />\n"
-            + "\t\t<animation attributeType=\"xml\" begin=\"base.begin+10ms\" dur=\"30ms\" attributeName=x\" from=\"15\" to=20\" fill=\"freeze\" />\n"
-            + "\t<ellipse id=\"o2\" x=\"20.0\" y=\"30.0\" width=\"10.0\" height=\"5.0\" fill=\"rgb(10 100 100)\" visibility=\"visible\" />\n"
-            + "\t\t<animation attributeType=\"xml\" begin=\"base.begin+10ms\" dur=\"30ms\" attributeName=x\" from=\"15\" to=20\" fill=\"freeze\" />\n"
-            + "\t\t<animate attributeName=\"fill\" values=\"10;100;100\" dur=\"5s\" repeatCount=\"indefinite\" />\n",
+        "<svg width=\"20\" height=\"9\" version=\"1.1\" "
+            + "xmlns=\"http://www.w3.org/2000/svg\">\n"
+            + "\t<rect id=\"r1\" x=\"10.0\" y=\"20.0\" width=\"15.0\" height=\"40.0\" "
+            + "fill=\"rgb(100 0 20)\" visibility=\"visible\" />\n"
+            + "\t<ellipse id=\"o1\" x=\"10.0\" y=\"20.0\" width=\"20.0\" height=\"40.0\" "
+            + "fill=\"rgb(100 0 20)\" visibility=\"visible\" />\n"
+            + "\t\t<animation attributeType=\"xml\" begin=\"base.begin+10ms\" dur=\"30ms\" "
+            + "attributeName=x\" from=\"15\" to=20\" fill=\"freeze\" />\n"
+            + "\t<ellipse id=\"o2\" x=\"20.0\" y=\"30.0\" width=\"10.0\" height=\"5.0\" "
+            + "fill=\"rgb(10 100 100)\" visibility=\"visible\" />\n"
+            + "\t\t<animation attributeType=\"xml\" begin=\"base.begin+10ms\" dur=\"30ms\" "
+            + "attributeName=x\" from=\"15\" to=20\" fill=\"freeze\" />\n"
+            + "\t\t<animate attributeName=\"fill\" values=\"10;100;100\" dur=\"5s\" "
+            + "repeatCount=\"indefinite\" />\n",
         out.toString());
   }
 
@@ -156,7 +163,7 @@ public class AnimationModelTest {
     assertEquals("100 10 1 20", model1.getBoundsAsString());
   }
 
-  @Test (expected = IllegalArgumentException.class)
+  @Test(expected = IllegalArgumentException.class)
   public void setBoundNegativeTest() {
     model1.setBounds(-100, 10, 1, 20);
   }

@@ -1,4 +1,4 @@
-package cs3500.animator.Model;
+package cs3500.animator.model;
 
 /**
  * A class Model.RGBColor to represent the color of the shape in animation.
@@ -26,7 +26,7 @@ public class RGBColor {
   }
 
   /**
-   * get the attribute of the RGB color based on the string given
+   * get the attribute of the RGB color based on the string given.
    *
    * @param color red, blue or green attribute
    * @return the number that represents the color attribute

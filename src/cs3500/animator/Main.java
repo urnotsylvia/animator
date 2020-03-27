@@ -1,9 +1,9 @@
 package cs3500.animator;
 
-import cs3500.animator.Controller.AnimationController;
-import cs3500.animator.Controller.IController;
-import cs3500.animator.Model.AnimationModel.Builder;
-import cs3500.animator.Model.IAnimationOperations;
+import cs3500.animator.controller.AnimationController;
+import cs3500.animator.controller.IController;
+import cs3500.animator.model.AnimationModel.Builder;
+import cs3500.animator.model.IAnimationOperations;
 import cs3500.animator.util.AnimationBuilder;
 import cs3500.animator.util.AnimationReader;
 import cs3500.animator.view.ViewType;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import cs3500.animator.view.IView;
 
 /**
- * Run a Animation
+ * Run a Animation interactively.
  */
 public class Main {
 
