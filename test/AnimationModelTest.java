@@ -84,9 +84,9 @@ public class AnimationModelTest {
     model1.setBounds(1, 2, 3, 4);
     textual.showAnimation();
     assertEquals("canvas 1 2 3 4\n"
-        + "shape r1 Rectangle\n"
-        + "shape o1 Oval\n"
-        + "shape o2 Oval\n"
+        + "shape r1 rectangle\n"
+        + "shape o1 oval\n"
+        + "shape o2 oval\n"
         + "motion o1 1 15 40 10 20 100 0 20  4 20 40 10 20 100 0 20\n"
         + "motion o2 1 15 40 10 20 100 0 20  4 20 40 10 20 100 0 20\n"
         + "motion o2 4 20 40 10 20 100 0 20  9 20 40 10 20 10 100 100\n", out.toString());
@@ -98,20 +98,28 @@ public class AnimationModelTest {
     model1.setBounds(100, 10, 20, 9);
     textual.showAnimation();
     assertEquals(
-        "<svg width=\"20\" height=\"9\" version=\"1.1\" "
+        "<svg viewBox=\"100 10 20 9\" version=\"1.1\" "
             + "xmlns=\"http://www.w3.org/2000/svg\">\n"
-            + "\t<rect id=\"r1\" x=\"10.0\" y=\"20.0\" width=\"15.0\" height=\"40.0\" "
-            + "fill=\"rgb(100 0 20)\" visibility=\"visible\" />\n"
-            + "\t<ellipse id=\"o1\" x=\"10.0\" y=\"20.0\" width=\"20.0\" height=\"40.0\" "
-            + "fill=\"rgb(100 0 20)\" visibility=\"visible\" />\n"
-            + "\t\t<animation attributeType=\"xml\" begin=\"base.begin+10ms\" dur=\"30ms\" "
-            + "attributeName=x\" from=\"15\" to=20\" fill=\"freeze\" />\n"
-            + "\t<ellipse id=\"o2\" x=\"20.0\" y=\"30.0\" width=\"10.0\" height=\"5.0\" "
-            + "fill=\"rgb(10 100 100)\" visibility=\"visible\" />\n"
-            + "\t\t<animation attributeType=\"xml\" begin=\"base.begin+10ms\" dur=\"30ms\" "
-            + "attributeName=x\" from=\"15\" to=20\" fill=\"freeze\" />\n"
-            + "\t\t<animate attributeName=\"fill\" values=\"10;100;100\" dur=\"5s\" "
-            + "repeatCount=\"indefinite\" />\n",
+            + "\n"
+            + "\t<rect id=\"r1\" x=\"15\" y=\"40\" width=\"10\" height=\"20\" "
+            + "fill=\"rgb(100,0,20)\" visibility=\"visible\" >\n"
+            + "\t</rect>\n"
+            + "\n"
+            + "\t<ellipse id=\"o1\" cx=\"15\" cy=\"40\" rx=\"5\" ry=\"10\" "
+            + "fill=\"rgb(100,0,20)\" visibility=\"visible\" >\n"
+            + "\t\t<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" "
+            + "attributeName=\"cx\" from=\"15\" to=\"20\" fill=\"freeze\" />\n"
+            + "\t</ellipse>\n"
+            + "\n"
+            + "\t<ellipse id=\"o2\" cx=\"15\" cy=\"40\" rx=\"5\" ry=\"10\" "
+            + "fill=\"rgb(100,0,20)\" visibility=\"visible\" >\n"
+            + "\t\t<animate attributeType=\"xml\" begin=\"0ms\" dur=\"0ms\" "
+            + "attributeName=\"cx\" from=\"15\" to=\"20\" fill=\"freeze\" />\n"
+            + "\t\t<animate attributeType=\"xml\" begin=\"0ms\" dur=\"50ms\" attributeName=\"fill\""
+            + " from=\"rgb(100,0,20)\" to=\"rgb(10,100,100)\" fill=\"freeze\" />\n"
+            + "\t</ellipse>\n"
+            + "\n"
+            + "</svg>",
         out.toString());
   }
 
@@ -280,7 +288,8 @@ public class AnimationModelTest {
 
   @Test
   public void keyToStringTest() {
-    assertEquals("1 15 40 10 20 100 0 20", k1.keyToString());
+    assertEquals("1 15 40 10 20 100 0 20",
+        k1.keyToString());
   }
 
   @Test

@@ -52,12 +52,13 @@ public class AnimationPanel extends JPanel implements ActionListener {
             curKey.getColor().getRGB("g"),
             curKey.getColor().getRGB("b")));
         switch (shapes.get(i).getShapeAsString()) {
-          case "Rectangle":
+          case "rectangle":
             g2.fillRect(curKey.getX(), curKey.getY(),
                 curKey.getW(), curKey.getH());
             break;
-          case "Oval":
-            g2.fillOval(curKey.getX(), curKey.getY(),
+          case "oval":
+          case "ellipse":
+            g2.fillOval((int) (curKey.getX() * 0.5), (int) (curKey.getY() * 0.5),
                 curKey.getW(), curKey.getH());
             break;
           default:
@@ -65,25 +66,33 @@ public class AnimationPanel extends JPanel implements ActionListener {
         }
       } else {
         int tA = curKey.getTime();
-        int tB = shapes.get(i + 1).getKeyFrames().get(0).getTime();
+        KeyFrame nextKey = shapes.get(i + 1).getKeyFrames().get(0);
+        int tB = nextKey.getTime();
         if (curTime > tA
             && curTime < tB) {
           //tweening color
           g2.setColor(new Color(((getTweening(curKey.getColor().getRGB("r"),
-              shapes.get(i + 1).getKeyFrames().get(0).getColor().getRGB("r"), tA, tB))),
+              nextKey.getColor().getRGB("r"), tA, tB, curTime))),
               getTweening(curKey.getColor().getRGB("g"),
-                  shapes.get(i + 1).getKeyFrames().get(0).getColor().getRGB("g"), tA, tB),
+                  nextKey.getColor().getRGB("g"), tA, tB, curTime),
               getTweening(curKey.getColor().getRGB("b"),
-                  shapes.get(i + 1).getKeyFrames().get(0).getColor().getRGB("b"), tA, tB)));
+                  nextKey.getColor().getRGB("b"), tA, tB, curTime)));
 
           switch (shapes.get(i).getShapeAsString()) {
-            case "Rectangle":
-              g2.fillRect(curKey.getX(), curKey.getY(),
-                  curKey.getW(), curKey.getH());
+            case "rectangle":
+              g2.fillRect(getTweening(curKey.getX(), nextKey.getX(), tA, tB, curTime),
+                  getTweening(curKey.getY(), nextKey.getY(), tA, tB, curTime),
+                  getTweening(curKey.getW(), nextKey.getW(), tA, tB, curTime),
+                  getTweening(curKey.getH(), nextKey.getH(), tA, tB, curTime));
               break;
-            case "Oval":
-              g2.fillOval(curKey.getX(), curKey.getY(),
-                  curKey.getW(), curKey.getH());
+            case "oval":
+            case "ellipse":
+              g2.fillOval(getTweening((int) (curKey.getX() * 0.5),
+                  (int) (nextKey.getX() * 0.5), tA, tB, curTime),
+                  getTweening((int) (curKey.getY() * 0.5),
+                      (int) (nextKey.getY() * 0.5), tA, tB, curTime),
+                  getTweening(curKey.getW(), nextKey.getW(), tA, tB, curTime),
+                  getTweening(curKey.getH(), nextKey.getH(), tA, tB, curTime));
               break;
             default:
               throw new IllegalArgumentException("no such shape");
@@ -102,9 +111,9 @@ public class AnimationPanel extends JPanel implements ActionListener {
    * @param t2 time 2
    * @return int that represents the value
    */
-  private int getTweening(int n1, int n2, int t1, int t2) {
-    double rate1 = (t2 - curTime) / (t2 - t1);
-    double rate2 = (curTime - t1) / (t2 - t1);
-    return (int) (n1 * rate1 - n2 * rate2);
+  private int getTweening(int n1, int n2, int t1, int t2, int curTime) {
+    double rate1 = (t2 - curTime + 0.0) / (t2 - t1);
+    double rate2 = (curTime + 0.0 - t1) / (t2 - t1);
+    return (int) (n1 * rate1 + n2 * rate2);
   }
 }

@@ -12,8 +12,8 @@ public class DisplayView extends JFrame implements IView {
   /**
    * constructs the view given model, speed and the appendable to output.
    *
-   * @param model  the animation model
-   * @param speed  the speed
+   * @param model the animation model
+   * @param speed the speed
    */
   public DisplayView(IAnimationOperations model, int speed) {
 
@@ -29,10 +29,12 @@ public class DisplayView extends JFrame implements IView {
     this.setSize(model.getBound("w"), model.getBound("h"));
 
     this.setLocation(model.getBound("x"), model.getBound("y"));
+
+    this.makeVisible();
   }
 
   @Override
-public void makeVisible() {
+  public void makeVisible() {
     this.setVisible(true);
   }
 

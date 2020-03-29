@@ -28,6 +28,7 @@ public class AnimationModel implements IAnimationOperations {
     this.height = 0;
   }
 
+
   /**
    * the builder that build the model according to the operations after the reader parse the file.
    */
@@ -103,6 +104,7 @@ public class AnimationModel implements IAnimationOperations {
         break;
       case "Oval":
       case "oval":
+      case "ellipse":
         this.shapes.add(new Oval(name));
         break;
       default:

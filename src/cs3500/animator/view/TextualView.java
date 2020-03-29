@@ -49,10 +49,14 @@ public class TextualView implements IView {
       }
     }
     result = result + sortMotions(unSortedMotions);
-    try {
-      output.append(result);
-    } catch (IOException ioe) {
-      throw new IllegalArgumentException("failed to append:("); //what is IOE, should throw IAE?
+    if (output == null) {
+      System.out.println(result);
+    } else {
+      try {
+        output.append(result);
+      } catch (IOException ioe) {
+        throw new IllegalArgumentException("failed to append:("); //what is IOE, should throw IAE?
+      }
     }
   }
 

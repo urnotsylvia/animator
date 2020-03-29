@@ -7,5 +7,10 @@ import cs3500.animator.model.IAnimationOperations;
  */
 public interface IController {
 
+  /**
+   * start the animation.
+   *
+   * @param m model
+   */
   void playAnimation(IAnimationOperations m);
 }

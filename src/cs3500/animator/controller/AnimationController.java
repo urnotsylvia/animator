@@ -25,7 +25,6 @@ public class AnimationController implements IController {
   @Override
   public void playAnimation(IAnimationOperations m) {
     this.model = m;
-    this.view.makeVisible();
     this.view.showAnimation();
   }
 }

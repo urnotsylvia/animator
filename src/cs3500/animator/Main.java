@@ -26,7 +26,7 @@ public class Main {
     IAnimationOperations model;
 
     Readable fileReader;
-    FileWriter output;
+    FileWriter output = null;
     String fileName = "";
     String viewType = "";
     int speed = 0;
@@ -52,6 +52,10 @@ public class Main {
       }
     }
 
+    if (speed <= 0) {
+      speed = 1;
+    }
+
     try {
       fileReader = new FileReader(fileName);
     } catch (FileNotFoundException fne) {
@@ -60,13 +64,16 @@ public class Main {
     //-in "name-of-animation-file (file name)" -view "type-of-view" -out "where-output-show-go"
     // -speed "integer-ticks-per-second"
 
-    try {
-      output = new FileWriter(out);
+    if (out.equals("")) {
+      output = null;
+    } else {
+      try {
+        output = new FileWriter(out);
 
-    } catch (IOException ioe) {
-      throw new IllegalArgumentException("no such file"); //should this be IAE?
+      } catch (IOException ioe) {
+        throw new IllegalArgumentException("no such file"); //should this be IAE?
+      }
     }
-
     AnimationBuilder<IAnimationOperations> builder = new Builder();
     model = AnimationReader.parseFile(fileReader, builder);
 
@@ -90,13 +97,14 @@ public class Main {
 
     IController controller = new AnimationController(model, view);
 
-
     controller.playAnimation(model);
 
-    try {
-      output.close();
-    } catch (IOException ioe) {
-      throw new IllegalArgumentException("invalid close:(");
+    if (output != null) {
+      try {
+        output.close();
+      } catch (IOException ioe) {
+        throw new IllegalArgumentException("invalid close:(");
+      }
     }
   }
 }

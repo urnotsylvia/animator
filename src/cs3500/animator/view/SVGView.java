@@ -32,7 +32,8 @@ public class SVGView implements IView {
   public void showAnimation() {
     //<svg width="700" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
     StringBuilder result = new StringBuilder(
-        "<svg width=\"" + this.model.getBound("w") + "\" height=\""
+        "<svg viewBox=\"" + this.model.getBound("x") + " " + this.model.getBound("y")
+            + " " + this.model.getBound("w") + " "
             + this.model.getBound("h")
             + "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n\n");
     String shapeType;
@@ -53,20 +54,25 @@ public class SVGView implements IView {
       for (int k = 0; k < curShape.getKeyFrames().size() - 1; k++) {
         KeyFrame curKey = curShape.getKeyFrames().get(k);
         KeyFrame nextKey = curShape.getKeyFrames().get(k + 1);
-        result.append(curAnimation(curKey, nextKey));
+        result.append(curAnimation(curKey, nextKey, shapeType));
       }
       result.append("\t</").append(shapeType).append(">\n\n");
     }
     result.append("</svg>");
-    try {
-      output.append(result.toString());
-    } catch (IOException ioe) {
-      throw new IllegalArgumentException("failed to append:("); //what is IOE, should throw IAE?
+    if (output == null) {
+      System.out.println(result);
+    } else {
+      try {
+        output.append(result.toString());
+      } catch (IOException ioe) {
+        throw new IllegalArgumentException("failed to append:("); //what is IOE, should throw IAE?
+      }
     }
   }
 
   @Override
   public void makeVisible() {
+    throw new UnsupportedOperationException("don't need this method");
   }
 
   /**
@@ -76,49 +82,96 @@ public class SVGView implements IView {
    * @param nextKey the keyFrame next to the current KeyFrame
    * @return the current motion to the string
    */
-  private String curAnimation(KeyFrame curKey, KeyFrame nextKey) {
+  private String curAnimation(KeyFrame curKey, KeyFrame nextKey, String shapeType) {
     String result = "";
     String[] arr1 = curKey.keyToString().split(" ");
     String[] arr2 = nextKey.keyToString().split(" ");
     String changeAttribute = "";
     int arr2Index = 1;
+    boolean changedColorAt5 = false;
+    boolean changedColorAt6 = false;
     while (arr2Index < arr2.length) {
       for (int i = 1; i < arr1.length; i++) {
         if (!arr1[i].equals(arr2[arr2Index])) {
           switch (i) {
             case 1:
-              changeAttribute = "x";
+              switch (shapeType) {
+                case "rect":
+                  changeAttribute = "x";
+                  break;
+                case "ellipse":
+                  changeAttribute = "cx";
+                  break;
+                default:
+              }
               break;
             case 2:
-              changeAttribute = "y";
+              switch (shapeType) {
+                case "rect":
+                  changeAttribute = "y";
+                  break;
+                case "ellipse":
+                  changeAttribute = "cy";
+                  break;
+                default:
+              }
               break;
             case 3:
-              changeAttribute = "width";
+              switch (shapeType) {
+                case "rect":
+                  changeAttribute = "width";
+                  break;
+                case "ellipse":
+                  changeAttribute = "rx";
+                  break;
+                default:
+              }
               break;
             case 4:
-              changeAttribute = "height";
+              switch (shapeType) {
+                case "rect":
+                  changeAttribute = "height";
+                  break;
+                case "ellipse":
+                  changeAttribute = "ry";
+                  break;
+                default:
+              }
               break;
             case 5:
             case 6:
             case 7:
               changeAttribute = "fill";
+              if (changedColorAt5 || changedColorAt6) {
+                changedColorAt5 = false;
+                changedColorAt6 = false;
+                break;
+              }
+              if (i == 5) {
+                changedColorAt5 = true;
+              }
+              if (i == 6) {
+                changedColorAt6 = true;
+              }
               break;
             default:
               throw new IllegalArgumentException("not a valid attribute");
           }
           if (changeAttribute.equals("fill")) {
-            if (i == 5) {
-              result = result + "\t\t<animate attributeName=\"fill\" values=\""
-                  + arr2[5] + ";" + arr2[6] + ";" + arr2[7]
-                  + "\" dur=\"" + (Integer.parseInt(arr2[0]) - Integer.parseInt(arr1[0]))
-                  + "s\" repeatCount=\"indefinite\" />\n";
+            if (changedColorAt5) {
+              result = result + "\t\t<animate attributeType=\"xml\" begin=\""
+                  + curKey.getTime() / speed * 100
+                  + "ms\" dur=\"" + (nextKey.getTime() - curKey.getTime()) * 100 / speed
+                  + "ms\" attributeName=\"" + changeAttribute
+                  + "\" from=\"" + curKey.getColor().asRGBString() + "\" to=\""
+                  + nextKey.getColor().asRGBString() + "\" fill=\"freeze\" />\n";
             }
           } else {
-            result = result + "\t\t<animation attributeType=\"xml\" "
-                + "begin=\"base.begin+" + (speed * curKey.getTime()) + "ms\" "
-                + "dur=\"" + (speed * (nextKey.getTime() - curKey.getTime())) + "ms\" "
-                + "attributeName=" + changeAttribute
-                + "\" from=\"" + arr1[i] + "\" to=" + arr2[arr2Index]
+            result = result + "\t\t<animate attributeType=\"xml\" "
+                + "begin=\"" + (curKey.getTime() / speed * 100) + "ms\" "
+                + "dur=\"" + ((nextKey.getTime() - curKey.getTime()) / speed * 100) + "ms\" "
+                + "attributeName=\"" + changeAttribute
+                + "\" from=\"" + arr1[i] + "\" to=\"" + arr2[arr2Index]
                 + "\" fill=\"freeze\" />\n";
           }
         }
@@ -136,11 +189,26 @@ public class SVGView implements IView {
    * @return the shapes in the model as a String
    */
   private String getShapeAsSVGString(String shapeType, IShape curShape) {
+    String dimension;
+    switch (shapeType) {
+      case "rect":
+        dimension = "x=\"" + curShape.getKeyFrames().get(0).getX() + "\" " + "y=\"" + curShape
+            .getKeyFrames().get(0).getY() + "\" "
+            + "width=\"" + curShape.getKeyFrames().get(0).getW() + "\" "
+            + "height=\"" + curShape.getKeyFrames().get(0).getH() + "\" ";
+        break;
+      case "ellipse":
+        dimension = "cx=\"" + curShape.getKeyFrames().get(0).getX() + "\" " + "cy=\""
+            + curShape.getKeyFrames().get(0).getY() + "\" "
+            + "rx=\"" + (curShape.getKeyFrames().get(0).getW() / 2) + "\" "
+            + "ry=\"" + (curShape.getKeyFrames().get(0).getH() / 2) + "\" ";
+        break;
+      default:
+        throw new IllegalStateException("invalid shape type");
+    }
     return "<" + shapeType + " id=\"" + curShape.getName() + "\" "
-        + "x=\"" + curShape.getPos().getX() + "\" " + "y=\"" + curShape.getPos().getY() + "\" "
-        + "width=\"" + curShape.getWOrH("w") + "\" "
-        + "height=\"" + curShape.getWOrH("h") + "\" "
-        + "fill=\"rgb(" + curShape.getColor().asString() + ")\" "
-        + "visibility=\"visible\" />\n";
+        + dimension
+        + "fill=\"" + curShape.getKeyFrames().get(0).getColor().asRGBString() + "\" "
+        + "visibility=\"visible\" >\n";
   }
 }
