@@ -44,13 +44,13 @@ public class KeyFrame {
       return (this.time == ((KeyFrame) other).time
           && this.w <= ((KeyFrame) other).w + 0.0001
           && this.w >= ((KeyFrame) other).w - 0.0001
-          && this.w <= ((KeyFrame) other).w + 0.0001
-          && this.w >= ((KeyFrame) other).w - 0.0001
+          && this.h <= ((KeyFrame) other).h + 0.0001
+          && this.h >= ((KeyFrame) other).h - 0.0001
           && this.color.equals(((KeyFrame) other).color)
           && this.y <= ((KeyFrame) other).y + 0.0001
           && this.y >= ((KeyFrame) other).y - 0.0001
-          && this.h <= ((KeyFrame) other).h + 0.0001
-          && this.h >= ((KeyFrame) other).h - 0.0001);
+          && this.x <= ((KeyFrame) other).x + 0.0001
+          && this.x >= ((KeyFrame) other).x - 0.0001);
     }
   }
 

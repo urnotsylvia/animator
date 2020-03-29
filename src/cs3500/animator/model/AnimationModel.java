@@ -79,8 +79,8 @@ public class AnimationModel implements IAnimationOperations {
 
   @Override
   public void setBounds(int x, int y, int width, int height) {
-    if (x <= 0 || y <= 0 || width <= 0 || height <= 0) {
-      throw new IllegalArgumentException("bound can only be positive number");
+    if (width < 0 || height < 0) {
+      throw new IllegalArgumentException("bound can not be negative number");
     }
     this.x = x;
     this.y = y;
