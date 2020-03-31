@@ -7,7 +7,7 @@ import javax.swing.JScrollPane;
 /**
  * the view that display the animation to visualize it.
  */
-public class DisplayView extends JFrame implements IView {
+public class VisualView extends JFrame implements IView {
 
   /**
    * constructs the view given model, speed and the appendable to output.
@@ -15,7 +15,7 @@ public class DisplayView extends JFrame implements IView {
    * @param model the animation model
    * @param speed the speed
    */
-  public DisplayView(IAnimationOperations model, int speed) {
+  public VisualView(IAnimationOperations model, int speed) {
 
     setSize(model.getBound("w"), model.getBound("h"));
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

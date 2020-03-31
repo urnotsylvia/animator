@@ -86,8 +86,8 @@ public class SVGView implements IView {
     String result = "";
     String[] arr1 = curKey.keyToString().split(" ");
     String[] arr2 = nextKey.keyToString().split(" ");
-    double startTime = curKey.getTime() * 1000 / speed;
-    double duration = (nextKey.getTime() - curKey.getTime()) * 1000 / speed;
+    double startTime = (curKey.getTime() + 0.0) * 1000 / speed;
+    double duration = ((nextKey.getTime() - curKey.getTime()) + 0.0) * 1000 / speed;
     String changeAttribute = "";
     int arr2Index = 1;
     boolean changedColorAt5 = false;
@@ -161,7 +161,6 @@ public class SVGView implements IView {
           }
           if (changeAttribute.equals("fill")) {
             if (changedColorAt5) {
-              System.out.println(startTime);
               result = result + "\t\t<animate attributeType=\"xml\" begin=\""
                   + startTime
                   + "ms\" dur=\"" + duration

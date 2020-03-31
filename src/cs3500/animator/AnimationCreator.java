@@ -1,7 +1,7 @@
 package cs3500.animator;
 
 import cs3500.animator.model.IAnimationOperations;
-import cs3500.animator.view.DisplayView;
+import cs3500.animator.view.VisualView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextualView;
@@ -21,8 +21,8 @@ public class AnimationCreator {
    */
   public static IView create(ViewType t, IAnimationOperations model, int speed, Appendable output) {
     switch (t) {
-      case DISPLAY:
-        return new DisplayView(model, speed);
+      case VISUAL:
+        return new VisualView(model, speed);
       case TEXTUAL:
         return new TextualView(model, output);
       case SVG:

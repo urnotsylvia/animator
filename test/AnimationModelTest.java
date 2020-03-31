@@ -166,7 +166,7 @@ public class AnimationModelTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void setBoundNegativeTest() {
-    model1.setBounds(-100, 10, 1, 20);
+    model1.setBounds(100, 10, -1, 20);
   }
 
   @Test

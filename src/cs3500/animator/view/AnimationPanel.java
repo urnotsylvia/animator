@@ -114,6 +114,6 @@ public class AnimationPanel extends JPanel implements ActionListener {
   private int getTweening(int n1, int n2, int t1, int t2, int curTime) {
     double rate1 = (t2 - curTime + 0.0) / (t2 - t1);
     double rate2 = (curTime + 0.0 - t1) / (t2 - t1);
-    return (int) (n1 * rate1 + n2 * rate2);
+    return (int) Math.round(n1 * rate1 + n2 * rate2);
   }
 }

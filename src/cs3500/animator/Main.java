@@ -85,7 +85,7 @@ public class Main {
         break;
       case "Display":
       case "display":
-        view = AnimationCreator.create(ViewType.DISPLAY, model, speed, output);
+        view = AnimationCreator.create(ViewType.VISUAL, model, speed, output);
         break;
       case "SVG":
       case "svg":
