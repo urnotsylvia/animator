@@ -1,10 +1,8 @@
 package cs3500.animator.view;
 
-import cs3500.animator.model.IAnimationOperations;
 import cs3500.animator.model.IShape;
 import java.util.List;
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 
 /**
  * A class that represent the editor view that allow the animation to play more than once, and add,

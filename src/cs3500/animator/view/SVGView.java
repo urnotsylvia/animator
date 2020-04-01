@@ -48,6 +48,15 @@ public class SVGView implements IView {
           throw new IllegalArgumentException("no such shape type");
       }
       result.append("\t").append(getShapeAsSVGString(shapeType, curShape));
+ /*     if((curShape.getKeyFrames().size() == 2) && curShape.getKeyFrames().get(0).allValuesAreEqualButTime(curShape.getKeyFrames().get(1))) {
+        result.append("\t\t<animate attributeType=\"xml\" begin=\"0ms\" dur=\""
+            + ((curShape.getKeyFrames().get(curShape.getKeyFrames().size() - 1).getTime() + 0.0) * 1000 / speed)
+            + "ms\" attributeName=\"visibility\" from=\"visible\" to=\"hidden\" repeatCount=\"1\" />\n");
+          result.append("\t\t<animate attributeType=\"xml\" begin=\""
+              + (curShape.getKeyFrames().get(0).getTime() * 1000 / speed) + "ms\" dur=\""
+              + (((curShape.getKeyFrames().get(curShape.getKeyFrames().size() - 1).getTime() - curShape.getKeyFrames().get(0).getTime()) + 0.0) * 1000 / speed)
+              + "ms\" attributeName=\"visibility\" from=\"hidden\" to=\"visible\" repeatCount=\"1\" />\n");
+      }*/
       for (int k = 0; k < curShape.getKeyFrames().size() - 1; k++) {
         KeyFrame curKey = curShape.getKeyFrames().get(k);
         KeyFrame nextKey = curShape.getKeyFrames().get(k + 1);
@@ -89,6 +98,7 @@ public class SVGView implements IView {
     int arr2Index = 1;
     boolean changedColorAt5 = false;
     boolean changedColorAt6 = false;
+    boolean changedColorAt7 = false;
     while (arr2Index < arr2.length) {
       for (int i = 1; i < arr1.length; i++) {
         if (!arr1[i].equals(arr2[arr2Index])) {
@@ -152,12 +162,15 @@ public class SVGView implements IView {
               if (i == 6) {
                 changedColorAt6 = true;
               }
+              if(i == 7) {
+                changedColorAt7 = true;
+              }
               break;
             default:
               throw new IllegalArgumentException("not a valid attribute");
           }
           if (changeAttribute.equals("fill")) {
-            if (changedColorAt5) {
+            if (changedColorAt5 || changedColorAt6 || changedColorAt7) {
               result = result + "\t\t<animate attributeType=\"xml\" begin=\""
                   + startTime
                   + "ms\" dur=\"" + duration

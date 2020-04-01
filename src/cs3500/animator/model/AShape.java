@@ -71,11 +71,10 @@ public abstract class AShape implements IShape {
   @Override
   public List<IShape> getShapesWithAllKeys() {
     List<IShape> allKeys = new ArrayList<>();
-    for (KeyFrame k : this.keyFrames) {
       for (int i = 0; i < this.keyFrames.size(); i++) {
-        copyAllTheValue(allKeys, this, k);
+        copyAllTheValue(allKeys, this, this.keyFrames.get(i));
       }
-    }
+    System.out.println(allKeys.size());
     return allKeys;
   }
 

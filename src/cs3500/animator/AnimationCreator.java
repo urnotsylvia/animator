@@ -23,7 +23,7 @@ public class AnimationCreator {
   public static IView create(ViewType t, IAnimationOperations model, int speed, Appendable output) {
     switch (t) {
       case VISUAL:
-        return new VisualView(model, speed);
+        return new VisualView(speed);
       case TEXTUAL:
         return new TextualView(output);
       case SVG:

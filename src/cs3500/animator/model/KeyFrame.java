@@ -54,6 +54,23 @@ public class KeyFrame {
     }
   }
 
+  /**
+   * checks if all the values of the 2 keyFrames are the same except the time.
+   * @param other the other keyFrame
+   * @return true if all the values of the 2 keyFrames are the same except the time
+   */
+  public boolean allValuesAreEqualButTime(KeyFrame other) {
+      return (this.w <= other.w + 0.0001
+          && this.w >= other.w - 0.0001
+          && this.h <= other.h + 0.0001
+          && this.h >= other.h - 0.0001
+          && this.color.equals(other.color)
+          && this.y <= other.y + 0.0001
+          && this.y >= other.y - 0.0001
+          && this.x <= other.x + 0.0001
+          && this.x >= other.x - 0.0001);
+    }
+
   @Override
   public int hashCode() {
     int result = 3;
