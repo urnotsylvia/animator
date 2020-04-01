@@ -1,396 +1,387 @@
-<svg viewBox="0 0 800 800" version="1.1" xmlns="http://www.w3.org/2000/svg">
-
-	<rect id="background" x="0" y="0" width="800" height="800" fill="rgb(33,94,248)" visibility="visible" >
-		<animate attributeType="xml" begin="2000.0ms" dur="1600.0ms" attributeName="fill" from="rgb(33,94,248)" to="rgb(16,45,248)" fill="freeze" />
-	</rect>
-
-	<rect id="B0" x="80" y="424" width="100" height="326" fill="rgb(0,0,0)" visibility="visible" >
-	</rect>
-
-	<rect id="B1" x="260" y="365" width="100" height="385" fill="rgb(0,0,0)" visibility="visible" >
-	</rect>
-
-	<rect id="B2" x="440" y="375" width="100" height="375" fill="rgb(0,0,0)" visibility="visible" >
-	</rect>
-
-	<rect id="B3" x="620" y="445" width="100" height="305" fill="rgb(0,0,0)" visibility="visible" >
-	</rect>
-
-	<rect id="window000" x="100" y="850" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="850" to="710" fill="freeze" />
-	</rect>
-
-	<rect id="window001" x="140" y="850" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="850" to="710" fill="freeze" />
-	</rect>
-
-	<rect id="window010" x="100" y="890" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="890" to="670" fill="freeze" />
-	</rect>
-
-	<rect id="window011" x="140" y="890" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="890" to="670" fill="freeze" />
-	</rect>
-
-	<rect id="window020" x="100" y="930" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="930" to="630" fill="freeze" />
-	</rect>
-
-	<rect id="window021" x="140" y="930" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="930" to="630" fill="freeze" />
-	</rect>
-
-	<rect id="window030" x="100" y="970" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="970" to="590" fill="freeze" />
-	</rect>
-
-	<rect id="window031" x="140" y="970" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="970" to="590" fill="freeze" />
-	</rect>
-
-	<rect id="window040" x="100" y="1010" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1010" to="550" fill="freeze" />
-	</rect>
-
-	<rect id="window041" x="140" y="1010" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1010" to="550" fill="freeze" />
-	</rect>
-
-	<rect id="window050" x="100" y="1050" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1050" to="510" fill="freeze" />
-	</rect>
-
-	<rect id="window051" x="140" y="1050" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1050" to="510" fill="freeze" />
-	</rect>
-
-	<rect id="window060" x="100" y="1090" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1090" to="470" fill="freeze" />
-	</rect>
-
-	<rect id="window061" x="140" y="1090" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1090" to="470" fill="freeze" />
-	</rect>
-
-	<rect id="window100" x="280" y="-750" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-750" to="710" fill="freeze" />
-	</rect>
-
-	<rect id="window101" x="320" y="-750" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-750" to="710" fill="freeze" />
-	</rect>
-
-	<rect id="window110" x="280" y="-710" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-710" to="670" fill="freeze" />
-	</rect>
-
-	<rect id="window111" x="320" y="-710" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-710" to="670" fill="freeze" />
-	</rect>
-
-	<rect id="window120" x="280" y="-670" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-670" to="630" fill="freeze" />
-	</rect>
-
-	<rect id="window121" x="320" y="-670" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-670" to="630" fill="freeze" />
-	</rect>
-
-	<rect id="window130" x="280" y="-630" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-630" to="590" fill="freeze" />
-	</rect>
-
-	<rect id="window131" x="320" y="-630" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-630" to="590" fill="freeze" />
-	</rect>
-
-	<rect id="window140" x="280" y="-590" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-590" to="550" fill="freeze" />
-	</rect>
-
-	<rect id="window141" x="320" y="-590" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-590" to="550" fill="freeze" />
-	</rect>
-
-	<rect id="window150" x="280" y="-550" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-550" to="510" fill="freeze" />
-	</rect>
-
-	<rect id="window151" x="320" y="-550" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-550" to="510" fill="freeze" />
-	</rect>
-
-	<rect id="window160" x="280" y="-510" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-510" to="470" fill="freeze" />
-	</rect>
-
-	<rect id="window161" x="320" y="-510" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-510" to="470" fill="freeze" />
-	</rect>
-
-	<rect id="window170" x="280" y="-470" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-470" to="430" fill="freeze" />
-	</rect>
-
-	<rect id="window171" x="320" y="-470" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-470" to="430" fill="freeze" />
-	</rect>
-
-	<rect id="window180" x="280" y="-430" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-430" to="390" fill="freeze" />
-	</rect>
-
-	<rect id="window181" x="320" y="-430" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-430" to="390" fill="freeze" />
-	</rect>
-
-	<rect id="window200" x="460" y="850" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="850" to="710" fill="freeze" />
-	</rect>
-
-	<rect id="window201" x="500" y="850" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="850" to="710" fill="freeze" />
-	</rect>
-
-	<rect id="window210" x="460" y="890" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="890" to="670" fill="freeze" />
-	</rect>
-
-	<rect id="window211" x="500" y="890" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="890" to="670" fill="freeze" />
-	</rect>
-
-	<rect id="window220" x="460" y="930" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="930" to="630" fill="freeze" />
-	</rect>
-
-	<rect id="window221" x="500" y="930" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="930" to="630" fill="freeze" />
-	</rect>
-
-	<rect id="window230" x="460" y="970" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="970" to="590" fill="freeze" />
-	</rect>
-
-	<rect id="window231" x="500" y="970" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="970" to="590" fill="freeze" />
-	</rect>
-
-	<rect id="window240" x="460" y="1010" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1010" to="550" fill="freeze" />
-	</rect>
-
-	<rect id="window241" x="500" y="1010" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1010" to="550" fill="freeze" />
-	</rect>
-
-	<rect id="window250" x="460" y="1050" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1050" to="510" fill="freeze" />
-	</rect>
-
-	<rect id="window251" x="500" y="1050" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1050" to="510" fill="freeze" />
-	</rect>
-
-	<rect id="window260" x="460" y="1090" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1090" to="470" fill="freeze" />
-	</rect>
-
-	<rect id="window261" x="500" y="1090" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1090" to="470" fill="freeze" />
-	</rect>
-
-	<rect id="window270" x="460" y="1130" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1130" to="430" fill="freeze" />
-	</rect>
-
-	<rect id="window271" x="500" y="1130" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="1130" to="430" fill="freeze" />
-	</rect>
-
-	<rect id="window300" x="640" y="-750" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-750" to="710" fill="freeze" />
-	</rect>
-
-	<rect id="window301" x="680" y="-750" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-750" to="710" fill="freeze" />
-	</rect>
-
-	<rect id="window310" x="640" y="-710" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-710" to="670" fill="freeze" />
-	</rect>
-
-	<rect id="window311" x="680" y="-710" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-710" to="670" fill="freeze" />
-	</rect>
-
-	<rect id="window320" x="640" y="-670" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-670" to="630" fill="freeze" />
-	</rect>
-
-	<rect id="window321" x="680" y="-670" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-670" to="630" fill="freeze" />
-	</rect>
-
-	<rect id="window330" x="640" y="-630" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-630" to="590" fill="freeze" />
-	</rect>
-
-	<rect id="window331" x="680" y="-630" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-630" to="590" fill="freeze" />
-	</rect>
-
-	<rect id="window340" x="640" y="-590" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-590" to="550" fill="freeze" />
-	</rect>
-
-	<rect id="window341" x="680" y="-590" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-590" to="550" fill="freeze" />
-	</rect>
-
-	<rect id="window350" x="640" y="-550" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-550" to="510" fill="freeze" />
-	</rect>
-
-	<rect id="window351" x="680" y="-550" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-550" to="510" fill="freeze" />
-	</rect>
-
-	<rect id="window360" x="640" y="-510" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-510" to="470" fill="freeze" />
-	</rect>
-
-	<rect id="window361" x="680" y="-510" width="20" height="20" fill="rgb(255,255,255)" visibility="visible" >
-		<animate attributeType="xml" begin="800.0ms" dur="1600.0ms" attributeName="y" from="-510" to="470" fill="freeze" />
-	</rect>
-
-	<ellipse id="moon" cx="200" cy="200" rx="50" ry="50" fill="rgb(229,229,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="eclipse" cx="400" cy="0" rx="50" ry="50" fill="rgb(33,94,248)" visibility="visible" >
-		<animate attributeType="xml" begin="2000.0ms" dur="1600.0ms" attributeName="cx" from="400" to="230" fill="freeze" />
-		<animate attributeType="xml" begin="2000.0ms" dur="1600.0ms" attributeName="cy" from="0" to="180" fill="freeze" />
-		<animate attributeType="xml" begin="2000.0ms" dur="1600.0ms" attributeName="fill" from="rgb(33,94,248)" to="rgb(16,45,248)" fill="freeze" />
-	</ellipse>
-
-	<ellipse id="star0" cx="223" cy="66" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star1" cx="585" cy="211" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star2" cx="489" cy="77" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star3" cx="374" cy="286" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star4" cx="708" cy="281" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star5" cx="508" cy="260" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star6" cx="529" cy="70" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star7" cx="332" cy="65" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star8" cx="311" cy="147" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star9" cx="170" cy="281" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star10" cx="719" cy="102" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star11" cx="524" cy="264" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star12" cx="768" cy="194" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star13" cx="766" cy="179" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star14" cx="510" cy="78" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star15" cx="621" cy="149" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star16" cx="491" cy="252" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star17" cx="405" cy="63" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star18" cx="550" cy="267" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star19" cx="108" cy="197" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star20" cx="737" cy="78" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star21" cx="795" cy="137" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star22" cx="184" cy="125" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star23" cx="134" cy="230" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star24" cx="244" cy="153" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star25" cx="259" cy="119" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star26" cx="322" cy="269" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star27" cx="412" cy="182" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star28" cx="674" cy="137" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star29" cx="46" cy="246" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star30" cx="388" cy="315" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star31" cx="185" cy="236" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star32" cx="550" cy="232" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star33" cx="656" cy="101" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star34" cx="283" cy="111" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star35" cx="649" cy="326" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star36" cx="691" cy="267" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star37" cx="113" cy="276" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star38" cx="604" cy="302" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-	<ellipse id="star39" cx="462" cy="162" rx="3" ry="3" fill="rgb(255,255,255)" visibility="visible" >
-	</ellipse>
-
-</svg>
+canvas 0 0 800 800
+shape background rectangle
+shape B0 rectangle
+shape B1 rectangle
+shape B2 rectangle
+shape B3 rectangle
+shape window000 rectangle
+shape window001 rectangle
+shape window010 rectangle
+shape window011 rectangle
+shape window020 rectangle
+shape window021 rectangle
+shape window030 rectangle
+shape window031 rectangle
+shape window040 rectangle
+shape window041 rectangle
+shape window050 rectangle
+shape window051 rectangle
+shape window060 rectangle
+shape window061 rectangle
+shape window100 rectangle
+shape window101 rectangle
+shape window110 rectangle
+shape window111 rectangle
+shape window120 rectangle
+shape window121 rectangle
+shape window130 rectangle
+shape window131 rectangle
+shape window140 rectangle
+shape window141 rectangle
+shape window150 rectangle
+shape window151 rectangle
+shape window160 rectangle
+shape window161 rectangle
+shape window170 rectangle
+shape window171 rectangle
+shape window180 rectangle
+shape window181 rectangle
+shape window200 rectangle
+shape window201 rectangle
+shape window210 rectangle
+shape window211 rectangle
+shape window220 rectangle
+shape window221 rectangle
+shape window230 rectangle
+shape window231 rectangle
+shape window240 rectangle
+shape window241 rectangle
+shape window250 rectangle
+shape window251 rectangle
+shape window260 rectangle
+shape window261 rectangle
+shape window270 rectangle
+shape window271 rectangle
+shape window300 rectangle
+shape window301 rectangle
+shape window310 rectangle
+shape window311 rectangle
+shape window320 rectangle
+shape window321 rectangle
+shape window330 rectangle
+shape window331 rectangle
+shape window340 rectangle
+shape window341 rectangle
+shape window350 rectangle
+shape window351 rectangle
+shape window360 rectangle
+shape window361 rectangle
+shape moon oval
+shape eclipse oval
+shape star0 oval
+shape star1 oval
+shape star2 oval
+shape star3 oval
+shape star4 oval
+shape star5 oval
+shape star6 oval
+shape star7 oval
+shape star8 oval
+shape star9 oval
+shape star10 oval
+shape star11 oval
+shape star12 oval
+shape star13 oval
+shape star14 oval
+shape star15 oval
+shape star16 oval
+shape star17 oval
+shape star18 oval
+shape star19 oval
+shape star20 oval
+shape star21 oval
+shape star22 oval
+shape star23 oval
+shape star24 oval
+shape star25 oval
+shape star26 oval
+shape star27 oval
+shape star28 oval
+shape star29 oval
+shape star30 oval
+shape star31 oval
+shape star32 oval
+shape star33 oval
+shape star34 oval
+shape star35 oval
+shape star36 oval
+shape star37 oval
+shape star38 oval
+shape star39 oval
+motion background 1 0 0 800 800 33 94 248  50 0 0 800 800 33 94 248
+motion B0 1 80 424 100 326 0 0 0  200 80 424 100 326 0 0 0
+motion B1 1 260 365 100 385 0 0 0  200 260 365 100 385 0 0 0
+motion B2 1 440 375 100 375 0 0 0  200 440 375 100 375 0 0 0
+motion B3 1 620 445 100 305 0 0 0  200 620 445 100 305 0 0 0
+motion window000 1 100 850 20 20 255 255 255  20 100 850 20 20 255 255 255
+motion window001 1 140 850 20 20 255 255 255  20 140 850 20 20 255 255 255
+motion window010 1 100 890 20 20 255 255 255  20 100 890 20 20 255 255 255
+motion window011 1 140 890 20 20 255 255 255  20 140 890 20 20 255 255 255
+motion window020 1 100 930 20 20 255 255 255  20 100 930 20 20 255 255 255
+motion window021 1 140 930 20 20 255 255 255  20 140 930 20 20 255 255 255
+motion window030 1 100 970 20 20 255 255 255  20 100 970 20 20 255 255 255
+motion window031 1 140 970 20 20 255 255 255  20 140 970 20 20 255 255 255
+motion window040 1 100 1010 20 20 255 255 255  20 100 1010 20 20 255 255 255
+motion window041 1 140 1010 20 20 255 255 255  20 140 1010 20 20 255 255 255
+motion window050 1 100 1050 20 20 255 255 255  20 100 1050 20 20 255 255 255
+motion window051 1 140 1050 20 20 255 255 255  20 140 1050 20 20 255 255 255
+motion window060 1 100 1090 20 20 255 255 255  20 100 1090 20 20 255 255 255
+motion window061 1 140 1090 20 20 255 255 255  20 140 1090 20 20 255 255 255
+motion window100 1 280 -750 20 20 255 255 255  20 280 -750 20 20 255 255 255
+motion window101 1 320 -750 20 20 255 255 255  20 320 -750 20 20 255 255 255
+motion window110 1 280 -710 20 20 255 255 255  20 280 -710 20 20 255 255 255
+motion window111 1 320 -710 20 20 255 255 255  20 320 -710 20 20 255 255 255
+motion window120 1 280 -670 20 20 255 255 255  20 280 -670 20 20 255 255 255
+motion window121 1 320 -670 20 20 255 255 255  20 320 -670 20 20 255 255 255
+motion window130 1 280 -630 20 20 255 255 255  20 280 -630 20 20 255 255 255
+motion window131 1 320 -630 20 20 255 255 255  20 320 -630 20 20 255 255 255
+motion window140 1 280 -590 20 20 255 255 255  20 280 -590 20 20 255 255 255
+motion window141 1 320 -590 20 20 255 255 255  20 320 -590 20 20 255 255 255
+motion window150 1 280 -550 20 20 255 255 255  20 280 -550 20 20 255 255 255
+motion window151 1 320 -550 20 20 255 255 255  20 320 -550 20 20 255 255 255
+motion window160 1 280 -510 20 20 255 255 255  20 280 -510 20 20 255 255 255
+motion window161 1 320 -510 20 20 255 255 255  20 320 -510 20 20 255 255 255
+motion window170 1 280 -470 20 20 255 255 255  20 280 -470 20 20 255 255 255
+motion window171 1 320 -470 20 20 255 255 255  20 320 -470 20 20 255 255 255
+motion window180 1 280 -430 20 20 255 255 255  20 280 -430 20 20 255 255 255
+motion window181 1 320 -430 20 20 255 255 255  20 320 -430 20 20 255 255 255
+motion window200 1 460 850 20 20 255 255 255  20 460 850 20 20 255 255 255
+motion window201 1 500 850 20 20 255 255 255  20 500 850 20 20 255 255 255
+motion window210 1 460 890 20 20 255 255 255  20 460 890 20 20 255 255 255
+motion window211 1 500 890 20 20 255 255 255  20 500 890 20 20 255 255 255
+motion window220 1 460 930 20 20 255 255 255  20 460 930 20 20 255 255 255
+motion window221 1 500 930 20 20 255 255 255  20 500 930 20 20 255 255 255
+motion window230 1 460 970 20 20 255 255 255  20 460 970 20 20 255 255 255
+motion window231 1 500 970 20 20 255 255 255  20 500 970 20 20 255 255 255
+motion window240 1 460 1010 20 20 255 255 255  20 460 1010 20 20 255 255 255
+motion window241 1 500 1010 20 20 255 255 255  20 500 1010 20 20 255 255 255
+motion window250 1 460 1050 20 20 255 255 255  20 460 1050 20 20 255 255 255
+motion window251 1 500 1050 20 20 255 255 255  20 500 1050 20 20 255 255 255
+motion window260 1 460 1090 20 20 255 255 255  20 460 1090 20 20 255 255 255
+motion window261 1 500 1090 20 20 255 255 255  20 500 1090 20 20 255 255 255
+motion window270 1 460 1130 20 20 255 255 255  20 460 1130 20 20 255 255 255
+motion window271 1 500 1130 20 20 255 255 255  20 500 1130 20 20 255 255 255
+motion window300 1 640 -750 20 20 255 255 255  20 640 -750 20 20 255 255 255
+motion window301 1 680 -750 20 20 255 255 255  20 680 -750 20 20 255 255 255
+motion window310 1 640 -710 20 20 255 255 255  20 640 -710 20 20 255 255 255
+motion window311 1 680 -710 20 20 255 255 255  20 680 -710 20 20 255 255 255
+motion window320 1 640 -670 20 20 255 255 255  20 640 -670 20 20 255 255 255
+motion window321 1 680 -670 20 20 255 255 255  20 680 -670 20 20 255 255 255
+motion window330 1 640 -630 20 20 255 255 255  20 640 -630 20 20 255 255 255
+motion window331 1 680 -630 20 20 255 255 255  20 680 -630 20 20 255 255 255
+motion window340 1 640 -590 20 20 255 255 255  20 640 -590 20 20 255 255 255
+motion window341 1 680 -590 20 20 255 255 255  20 680 -590 20 20 255 255 255
+motion window350 1 640 -550 20 20 255 255 255  20 640 -550 20 20 255 255 255
+motion window351 1 680 -550 20 20 255 255 255  20 680 -550 20 20 255 255 255
+motion window360 1 640 -510 20 20 255 255 255  20 640 -510 20 20 255 255 255
+motion window361 1 680 -510 20 20 255 255 255  20 680 -510 20 20 255 255 255
+motion moon 1 200 200 100 100 229 229 255  200 200 200 100 100 229 229 255
+motion eclipse 1 400 0 100 100 33 94 248  50 400 0 100 100 33 94 248
+motion window000 20 100 850 20 20 255 255 255  60 100 710 20 20 255 255 255
+motion window001 20 140 850 20 20 255 255 255  60 140 710 20 20 255 255 255
+motion window010 20 100 890 20 20 255 255 255  60 100 670 20 20 255 255 255
+motion window011 20 140 890 20 20 255 255 255  60 140 670 20 20 255 255 255
+motion window020 20 100 930 20 20 255 255 255  60 100 630 20 20 255 255 255
+motion window021 20 140 930 20 20 255 255 255  60 140 630 20 20 255 255 255
+motion window030 20 100 970 20 20 255 255 255  60 100 590 20 20 255 255 255
+motion window031 20 140 970 20 20 255 255 255  60 140 590 20 20 255 255 255
+motion window040 20 100 1010 20 20 255 255 255  60 100 550 20 20 255 255 255
+motion window041 20 140 1010 20 20 255 255 255  60 140 550 20 20 255 255 255
+motion window050 20 100 1050 20 20 255 255 255  60 100 510 20 20 255 255 255
+motion window051 20 140 1050 20 20 255 255 255  60 140 510 20 20 255 255 255
+motion window060 20 100 1090 20 20 255 255 255  60 100 470 20 20 255 255 255
+motion window061 20 140 1090 20 20 255 255 255  60 140 470 20 20 255 255 255
+motion window100 20 280 -750 20 20 255 255 255  60 280 710 20 20 255 255 255
+motion window101 20 320 -750 20 20 255 255 255  60 320 710 20 20 255 255 255
+motion window110 20 280 -710 20 20 255 255 255  60 280 670 20 20 255 255 255
+motion window111 20 320 -710 20 20 255 255 255  60 320 670 20 20 255 255 255
+motion window120 20 280 -670 20 20 255 255 255  60 280 630 20 20 255 255 255
+motion window121 20 320 -670 20 20 255 255 255  60 320 630 20 20 255 255 255
+motion window130 20 280 -630 20 20 255 255 255  60 280 590 20 20 255 255 255
+motion window131 20 320 -630 20 20 255 255 255  60 320 590 20 20 255 255 255
+motion window140 20 280 -590 20 20 255 255 255  60 280 550 20 20 255 255 255
+motion window141 20 320 -590 20 20 255 255 255  60 320 550 20 20 255 255 255
+motion window150 20 280 -550 20 20 255 255 255  60 280 510 20 20 255 255 255
+motion window151 20 320 -550 20 20 255 255 255  60 320 510 20 20 255 255 255
+motion window160 20 280 -510 20 20 255 255 255  60 280 470 20 20 255 255 255
+motion window161 20 320 -510 20 20 255 255 255  60 320 470 20 20 255 255 255
+motion window170 20 280 -470 20 20 255 255 255  60 280 430 20 20 255 255 255
+motion window171 20 320 -470 20 20 255 255 255  60 320 430 20 20 255 255 255
+motion window180 20 280 -430 20 20 255 255 255  60 280 390 20 20 255 255 255
+motion window181 20 320 -430 20 20 255 255 255  60 320 390 20 20 255 255 255
+motion window200 20 460 850 20 20 255 255 255  60 460 710 20 20 255 255 255
+motion window201 20 500 850 20 20 255 255 255  60 500 710 20 20 255 255 255
+motion window210 20 460 890 20 20 255 255 255  60 460 670 20 20 255 255 255
+motion window211 20 500 890 20 20 255 255 255  60 500 670 20 20 255 255 255
+motion window220 20 460 930 20 20 255 255 255  60 460 630 20 20 255 255 255
+motion window221 20 500 930 20 20 255 255 255  60 500 630 20 20 255 255 255
+motion window230 20 460 970 20 20 255 255 255  60 460 590 20 20 255 255 255
+motion window231 20 500 970 20 20 255 255 255  60 500 590 20 20 255 255 255
+motion window240 20 460 1010 20 20 255 255 255  60 460 550 20 20 255 255 255
+motion window241 20 500 1010 20 20 255 255 255  60 500 550 20 20 255 255 255
+motion window250 20 460 1050 20 20 255 255 255  60 460 510 20 20 255 255 255
+motion window251 20 500 1050 20 20 255 255 255  60 500 510 20 20 255 255 255
+motion window260 20 460 1090 20 20 255 255 255  60 460 470 20 20 255 255 255
+motion window261 20 500 1090 20 20 255 255 255  60 500 470 20 20 255 255 255
+motion window270 20 460 1130 20 20 255 255 255  60 460 430 20 20 255 255 255
+motion window271 20 500 1130 20 20 255 255 255  60 500 430 20 20 255 255 255
+motion window300 20 640 -750 20 20 255 255 255  60 640 710 20 20 255 255 255
+motion window301 20 680 -750 20 20 255 255 255  60 680 710 20 20 255 255 255
+motion window310 20 640 -710 20 20 255 255 255  60 640 670 20 20 255 255 255
+motion window311 20 680 -710 20 20 255 255 255  60 680 670 20 20 255 255 255
+motion window320 20 640 -670 20 20 255 255 255  60 640 630 20 20 255 255 255
+motion window321 20 680 -670 20 20 255 255 255  60 680 630 20 20 255 255 255
+motion window330 20 640 -630 20 20 255 255 255  60 640 590 20 20 255 255 255
+motion window331 20 680 -630 20 20 255 255 255  60 680 590 20 20 255 255 255
+motion window340 20 640 -590 20 20 255 255 255  60 640 550 20 20 255 255 255
+motion window341 20 680 -590 20 20 255 255 255  60 680 550 20 20 255 255 255
+motion window350 20 640 -550 20 20 255 255 255  60 640 510 20 20 255 255 255
+motion window351 20 680 -550 20 20 255 255 255  60 680 510 20 20 255 255 255
+motion window360 20 640 -510 20 20 255 255 255  60 640 470 20 20 255 255 255
+motion window361 20 680 -510 20 20 255 255 255  60 680 470 20 20 255 255 255
+motion background 50 0 0 800 800 33 94 248  90 0 0 800 800 16 45 248
+motion eclipse 50 400 0 100 100 33 94 248  90 230 180 100 100 16 45 248
+motion window000 60 100 710 20 20 255 255 255  200 100 710 20 20 255 255 255
+motion window001 60 140 710 20 20 255 255 255  200 140 710 20 20 255 255 255
+motion window010 60 100 670 20 20 255 255 255  200 100 670 20 20 255 255 255
+motion window011 60 140 670 20 20 255 255 255  200 140 670 20 20 255 255 255
+motion window020 60 100 630 20 20 255 255 255  200 100 630 20 20 255 255 255
+motion window021 60 140 630 20 20 255 255 255  82 140 630 20 20 255 255 255
+motion window030 60 100 590 20 20 255 255 255  200 100 590 20 20 255 255 255
+motion window031 60 140 590 20 20 255 255 255  200 140 590 20 20 255 255 255
+motion window040 60 100 550 20 20 255 255 255  200 100 550 20 20 255 255 255
+motion window041 60 140 550 20 20 255 255 255  147 140 550 20 20 255 255 255
+motion window050 60 100 510 20 20 255 255 255  200 100 510 20 20 255 255 255
+motion window051 60 140 510 20 20 255 255 255  200 140 510 20 20 255 255 255
+motion window060 60 100 470 20 20 255 255 255  147 100 470 20 20 255 255 255
+motion window061 60 140 470 20 20 255 255 255  93 140 470 20 20 255 255 255
+motion window100 60 280 710 20 20 255 255 255  200 280 710 20 20 255 255 255
+motion window101 60 320 710 20 20 255 255 255  108 320 710 20 20 255 255 255
+motion window110 60 280 670 20 20 255 255 255  95 280 670 20 20 255 255 255
+motion window111 60 320 670 20 20 255 255 255  200 320 670 20 20 255 255 255
+motion window120 60 280 630 20 20 255 255 255  200 280 630 20 20 255 255 255
+motion window121 60 320 630 20 20 255 255 255  200 320 630 20 20 255 255 255
+motion window130 60 280 590 20 20 255 255 255  200 280 590 20 20 255 255 255
+motion window131 60 320 590 20 20 255 255 255  148 320 590 20 20 255 255 255
+motion window140 60 280 550 20 20 255 255 255  200 280 550 20 20 255 255 255
+motion window141 60 320 550 20 20 255 255 255  200 320 550 20 20 255 255 255
+motion window150 60 280 510 20 20 255 255 255  200 280 510 20 20 255 255 255
+motion window151 60 320 510 20 20 255 255 255  99 320 510 20 20 255 255 255
+motion window160 60 280 470 20 20 255 255 255  200 280 470 20 20 255 255 255
+motion window161 60 320 470 20 20 255 255 255  200 320 470 20 20 255 255 255
+motion window170 60 280 430 20 20 255 255 255  200 280 430 20 20 255 255 255
+motion window171 60 320 430 20 20 255 255 255  200 320 430 20 20 255 255 255
+motion window180 60 280 390 20 20 255 255 255  200 280 390 20 20 255 255 255
+motion window181 60 320 390 20 20 255 255 255  200 320 390 20 20 255 255 255
+motion window200 60 460 710 20 20 255 255 255  127 460 710 20 20 255 255 255
+motion window201 60 500 710 20 20 255 255 255  200 500 710 20 20 255 255 255
+motion window210 60 460 670 20 20 255 255 255  83 460 670 20 20 255 255 255
+motion window211 60 500 670 20 20 255 255 255  200 500 670 20 20 255 255 255
+motion window220 60 460 630 20 20 255 255 255  200 460 630 20 20 255 255 255
+motion window221 60 500 630 20 20 255 255 255  200 500 630 20 20 255 255 255
+motion window230 60 460 590 20 20 255 255 255  200 460 590 20 20 255 255 255
+motion window231 60 500 590 20 20 255 255 255  200 500 590 20 20 255 255 255
+motion window240 60 460 550 20 20 255 255 255  200 460 550 20 20 255 255 255
+motion window241 60 500 550 20 20 255 255 255  112 500 550 20 20 255 255 255
+motion window250 60 460 510 20 20 255 255 255  128 460 510 20 20 255 255 255
+motion window251 60 500 510 20 20 255 255 255  200 500 510 20 20 255 255 255
+motion window260 60 460 470 20 20 255 255 255  200 460 470 20 20 255 255 255
+motion window261 60 500 470 20 20 255 255 255  96 500 470 20 20 255 255 255
+motion window270 60 460 430 20 20 255 255 255  200 460 430 20 20 255 255 255
+motion window271 60 500 430 20 20 255 255 255  200 500 430 20 20 255 255 255
+motion window300 60 640 710 20 20 255 255 255  200 640 710 20 20 255 255 255
+motion window301 60 680 710 20 20 255 255 255  135 680 710 20 20 255 255 255
+motion window310 60 640 670 20 20 255 255 255  103 640 670 20 20 255 255 255
+motion window311 60 680 670 20 20 255 255 255  200 680 670 20 20 255 255 255
+motion window320 60 640 630 20 20 255 255 255  200 640 630 20 20 255 255 255
+motion window321 60 680 630 20 20 255 255 255  200 680 630 20 20 255 255 255
+motion window330 60 640 590 20 20 255 255 255  81 640 590 20 20 255 255 255
+motion window331 60 680 590 20 20 255 255 255  119 680 590 20 20 255 255 255
+motion window340 60 640 550 20 20 255 255 255  200 640 550 20 20 255 255 255
+motion window341 60 680 550 20 20 255 255 255  200 680 550 20 20 255 255 255
+motion window350 60 640 510 20 20 255 255 255  200 640 510 20 20 255 255 255
+motion window351 60 680 510 20 20 255 255 255  100 680 510 20 20 255 255 255
+motion window360 60 640 470 20 20 255 255 255  99 640 470 20 20 255 255 255
+motion window361 60 680 470 20 20 255 255 255  99 680 470 20 20 255 255 255
+motion window330 81 640 590 20 20 255 255 255  86 640 590 20 20 255 255 0
+motion window021 82 140 630 20 20 255 255 255  87 140 630 20 20 255 255 0
+motion window210 83 460 670 20 20 255 255 255  88 460 670 20 20 255 255 0
+motion star4 83 708 281 6 6 255 255 255  200 708 281 6 6 255 255 255
+motion star34 84 283 111 6 6 255 255 255  200 283 111 6 6 255 255 255
+motion window330 86 640 590 20 20 255 255 0  200 640 590 20 20 255 255 0
+motion star8 86 311 147 6 6 255 255 255  200 311 147 6 6 255 255 255
+motion star12 86 768 194 6 6 255 255 255  200 768 194 6 6 255 255 255
+motion window021 87 140 630 20 20 255 255 0  200 140 630 20 20 255 255 0
+motion window210 88 460 670 20 20 255 255 0  200 460 670 20 20 255 255 0
+motion star9 88 170 281 6 6 255 255 255  200 170 281 6 6 255 255 255
+motion star17 89 405 63 6 6 255 255 255  200 405 63 6 6 255 255 255
+motion star22 89 184 125 6 6 255 255 255  200 184 125 6 6 255 255 255
+motion background 90 0 0 800 800 16 45 248  200 0 0 800 800 16 45 248
+motion eclipse 90 230 180 100 100 16 45 248  200 230 180 100 100 16 45 248
+motion star10 90 719 102 6 6 255 255 255  200 719 102 6 6 255 255 255
+motion star6 92 529 70 6 6 255 255 255  200 529 70 6 6 255 255 255
+motion star35 92 649 326 6 6 255 255 255  200 649 326 6 6 255 255 255
+motion window061 93 140 470 20 20 255 255 255  98 140 470 20 20 255 255 0
+motion star3 93 374 286 6 6 255 255 255  200 374 286 6 6 255 255 255
+motion star19 94 108 197 6 6 255 255 255  200 108 197 6 6 255 255 255
+motion star33 94 656 101 6 6 255 255 255  200 656 101 6 6 255 255 255
+motion window110 95 280 670 20 20 255 255 255  100 280 670 20 20 255 255 0
+motion window261 96 500 470 20 20 255 255 255  101 500 470 20 20 255 255 0
+motion star23 96 134 230 6 6 255 255 255  200 134 230 6 6 255 255 255
+motion star29 96 46 246 6 6 255 255 255  200 46 246 6 6 255 255 255
+motion star5 97 508 260 6 6 255 255 255  200 508 260 6 6 255 255 255
+motion window061 98 140 470 20 20 255 255 0  200 140 470 20 20 255 255 0
+motion star14 98 510 78 6 6 255 255 255  200 510 78 6 6 255 255 255
+motion window151 99 320 510 20 20 255 255 255  104 320 510 20 20 255 255 0
+motion window360 99 640 470 20 20 255 255 255  104 640 470 20 20 255 255 0
+motion window361 99 680 470 20 20 255 255 255  104 680 470 20 20 255 255 0
+motion star37 99 113 276 6 6 255 255 255  200 113 276 6 6 255 255 255
+motion star38 99 604 302 6 6 255 255 255  200 604 302 6 6 255 255 255
+motion window110 100 280 670 20 20 255 255 0  200 280 670 20 20 255 255 0
+motion window351 100 680 510 20 20 255 255 255  105 680 510 20 20 255 255 0
+motion window261 101 500 470 20 20 255 255 0  200 500 470 20 20 255 255 0
+motion window310 103 640 670 20 20 255 255 255  108 640 670 20 20 255 255 0
+motion star20 103 737 78 6 6 255 255 255  200 737 78 6 6 255 255 255
+motion window151 104 320 510 20 20 255 255 0  200 320 510 20 20 255 255 0
+motion window360 104 640 470 20 20 255 255 0  200 640 470 20 20 255 255 0
+motion window361 104 680 470 20 20 255 255 0  200 680 470 20 20 255 255 0
+motion window351 105 680 510 20 20 255 255 0  200 680 510 20 20 255 255 0
+motion star16 106 491 252 6 6 255 255 255  200 491 252 6 6 255 255 255
+motion star26 106 322 269 6 6 255 255 255  200 322 269 6 6 255 255 255
+motion window101 108 320 710 20 20 255 255 255  113 320 710 20 20 255 255 0
+motion window310 108 640 670 20 20 255 255 0  200 640 670 20 20 255 255 0
+motion star0 108 223 66 6 6 255 255 255  200 223 66 6 6 255 255 255
+motion star32 109 550 232 6 6 255 255 255  200 550 232 6 6 255 255 255
+motion star2 110 489 77 6 6 255 255 255  200 489 77 6 6 255 255 255
+motion window241 112 500 550 20 20 255 255 255  117 500 550 20 20 255 255 0
+motion star25 112 259 119 6 6 255 255 255  200 259 119 6 6 255 255 255
+motion window101 113 320 710 20 20 255 255 0  200 320 710 20 20 255 255 0
+motion star13 113 766 179 6 6 255 255 255  200 766 179 6 6 255 255 255
+motion star18 113 550 267 6 6 255 255 255  200 550 267 6 6 255 255 255
+motion star15 114 621 149 6 6 255 255 255  200 621 149 6 6 255 255 255
+motion star36 115 691 267 6 6 255 255 255  200 691 267 6 6 255 255 255
+motion window241 117 500 550 20 20 255 255 0  200 500 550 20 20 255 255 0
+motion star7 117 332 65 6 6 255 255 255  200 332 65 6 6 255 255 255
+motion star27 117 412 182 6 6 255 255 255  200 412 182 6 6 255 255 255
+motion window331 119 680 590 20 20 255 255 255  124 680 590 20 20 255 255 0
+motion star28 119 674 137 6 6 255 255 255  200 674 137 6 6 255 255 255
+motion star1 120 585 211 6 6 255 255 255  200 585 211 6 6 255 255 255
+motion star24 120 244 153 6 6 255 255 255  200 244 153 6 6 255 255 255
+motion star31 121 185 236 6 6 255 255 255  200 185 236 6 6 255 255 255
+motion star30 123 388 315 6 6 255 255 255  200 388 315 6 6 255 255 255
+motion window331 124 680 590 20 20 255 255 0  200 680 590 20 20 255 255 0
+motion star21 126 795 137 6 6 255 255 255  200 795 137 6 6 255 255 255
+motion window200 127 460 710 20 20 255 255 255  132 460 710 20 20 255 255 0
+motion star39 127 462 162 6 6 255 255 255  200 462 162 6 6 255 255 255
+motion window250 128 460 510 20 20 255 255 255  133 460 510 20 20 255 255 0
+motion star11 129 524 264 6 6 255 255 255  200 524 264 6 6 255 255 255
+motion window200 132 460 710 20 20 255 255 0  200 460 710 20 20 255 255 0
+motion window250 133 460 510 20 20 255 255 0  200 460 510 20 20 255 255 0
+motion window301 135 680 710 20 20 255 255 255  140 680 710 20 20 255 255 0
+motion window301 140 680 710 20 20 255 255 0  200 680 710 20 20 255 255 0
+motion window041 147 140 550 20 20 255 255 255  152 140 550 20 20 255 255 0
+motion window060 147 100 470 20 20 255 255 255  152 100 470 20 20 255 255 0
+motion window131 148 320 590 20 20 255 255 255  153 320 590 20 20 255 255 0
+motion window041 152 140 550 20 20 255 255 0  200 140 550 20 20 255 255 0
+motion window060 152 100 470 20 20 255 255 0  200 100 470 20 20 255 255 0
+motion window131 153 320 590 20 20 255 255 0  200 320 590 20 20 255 255 0

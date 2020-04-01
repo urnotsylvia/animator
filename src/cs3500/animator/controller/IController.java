@@ -9,8 +9,6 @@ public interface IController {
 
   /**
    * start the animation.
-   *
-   * @param m model
    */
-  void playAnimation(IAnimationOperations m);
+  void playAnimation();
 }

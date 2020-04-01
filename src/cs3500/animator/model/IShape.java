@@ -16,6 +16,13 @@ public interface IShape {
   RGBColor getColor();
 
   /**
+   * get a list of shape that has each key associated with a shape.
+   *
+   * @return a list of shapes with the active keyFrame
+   */
+  List<IShape> getShapesWithAllKeys();
+
+  /**
    * drops the keyFrame based on the given time.
    *
    * @param time the time of the keyFrame to be drop

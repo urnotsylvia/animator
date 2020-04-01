@@ -80,9 +80,9 @@ public class AnimationModelTest {
 
   @Test
   public void textViewOutputTest() {
-    IView textual = new TextualView(model1, out);
+    IView textual = new TextualView(out);
     model1.setBounds(1, 2, 3, 4);
-    textual.showAnimation();
+    textual.showAnimation(model1.getShapes(), model1.getBoundAsList());
     assertEquals("canvas 1 2 3 4\n"
         + "shape r1 rectangle\n"
         + "shape o1 oval\n"
@@ -94,9 +94,9 @@ public class AnimationModelTest {
 
   @Test
   public void textSVGoOutputTest() {
-    IView textual = new SVGView(model1, 10, out);
+    IView textual = new SVGView(10, out);
     model1.setBounds(100, 10, 20, 9);
-    textual.showAnimation();
+    textual.showAnimation(model1.getShapes(), model1.getBoundAsList());
     assertEquals(
         "<svg viewBox=\"100 10 20 9\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n"
             + "\n"

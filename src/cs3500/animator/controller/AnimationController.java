@@ -10,6 +10,9 @@ public class AnimationController implements IController {
 
   private IAnimationOperations model;
   private IView view;
+  //loop
+  //speed
+  //time int(or Timer)
 
   /**
    * constructs the controller.
@@ -20,11 +23,11 @@ public class AnimationController implements IController {
   public AnimationController(IAnimationOperations model, IView view) {
     this.model = model;
     this.view = view;
+
   }
 
   @Override
-  public void playAnimation(IAnimationOperations m) {
-    this.model = m;
-    this.view.showAnimation();
+  public void playAnimation() {
+    this.view.showAnimation(model.getShapes(), model.getBoundAsList());
   }
 }

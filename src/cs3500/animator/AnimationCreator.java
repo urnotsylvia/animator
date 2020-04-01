@@ -1,6 +1,7 @@
 package cs3500.animator;
 
 import cs3500.animator.model.IAnimationOperations;
+import cs3500.animator.view.EditorView;
 import cs3500.animator.view.VisualView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
@@ -24,9 +25,11 @@ public class AnimationCreator {
       case VISUAL:
         return new VisualView(model, speed);
       case TEXTUAL:
-        return new TextualView(model, output);
+        return new TextualView(output);
       case SVG:
-        return new SVGView(model, speed, output);
+        return new SVGView(speed, output);
+      case EDITOR:
+        return new EditorView(speed);
       default:
         return null;
     }

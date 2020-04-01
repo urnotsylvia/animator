@@ -24,8 +24,8 @@ I changed add method in model class so that it will only takes in the informatio
 
 View:
 I have a IView interface that has showAnimation(), which is telling the view what to show, and makeVisible() method, which is make the view to show in the JFrame.
-And I have a abstract class AView implements the IView that includes the makeVisible().
-There different views extends the AView: TextualView, DisplayView, SVGView.
+
+Three different views implements the IView: TextualView, DisplayView, SVGView.
 TextualView shows the animation model in the format same as the imported file
 SVGView shows it in the format that is an XML-based format that can be used to describe images and animations. 
 DisPlayView is visualize by displaying the animation
@@ -35,3 +35,4 @@ and also display the animation in between
 Main class parses the command line to get the imported file, the speed of the tick, where to output and use which view to show the animation
 and then initialize the model and view and ran the project
 
+changes:

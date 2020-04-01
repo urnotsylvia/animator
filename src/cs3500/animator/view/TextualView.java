@@ -13,30 +13,27 @@ import java.util.List;
  * with the popular SVG (Scalable Vector Graphics) file format.
  */
 public class TextualView implements IView {
-
   private Appendable output;
-  private IAnimationOperations model;
 
   /**
    * constructs the view given model, speed and the appendable to output.
    *
-   * @param model  the animation model
    * @param output the output file
    */
-  public TextualView(IAnimationOperations model, Appendable output) {
-    this.model = model;
+  public TextualView(Appendable output) {
+
     this.output = output;
   }
 
   @Override
-  public void showAnimation() {
+  public void showAnimation(List<IShape> shapes, List<Integer> bounds) {
     String curMotionToString = "";
     String result =
-        "canvas " + this.model.getBoundsAsString() + "\n"; //need to finish setBound in model first
+        "canvas " + getBoundsAsString(bounds) + "\n"; //need to finish setBound in model first
 
     List<String> unSortedMotions = new ArrayList<>();
-    for (int i = 0; i < this.model.getShapes().size(); i++) {
-      IShape curShape = this.model.getShapes().get(i);
+    for (int i = 0; i < shapes.size(); i++) {
+      IShape curShape = shapes.get(i);
       result = result + "shape " + curShape.getName() + " " + curShape.getShapeAsString() + "\n";
 
       for (int k = 0; k < curShape.getKeyFrames().size() - 1; k++) {
@@ -58,6 +55,20 @@ public class TextualView implements IView {
         throw new IllegalArgumentException("failed to append:("); //what is IOE, should throw IAE?
       }
     }
+  }
+
+  /**
+   *
+   * @param bounds
+   * @return
+   */
+  private String getBoundsAsString(List<Integer> bounds) {
+    String result = "";
+    for (Integer i: bounds) {
+      result += i + " ";
+    }
+    result = result.substring(0, result.length() - 1);
+    return result;
   }
 
   @Override

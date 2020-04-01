@@ -69,6 +69,36 @@ public abstract class AShape implements IShape {
   }
 
   @Override
+  public List<IShape> getShapesWithAllKeys() {
+    List<IShape> allKeys = new ArrayList<>();
+    for (KeyFrame k : this.keyFrames) {
+      for (int i = 0; i < this.keyFrames.size(); i++) {
+        copyAllTheValue(allKeys, this, k);
+      }
+    }
+    return allKeys;
+  }
+
+  /**
+   * make a copy of the shape and add it to the given list.
+   *
+   * @param list the list of shapes
+   * @param s    the shase need to be copied
+   * @param k    the keyFrame of the shape
+   */
+  private void copyAllTheValue(List<IShape> list, IShape s, KeyFrame k) {
+    IShape cur = s.getShape();
+    cur.setName(s.getName());
+    cur.changeColor(k.getColor());
+    cur.setLength("w", k.getW());
+    cur.setLength("h", k.getH());
+    cur.getPos().setX(k.getX());
+    cur.getPos().setY(k.getY());
+    cur.getKeyFrames().add(k);
+    list.add(cur);
+  }
+
+  @Override
   public void addKeyFrame(KeyFrame newKey) {
     for (KeyFrame keyFrame : keyFrames) {
       if (keyFrame.getTime() == newKey.getTime()) {

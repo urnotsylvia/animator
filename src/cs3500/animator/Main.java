@@ -83,13 +83,17 @@ public class Main {
       case "Textual":
         view = AnimationCreator.create(ViewType.TEXTUAL, model, speed, output);
         break;
-      case "Display":
-      case "display":
+      case "Visual":
+      case "visual":
         view = AnimationCreator.create(ViewType.VISUAL, model, speed, output);
         break;
       case "SVG":
       case "svg":
         view = AnimationCreator.create(ViewType.SVG, model, speed, output);
+        break;
+      case "Editor":
+      case "editor":
+        view = AnimationCreator.create(ViewType.EDITOR, model, speed, output);
         break;
       default:
         throw new IllegalArgumentException("invalid view:(");
@@ -97,7 +101,7 @@ public class Main {
 
     IController controller = new AnimationController(model, view);
 
-    controller.playAnimation(model);
+    controller.playAnimation();
 
     if (output != null) {
       try {

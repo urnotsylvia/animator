@@ -4,6 +4,7 @@ import cs3500.animator.model.IAnimationOperations;
 import cs3500.animator.model.IShape;
 import cs3500.animator.model.KeyFrame;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * shows the animation in the format that is an XML-based format that can be used to describe images
@@ -13,32 +14,28 @@ public class SVGView implements IView {
 
   private Appendable output;
   private int speed;
-  private IAnimationOperations model;
 
   /**
    * constructs the view given model, speed and the appendable to output.
    *
-   * @param model  the animation model
    * @param speed  the speed
    * @param output the output file
    */
-  public SVGView(IAnimationOperations model, int speed, Appendable output) {
-    this.model = model;
+  public SVGView(int speed, Appendable output) {
     this.speed = speed;
     this.output = output;
   }
 
   @Override
-  public void showAnimation() {
-    //<svg width="700" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  public void showAnimation(List<IShape> shapes, List<Integer> bounds) {
     StringBuilder result = new StringBuilder(
-        "<svg viewBox=\"" + this.model.getBound("x") + " " + this.model.getBound("y")
-            + " " + this.model.getBound("w") + " "
-            + this.model.getBound("h")
+        "<svg viewBox=\"" + bounds.get(0) + " " + bounds.get(1)
+            + " " + bounds.get(2) + " "
+            + bounds.get(3)
             + "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n\n");
     String shapeType;
-    for (int i = 0; i < this.model.getShapes().size(); i++) {
-      IShape curShape = this.model.getShapes().get(i);
+    for (int i = 0; i < shapes.size(); i++) {
+      IShape curShape = shapes.get(i);
 
       switch (curShape.getShapeAsString()) {
         case "rectangle":

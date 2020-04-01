@@ -130,8 +130,17 @@ public class AnimationModel implements IAnimationOperations {
         return this.height;
       default:
         throw new IllegalArgumentException("invalid attribute");
-
     }
+  }
+
+  @Override
+  public List<Integer> getBoundAsList() {
+    List<Integer> bounds = new ArrayList<>();
+    bounds.add(x);
+    bounds.add(y);
+    bounds.add(width);
+    bounds.add(height);
+    return bounds;
   }
 
   @Override

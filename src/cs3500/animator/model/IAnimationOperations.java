@@ -25,6 +25,12 @@ public interface IAnimationOperations {
   int getBound(String i);
 
   /**
+   *
+   * @return
+   */
+  List<Integer> getBoundAsList();
+
+  /**
    * Remove the shape from the list of shape.
    *
    * @param name represent the name of the shape that should be removed

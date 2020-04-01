@@ -1,6 +1,8 @@
 package cs3500.animator.view;
 
 import cs3500.animator.model.IAnimationOperations;
+import cs3500.animator.model.IShape;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
@@ -39,7 +41,7 @@ public class VisualView extends JFrame implements IView {
   }
 
   @Override
-  public void showAnimation() {
+  public void showAnimation(List<IShape> shapes, List<Integer> bounds) {
     this.repaint();
   }
 }
