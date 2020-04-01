@@ -96,9 +96,7 @@ public class SVGView implements IView {
     double duration = ((nextKey.getTime() - curKey.getTime()) + 0.0) * 1000 / speed;
     String changeAttribute = "";
     int arr2Index = 1;
-    boolean changedColorAt5 = false;
-    boolean changedColorAt6 = false;
-    boolean changedColorAt7 = false;
+    boolean changedColor = false;
     while (arr2Index < arr2.length) {
       for (int i = 1; i < arr1.length; i++) {
         if (!arr1[i].equals(arr2[arr2Index])) {
@@ -151,32 +149,19 @@ public class SVGView implements IView {
             case 6:
             case 7:
               changeAttribute = "fill";
-              if (changedColorAt5 || changedColorAt6) {
-                changedColorAt5 = false;
-                changedColorAt6 = false;
                 break;
-              }
-              if (i == 5) {
-                changedColorAt5 = true;
-              }
-              if (i == 6) {
-                changedColorAt6 = true;
-              }
-              if(i == 7) {
-                changedColorAt7 = true;
-              }
-              break;
             default:
               throw new IllegalArgumentException("not a valid attribute");
           }
           if (changeAttribute.equals("fill")) {
-            if (changedColorAt5 || changedColorAt6 || changedColorAt7) {
+            if (!changedColor) {
               result = result + "\t\t<animate attributeType=\"xml\" begin=\""
                   + startTime
                   + "ms\" dur=\"" + duration
                   + "ms\" attributeName=\"" + changeAttribute
                   + "\" from=\"" + curKey.getColor().asRGBString() + "\" to=\""
                   + nextKey.getColor().asRGBString() + "\" fill=\"freeze\" />\n";
+              changedColor = true;
             }
           } else {
             result = result + "\t\t<animate attributeType=\"xml\" "

@@ -151,7 +151,8 @@ public class AnimationModelTest {
 
   @Test
   public void getBoundsAsString(){
-    assertEquals("0 0 0 0", model1.getBoundsAsString());
+    model1.setBounds(1, 2, 3,4);
+    assertEquals("1 2 3 4", model1.getBoundsAsString());
     assertEquals("0 0 0 0", model2.getBoundsAsString());
   }
 

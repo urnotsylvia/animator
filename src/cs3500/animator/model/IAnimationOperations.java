@@ -25,8 +25,8 @@ public interface IAnimationOperations {
   int getBound(String i);
 
   /**
-   *
-   * @return
+   * returns the bound information as a list of integer.
+   * @return a list of integer that represents the bounds
    */
   List<Integer> getBoundAsList();
 
