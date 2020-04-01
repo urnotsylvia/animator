@@ -16,7 +16,7 @@ public class TextualView implements IView {
   private Appendable output;
 
   /**
-   * constructs the view given model, speed and the appendable to output.
+   * constructs the view given speed and the appendable to output.
    *
    * @param output the output file
    */
@@ -58,9 +58,9 @@ public class TextualView implements IView {
   }
 
   /**
-   *
-   * @param bounds
-   * @return
+   * convert the given list of integers to the string format of the bound.
+   * @param bounds represent the list of attribute
+   * @return the String format of bounds
    */
   private String getBoundsAsString(List<Integer> bounds) {
     String result = "";

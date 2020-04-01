@@ -6,12 +6,22 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-public class EditorView extends JFrame implements IEditorView{
+/**
+ * A class that represent the editor view that allow the animation to play more than once, and add,
+ * remove, and modify items from the animation.
+ */
+public class EditorView extends JFrame implements IEditorView {
+
   private boolean loop;
   private VisualView visual;
   private int speed;
 
-  public EditorView (/*VisualView visual, boolean loop*/int speed) {
+  /**
+   * constructs the view given speed to output.
+   *
+   * @param speed
+   */
+  public EditorView(/*VisualView visual, boolean loop*/int speed) {
     this.loop = false; //??????????????????????????????
     this.speed = speed;
 

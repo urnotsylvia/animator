@@ -16,7 +16,7 @@ public class SVGView implements IView {
   private int speed;
 
   /**
-   * constructs the view given model, speed and the appendable to output.
+   * constructs the view given speed and the appendable to output.
    *
    * @param speed  the speed
    * @param output the output file
