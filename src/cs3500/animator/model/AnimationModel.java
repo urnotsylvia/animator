@@ -186,18 +186,6 @@ public class AnimationModel implements IAnimationOperations {
     return allKeysAtThisTick;
   }
 
-  @Override
-  public List<IShape> getShapesWithAllKeys() {
-    List<IShape> allKeys = new ArrayList<>();
-    for (IShape s : shapes) {
-      for (int i = 0; i < s.getKeyFrames().size(); i++) {
-        KeyFrame k = s.getKeyFrames().get(i);
-        copyAllTheValue(allKeys, s, k);
-      }
-    }
-    return allKeys;
-  }
-
   /**
    * make a copy of the shape and add it to the given list.
    *

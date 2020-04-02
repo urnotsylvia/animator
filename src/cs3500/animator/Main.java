@@ -99,7 +99,7 @@ public class Main {
         throw new IllegalArgumentException("invalid view:(");
     }
 
-    IController controller = new AnimationController(model, view);
+    IController controller = new AnimationController(model, view, speed);
 
     controller.playAnimation();
 

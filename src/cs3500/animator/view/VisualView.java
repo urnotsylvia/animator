@@ -1,8 +1,11 @@
 package cs3500.animator.view;
 
+import cs3500.animator.controller.IController;
 import cs3500.animator.model.IAnimationOperations;
+import cs3500.animator.model.IReadonlyAnimationOperations;
 import cs3500.animator.model.IShape;
 import java.util.List;
+import javax.imageio.event.IIOReadProgressListener;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
@@ -10,13 +13,17 @@ import javax.swing.JScrollPane;
  * the view that display the animation to visualize it.
  */
 public class VisualView extends JFrame implements IView {
+  private IReadonlyAnimationOperations model;
   private int speed;
+  private AnimationPanel panel;
+
   /**
    * constructs the view given model, speed and the appendable to output.
    *
    * @param speed the speed
    */
-  public VisualView(int speed) {
+  public VisualView(IReadonlyAnimationOperations model, int speed) {
+    this.model = model;
     this.speed = speed;
   }
 
@@ -26,24 +33,29 @@ public class VisualView extends JFrame implements IView {
   }
 
   @Override
-  public void showAnimation(List<IShape> shapes, List<Integer> bounds) {
+  public void refresh() {
+    this.repaint();
+  }
 
+  @Override
+  public void addActionListener(IController listener) {
+    panel = new AnimationPanel(model.getShapes(), speed, listener);
+  }
 
-    setSize(bounds.get(2), bounds.get(3));
+  @Override
+  public void showAnimation() {
+    setSize(model.getBound("w"), model.getBound("h"));
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    AnimationPanel panel = new AnimationPanel(shapes, speed);
+
     panel.getPreferredSize();
     JScrollPane scrollPane = new JScrollPane(panel);
 
     this.add(scrollPane);
 
-    this.setLocation(bounds.get(0), bounds.get(1));
+    this.setLocation(model.getBound("x"), model.getBound("y"));
 
     this.makeVisible();
-
-    this.repaint();
-
   }
 }
 

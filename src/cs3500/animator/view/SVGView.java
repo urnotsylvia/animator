@@ -1,6 +1,8 @@
 package cs3500.animator.view;
 
+import cs3500.animator.controller.IController;
 import cs3500.animator.model.IAnimationOperations;
+import cs3500.animator.model.IReadonlyAnimationOperations;
 import cs3500.animator.model.IShape;
 import cs3500.animator.model.KeyFrame;
 import java.io.IOException;
@@ -11,7 +13,7 @@ import java.util.List;
  * and animations.
  */
 public class SVGView implements IView {
-
+  private IReadonlyAnimationOperations model;
   private Appendable output;
   private int speed;
 
@@ -21,21 +23,22 @@ public class SVGView implements IView {
    * @param speed  the speed
    * @param output the output file
    */
-  public SVGView(int speed, Appendable output) {
+  public SVGView(IReadonlyAnimationOperations model, int speed, Appendable output) {
+    this.model = model;
     this.speed = speed;
     this.output = output;
   }
 
   @Override
-  public void showAnimation(List<IShape> shapes, List<Integer> bounds) {
+  public void showAnimation() {
     StringBuilder result = new StringBuilder(
-        "<svg viewBox=\"" + bounds.get(0) + " " + bounds.get(1)
-            + " " + bounds.get(2) + " "
-            + bounds.get(3)
+        "<svg viewBox=\"" + model.getBound("x") + " " + model.getBound("y")
+            + " " + model.getBound("w") + " "
+            + model.getBound("h")
             + "\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n\n");
     String shapeType;
-    for (int i = 0; i < shapes.size(); i++) {
-      IShape curShape = shapes.get(i);
+    for (int i = 0; i < model.getShapes().size(); i++) {
+      IShape curShape = model.getShapes().get(i);
 
       switch (curShape.getShapeAsString()) {
         case "rectangle":
@@ -77,8 +80,18 @@ public class SVGView implements IView {
   }
 
   @Override
+  public void addActionListener(IController listener) {
+
+  }
+
+  @Override
   public void makeVisible() {
     throw new UnsupportedOperationException("don't need this method");
+  }
+
+  @Override
+  public void refresh() {
+
   }
 
   /**

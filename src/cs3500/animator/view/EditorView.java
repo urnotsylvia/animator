@@ -1,5 +1,7 @@
 package cs3500.animator.view;
 
+import cs3500.animator.controller.IController;
+import cs3500.animator.model.IReadonlyAnimationOperations;
 import cs3500.animator.model.IShape;
 import java.util.List;
 import javax.swing.JFrame;
@@ -8,9 +10,8 @@ import javax.swing.JFrame;
  * A class that represent the editor view that allow the animation to play more than once, and add,
  * remove, and modify items from the animation.
  */
-public class EditorView extends JFrame implements IEditorView {
-
-  private boolean loop;
+public class EditorView extends JFrame implements IView {
+  private IReadonlyAnimationOperations model;
   private VisualView visual;
   private int speed;
 
@@ -19,8 +20,8 @@ public class EditorView extends JFrame implements IEditorView {
    *
    * @param speed
    */
-  public EditorView(/*VisualView visual, boolean loop*/int speed) {
-    this.loop = false; //??????????????????????????????
+  public EditorView(/*VisualView visual, boolean loop*/IReadonlyAnimationOperations model, int speed) {
+    this.model = model;
     this.speed = speed;
 
     this.makeVisible();
@@ -28,8 +29,13 @@ public class EditorView extends JFrame implements IEditorView {
 
 
   @Override
-  public void showAnimation(List<IShape> shapes, List<Integer> bounds) {
-    this.visual.showAnimation(shapes, bounds);
+  public void showAnimation() {
+    this.visual.showAnimation();
+  }
+
+  @Override
+  public void addActionListener(IController listener) {
+
   }
 
   @Override
@@ -38,27 +44,7 @@ public class EditorView extends JFrame implements IEditorView {
   }
 
   @Override
-  public void startAnimation() {
-
-  }
-
-  @Override
-  public void pauseAnimation() {
-
-  }
-
-  @Override
-  public void resumeAnimation() {
-
-  }
-
-  @Override
-  public void restartAnimation() {
-
-  }
-
-  @Override
-  public void changeSpeed(int speed) {
+  public void refresh() {
 
   }
 }

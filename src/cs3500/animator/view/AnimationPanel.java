@@ -1,5 +1,6 @@
 package cs3500.animator.view;
 
+import cs3500.animator.controller.IController;
 import cs3500.animator.model.IAnimationOperations;
 import cs3500.animator.model.IShape;
 import cs3500.animator.model.KeyFrame;
@@ -16,27 +17,22 @@ import javax.swing.Timer;
 /**
  * draw the animation each tick.
  */
-public class AnimationPanel extends JPanel implements ActionListener {
-
-  private int curTime = 1;
+public class AnimationPanel extends JPanel{
   private List<IShape> shapes;
+  private IController controller;
 
   /**
    * constructs the panel that given model and speed.
    *
    * @param speed the rate that specifies how many tick per ms
    */
-  public AnimationPanel(List<IShape> shapes, int speed) {
+  public AnimationPanel(List<IShape> shapes, int speed, IController controller) {
     this.shapes = shapes;
-    Timer timer = new Timer(500 / speed, this);
-    timer.start();
+    this.controller = controller;
   }
 
-  @Override
-  public void actionPerformed(ActionEvent evt) {
-    //Perform a task
-    curTime++;
-    this.repaint();
+  public void addActionListener(IController listener) {
+
   }
 
   @Override
@@ -50,7 +46,7 @@ public class AnimationPanel extends JPanel implements ActionListener {
     for (int i = 0; i < shapesWithAllKeys.size() - 1; i++) {
       //find the corresponding tick
       KeyFrame curKey = shapesWithAllKeys.get(i).getKeyFrames().get(0);
-      if (curKey.getTime() == curTime) {
+      if (curKey.getTime() == controller.getTime()) {
         g2.setColor(new Color(curKey.getColor().getRGB("r"),
             curKey.getColor().getRGB("g"),
             curKey.getColor().getRGB("b")));
@@ -71,31 +67,31 @@ public class AnimationPanel extends JPanel implements ActionListener {
         int tA = curKey.getTime();
         KeyFrame nextKey = shapesWithAllKeys.get(i + 1).getKeyFrames().get(0);
         int tB = nextKey.getTime();
-        if (curTime > tA
-            && curTime < tB) {
+        if (controller.getTime() > tA
+            && controller.getTime() < tB) {
           //tweening color
           g2.setColor(new Color(((getTweening(curKey.getColor().getRGB("r"),
-              nextKey.getColor().getRGB("r"), tA, tB, curTime))),
+              nextKey.getColor().getRGB("r"), tA, tB, controller.getTime()))),
               getTweening(curKey.getColor().getRGB("g"),
-                  nextKey.getColor().getRGB("g"), tA, tB, curTime),
+                  nextKey.getColor().getRGB("g"), tA, tB, controller.getTime()),
               getTweening(curKey.getColor().getRGB("b"),
-                  nextKey.getColor().getRGB("b"), tA, tB, curTime)));
+                  nextKey.getColor().getRGB("b"), tA, tB, controller.getTime())));
 
           switch (shapesWithAllKeys.get(i).getShapeAsString()) {
             case "rectangle":
-              g2.fillRect(getTweening(curKey.getX(), nextKey.getX(), tA, tB, curTime),
-                  getTweening(curKey.getY(), nextKey.getY(), tA, tB, curTime),
-                  getTweening(curKey.getW(), nextKey.getW(), tA, tB, curTime),
-                  getTweening(curKey.getH(), nextKey.getH(), tA, tB, curTime));
+              g2.fillRect(getTweening(curKey.getX(), nextKey.getX(), tA, tB, controller.getTime()),
+                  getTweening(curKey.getY(), nextKey.getY(), tA, tB, controller.getTime()),
+                  getTweening(curKey.getW(), nextKey.getW(), tA, tB, controller.getTime()),
+                  getTweening(curKey.getH(), nextKey.getH(), tA, tB, controller.getTime()));
               break;
             case "oval":
             case "ellipse":
               g2.fillOval(getTweening((curKey.getX()),
-                  (nextKey.getX()), tA, tB, curTime),
+                  (nextKey.getX()), tA, tB, controller.getTime()),
                   getTweening((curKey.getY()),
-                      (nextKey.getY()), tA, tB, curTime),
-                  getTweening((int) (curKey.getW()), (int) (nextKey.getW()), tA, tB, curTime),
-                  getTweening((int) (curKey.getH()), (int) (nextKey.getH()), tA, tB, curTime));
+                      (nextKey.getY()), tA, tB, controller.getTime()),
+                  getTweening((int) (curKey.getW()), (int) (nextKey.getW()), tA, tB, controller.getTime()),
+                  getTweening((int) (curKey.getH()), (int) (nextKey.getH()), tA, tB, controller.getTime()));
               break;
             default:
               throw new IllegalArgumentException("no such shape");

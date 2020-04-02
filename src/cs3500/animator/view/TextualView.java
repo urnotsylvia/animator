@@ -1,6 +1,8 @@
 package cs3500.animator.view;
 
+import cs3500.animator.controller.IController;
 import cs3500.animator.model.IAnimationOperations;
+import cs3500.animator.model.IReadonlyAnimationOperations;
 import cs3500.animator.model.IShape;
 import cs3500.animator.model.KeyFrame;
 import java.io.IOException;
@@ -14,26 +16,27 @@ import java.util.List;
  */
 public class TextualView implements IView {
   private Appendable output;
+  IReadonlyAnimationOperations model;
 
   /**
    * constructs the view given speed and the appendable to output.
    *
    * @param output the output file
    */
-  public TextualView(Appendable output) {
-
+  public TextualView(IReadonlyAnimationOperations model, Appendable output) {
+    this.model = model;
     this.output = output;
   }
 
   @Override
-  public void showAnimation(List<IShape> shapes, List<Integer> bounds) {
+  public void showAnimation() {
     String curMotionToString = "";
     String result =
-        "canvas " + getBoundsAsString(bounds) + "\n"; //need to finish setBound in model first
+        "canvas " + model.getBoundsAsString() + "\n"; //need to finish setBound in model first
 
     List<String> unSortedMotions = new ArrayList<>();
-    for (int i = 0; i < shapes.size(); i++) {
-      IShape curShape = shapes.get(i);
+    for (int i = 0; i < model.getShapes().size(); i++) {
+      IShape curShape = model.getShapes().get(i);
       result = result + "shape " + curShape.getName() + " " + curShape.getShapeAsString() + "\n";
 
       for (int k = 0; k < curShape.getKeyFrames().size() - 1; k++) {
@@ -57,6 +60,11 @@ public class TextualView implements IView {
     }
   }
 
+  @Override
+  public void addActionListener(IController listener) {
+
+  }
+
   /**
    * convert the given list of integers to the string format of the bound.
    * @param bounds represent the list of attribute
@@ -74,6 +82,11 @@ public class TextualView implements IView {
   @Override
   public void makeVisible() {
     return;
+  }
+
+  @Override
+  public void refresh() {
+
   }
 
   /**

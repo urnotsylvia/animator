@@ -6,7 +6,7 @@ import java.util.List;
  * This is the interface of the Model.IAnimationOperations, that representing all the functions in
  * the animator.
  */
-public interface IAnimationOperations {
+public interface IAnimationOperations extends IReadonlyAnimationOperations{
 
   /**
    * Add the shape to the list of keyFrame.
@@ -15,20 +15,6 @@ public interface IAnimationOperations {
    * @param type the type of the shape
    */
   void add(String name, String type);
-
-  /**
-   * get the attribute that is part of the bound according to the String given.
-   *
-   * @param i the String that represents the attribute name, can be one of x, y, w, h
-   * @return the value of the attribute
-   */
-  int getBound(String i);
-
-  /**
-   * returns the bound information as a list of integer.
-   * @return a list of integer that represents the bounds
-   */
-  List<Integer> getBoundAsList();
 
   /**
    * Remove the shape from the list of shape.
@@ -45,29 +31,6 @@ public interface IAnimationOperations {
    * @return the string format of the motion
    */
   String motionToString(String which, int when);
-
-  /**
-   * return the list of shapes of the model.
-   *
-   * @return list of shapes
-   */
-  List<IShape> getShapes();
-
-  /**
-   * Return the present state of the game as a string.
-   *
-   * @param when to represent the tick in order to refer to the motion
-   * @return the list of shape
-   * @throws IllegalArgumentException if there is a conflicting/overlapping motion
-   */
-  List<IShape> getState(int when);
-
-  /**
-   * get a list of shape that has each key associated with a shape.
-   *
-   * @return a list of shapes with the active keyFrame
-   */
-  List<IShape> getShapesWithAllKeys();
 
   /**
    * add the keyFrame with given values to the shape of given name.
@@ -94,11 +57,4 @@ public interface IAnimationOperations {
    * @throws IllegalArgumentException if any value of the attribute is negative
    */
   void setBounds(int x, int y, int width, int height);
-
-  /**
-   * return the bound information as a string.
-   *
-   * @return string that represents the 4 attributes of the bounding
-   */
-  String getBoundsAsString();
 }

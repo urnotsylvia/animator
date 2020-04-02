@@ -74,7 +74,6 @@ public abstract class AShape implements IShape {
       for (int i = 0; i < this.keyFrames.size(); i++) {
         copyAllTheValue(allKeys, this, this.keyFrames.get(i));
       }
-    System.out.println(allKeys.size());
     return allKeys;
   }
 
