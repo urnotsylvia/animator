@@ -14,7 +14,7 @@ import java.util.List;
  * The View of the Animation to produce a textual description of the animation that is compliant
  * with the popular SVG (Scalable Vector Graphics) file format.
  */
-public class TextualView implements IView {
+public class TextualView implements ITextualView {
   private Appendable output;
   IReadonlyAnimationOperations model;
 
@@ -60,11 +60,6 @@ public class TextualView implements IView {
     }
   }
 
-  @Override
-  public void addActionListener(IController listener) {
-
-  }
-
   /**
    * convert the given list of integers to the string format of the bound.
    * @param bounds represent the list of attribute
@@ -77,16 +72,6 @@ public class TextualView implements IView {
     }
     result = result.substring(0, result.length() - 1);
     return result;
-  }
-
-  @Override
-  public void makeVisible() {
-    return;
-  }
-
-  @Override
-  public void refresh() {
-
   }
 
   /**

@@ -2,6 +2,7 @@ package cs3500.animator.controller;
 
 import cs3500.animator.model.IAnimationOperations;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * the interface of the controller that start the animation.
@@ -40,8 +41,5 @@ public interface IController extends ActionListener {
    */
   void changeSpeed(int speed);
 
-  /**
-   * adds a new keyFrame to the model.
-   */
-  void addKeyFrame();
+  void addKeyFrame(List<Integer> values);
 }

@@ -57,4 +57,6 @@ public interface IAnimationOperations extends IReadonlyAnimationOperations{
    * @throws IllegalArgumentException if any value of the attribute is negative
    */
   void setBounds(int x, int y, int width, int height);
+
+  int maxTick();
 }

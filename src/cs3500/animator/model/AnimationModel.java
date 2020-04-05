@@ -89,6 +89,19 @@ public class AnimationModel implements IAnimationOperations {
   }
 
   @Override
+  public int maxTick() {
+    int maxT = 0;
+    int cur = 0;
+    for (IShape s: shapes) {
+      cur = s.getKeyFrames().get(s.getKeyFrames().size() - 1).getTime();
+      if (cur > maxT) {
+        maxT = cur;
+      }
+    }
+    return maxT;
+  }
+
+  @Override
   public void add(String name, String type) {
     for (IShape s : this.shapes) {
       if (s.getName().equals(name)) {

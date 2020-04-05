@@ -1,9 +1,13 @@
 package cs3500.animator.controller;
 
 import cs3500.animator.model.IAnimationOperations;
+import cs3500.animator.view.EditorPanel;
+import cs3500.animator.view.IEditorView;
 import cs3500.animator.view.IView;
+import cs3500.animator.view.IVisualView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.Timer;
 
 /**
@@ -28,14 +32,35 @@ public class AnimationController implements IController {
     this.model = model;
     this.view = view;
     this.speed = speed;
+    this.loop = false;
 
-    this.timer = new Timer(1000 / speed, new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        curTime++;
-        view.refresh();
-      }
-    });
+    if (view instanceof IEditorView) {
+      this.timer = new Timer(1000 / speed, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          if (curTime == model.maxTick()) {
+            if (!loop) {
+              timer.stop();
+            } else {
+              curTime = 0;
+            }
+          } else {
+            curTime++;
+            ((IEditorView) view).refresh();
+          }
+        }
+      });
+    }
+
+    if (view instanceof IVisualView) {
+      this.timer = new Timer(1000 / speed, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          curTime++;
+          ((IVisualView) view).refresh();
+        }
+      });
+    }
   }
 
   @Override
@@ -46,23 +71,44 @@ public class AnimationController implements IController {
   @Override
   public void changeLoop() {
     loop = !loop;
-    this.timer.setRepeats(loop);
   }
 
   @Override
   public void playAnimation() {
-    this.view.addActionListener(this);
+    if (view instanceof IEditorView) {
+      ((IEditorView) this.view).addActionListener(this);
+    }
+    if (view instanceof IVisualView) {
+      ((IVisualView) this.view).addActionListener(this);
+      this.timer.start();
+    }
     this.view.showAnimation();
     curTime = 1;
   }
 
   private void startAnimation() {
     this.timer.start();
+    curTime = 1;
   }
 
   @Override
-  public void addKeyFrame() {
+  public void addKeyFrame(List<Integer> values) {
+    String name;
+    int t;
+    int x;
+    int y;
+    int w;
+    int h;
+    int r;
+    int g;
+    int b;
 
+    name = model.getShapes().get(0).getName(); //wrong, should be the selected name from the combobox
+    for (Integer i: values) {
+      //how to correspond each value from the list
+    }
+
+    //model.addKeyframe(name, t, x, y, w, h, r, g, b);
   }
 
 
@@ -79,11 +125,12 @@ public class AnimationController implements IController {
   @Override
   public void changeSpeed(int speed) {
     this.speed = speed;
-    timer.setDelay(this.speed);
+    timer.setDelay(1000 / this.speed);
   }
 
   @Override
   public void actionPerformed(ActionEvent actionEvent) {
+    EditorPanel editorPanel = ((IEditorView) view).getEditorPanel();
     switch (actionEvent.getActionCommand()) {
       case "start":
         this.startAnimation();
@@ -92,15 +139,25 @@ public class AnimationController implements IController {
         this.resumeAnimation();
         break;
       case "changeSpeed":
+        int s;
+        try {
+          s = Integer.parseInt(editorPanel.getInputString());
+          if (s <= 0) {
+            this.changeSpeed(this.speed);
+          }
+          else {
+            this.changeSpeed(s);
+          }
+        } catch (NumberFormatException nfe) {
+          this.changeSpeed(this.speed);
+        }
 
-        //??????????????????????????????????????????????????
-        this.changeSpeed(1);
         break;
       case "loop":
         this.changeLoop();
         break;
       case "add":
-        this.addKeyFrame();//get the new keyFrame information
+        this.addKeyFrame(((IEditorView) view).getEditorPanel().getKeyFrameAsList());
         break;
       case "pause":
         this.pauseAnimation();

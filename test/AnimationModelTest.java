@@ -117,6 +117,11 @@ public class AnimationModelTest {
   }
 
   @Test
+  public void getMaxTickTest() {
+    assertEquals(9, model1.maxTick());
+  }
+
+  @Test
   public void checkIfEmptyTest() {
     assertEquals(emptyModel.getShapes(), new ArrayList<>());
   }

@@ -18,9 +18,6 @@ import cs3500.animator.view.IView;
  */
 public class Main {
 
-  /**
-   * Run a Tic Tac Toe game interactively.
-   */
   public static void main(String[] args) {
 
     IAnimationOperations model;

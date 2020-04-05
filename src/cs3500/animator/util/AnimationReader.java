@@ -15,7 +15,7 @@ public class AnimationReader {
    * <p>
    * The input file format consists of two types of lines:
    * <ul>
-   * <li>Shape lines: the keyword "shape" followed by two identifiers (i.e.
+   * <li>Shape lines: the keyword "shape" followed by two identifiers (i.e. 
    * alphabetic strings with no spaces), giving the unique name of the shape,
    * and the type of shape it is.</li>
    * <li>Motion lines: the keyword "motion" followed by an identifier giving the name

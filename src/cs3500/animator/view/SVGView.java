@@ -12,7 +12,7 @@ import java.util.List;
  * shows the animation in the format that is an XML-based format that can be used to describe images
  * and animations.
  */
-public class SVGView implements IView {
+public class SVGView implements ISVGView {
   private IReadonlyAnimationOperations model;
   private Appendable output;
   private int speed;
@@ -77,21 +77,6 @@ public class SVGView implements IView {
         throw new IllegalArgumentException("failed to append:("); //what is IOE, should throw IAE?
       }
     }
-  }
-
-  @Override
-  public void addActionListener(IController listener) {
-
-  }
-
-  @Override
-  public void makeVisible() {
-    throw new UnsupportedOperationException("don't need this method");
-  }
-
-  @Override
-  public void refresh() {
-
   }
 
   /**
