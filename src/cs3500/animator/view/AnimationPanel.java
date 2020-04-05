@@ -5,6 +5,7 @@ import cs3500.animator.model.IAnimationOperations;
 import cs3500.animator.model.IShape;
 import cs3500.animator.model.KeyFrame;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -31,8 +32,8 @@ public class AnimationPanel extends JPanel{
     this.controller = controller;
   }
 
-  public void addActionListener(IController listener) {
-
+  public AnimationPanel() {
+    this.shapes = new ArrayList<>();
   }
 
   @Override

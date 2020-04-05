@@ -4,6 +4,7 @@ import cs3500.animator.controller.IController;
 import cs3500.animator.model.IAnimationOperations;
 import cs3500.animator.model.IReadonlyAnimationOperations;
 import cs3500.animator.model.IShape;
+import java.awt.Component;
 import java.util.List;
 import javax.imageio.event.IIOReadProgressListener;
 import javax.swing.JFrame;
@@ -13,9 +14,11 @@ import javax.swing.JScrollPane;
  * the view that display the animation to visualize it.
  */
 public class VisualView extends JFrame implements IView {
+
   private IReadonlyAnimationOperations model;
   private int speed;
   private AnimationPanel panel;
+  private EditorPanel panelTest;
 
   /**
    * constructs the view given model, speed and the appendable to output.
@@ -46,7 +49,6 @@ public class VisualView extends JFrame implements IView {
   public void showAnimation() {
     setSize(model.getBound("w"), model.getBound("h"));
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
     panel.getPreferredSize();
     JScrollPane scrollPane = new JScrollPane(panel);

@@ -15,7 +15,7 @@ public class AnimationController implements IController {
   private IView view;
   private boolean loop;
   private int speed;
-  private Timer timer; //????????????????????????????????????????????????????
+  private Timer timer;
   private int curTime;
 
   /**
@@ -36,7 +36,6 @@ public class AnimationController implements IController {
         view.refresh();
       }
     });
-
   }
 
   @Override
@@ -54,8 +53,16 @@ public class AnimationController implements IController {
   public void playAnimation() {
     this.view.addActionListener(this);
     this.view.showAnimation();
-    this.timer.start();
     curTime = 1;
+  }
+
+  private void startAnimation() {
+    this.timer.start();
+  }
+
+  @Override
+  public void addKeyFrame() {
+
   }
 
 
@@ -66,12 +73,39 @@ public class AnimationController implements IController {
 
   @Override
   public void resumeAnimation() {
-    curTime--; //????????????????????????????????????????????????????????????????????????????
+    timer.start();
   }
 
   @Override
   public void changeSpeed(int speed) {
     this.speed = speed;
     timer.setDelay(this.speed);
+  }
+
+  @Override
+  public void actionPerformed(ActionEvent actionEvent) {
+    switch (actionEvent.getActionCommand()) {
+      case "start":
+        this.startAnimation();
+        break;
+      case "resume":
+        this.resumeAnimation();
+        break;
+      case "changeSpeed":
+
+        //??????????????????????????????????????????????????
+        this.changeSpeed(1);
+        break;
+      case "loop":
+        this.changeLoop();
+        break;
+      case "add":
+        this.addKeyFrame();//get the new keyFrame information
+        break;
+      case "pause":
+        this.pauseAnimation();
+        break;
+      default:
+    }
   }
 }
