@@ -61,8 +61,6 @@ public class Main {
     } catch (FileNotFoundException fne) {
       throw new IllegalArgumentException("bad file name");
     }
-    //-in "name-of-animation-file (file name)" -view "type-of-view" -out "where-output-show-go"
-    // -speed "integer-ticks-per-second"
 
     if (out.equals("")) {
       output = null;
