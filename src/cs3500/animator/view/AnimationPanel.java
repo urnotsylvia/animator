@@ -1,7 +1,9 @@
 package cs3500.animator.view;
 
 import cs3500.animator.controller.IController;
+import cs3500.animator.model.AnimationModel;
 import cs3500.animator.model.IAnimationOperations;
+import cs3500.animator.model.IReadonlyAnimationOperations;
 import cs3500.animator.model.IShape;
 import cs3500.animator.model.KeyFrame;
 import java.awt.Color;
@@ -19,29 +21,30 @@ import javax.swing.Timer;
  * draw the animation each tick.
  */
 public class AnimationPanel extends JPanel{
-  private List<IShape> shapes;
   private IController controller;
+  private IReadonlyAnimationOperations model;
 
   /**
    * constructs the panel that given model and speed.
    *
    * @param speed the rate that specifies how many tick per ms
    */
-  public AnimationPanel(List<IShape> shapes, int speed, IController controller) {
-    this.shapes = shapes;
+  public AnimationPanel(IReadonlyAnimationOperations model, int speed, IController controller) {
     this.controller = controller;
+    this.model = model;
   }
 
   public AnimationPanel() {
-    this.shapes = new ArrayList<>();
+    this.model = new AnimationModel(new ArrayList<>());
   }
 
   @Override
   public void paintComponent(Graphics g) {
+
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D) g;
     List<IShape> shapesWithAllKeys = new ArrayList<>();
-    for (IShape s: shapes) {
+    for (IShape s: model.getShapes()) {
       shapesWithAllKeys.addAll(s.getShapesWithAllKeys());
     }
     for (int i = 0; i < shapesWithAllKeys.size() - 1; i++) {

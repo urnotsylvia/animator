@@ -2,6 +2,7 @@ package cs3500.animator.controller;
 
 import cs3500.animator.model.IAnimationOperations;
 import cs3500.animator.view.EditorPanel;
+import cs3500.animator.view.EditorView;
 import cs3500.animator.view.IEditorView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.IVisualView;
@@ -21,6 +22,8 @@ public class AnimationController implements IController {
   private int speed;
   private Timer timer;
   private int curTime;
+
+  private String name = "";
 
   /**
    * constructs the controller.
@@ -53,12 +56,9 @@ public class AnimationController implements IController {
     }
 
     if (view instanceof IVisualView) {
-      this.timer = new Timer(1000 / speed, new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          curTime++;
-          ((IVisualView) view).refresh();
-        }
+      this.timer = new Timer(1000 / speed, e -> {
+        curTime++;
+        ((IVisualView) view).refresh();
       });
     }
   }
@@ -71,6 +71,11 @@ public class AnimationController implements IController {
   @Override
   public void changeLoop() {
     loop = !loop;
+    String loopToChange = "LOOP";
+    if (loop) {
+      loopToChange = "NonLOOP";
+    }
+    ((IEditorView) view).getEditorPanel().getLoopButton().setText(loopToChange);
   }
 
   @Override
@@ -92,24 +97,27 @@ public class AnimationController implements IController {
   }
 
   @Override
-  public void addKeyFrame(List<Integer> values) {
-    String name;
-    int t;
-    int x;
-    int y;
-    int w;
-    int h;
-    int r;
-    int g;
-    int b;
+  public void addKeyFrame(String name, List<Integer> values) {
+    int t = values.get(0);
+    int x = values.get(1);
+    int y = values.get(2);
+    int w = values.get(3);
+    int h = values.get(4);
+    int r = values.get(5);
+    int g = values.get(6);
+    int b = values.get(7);
 
-    name = model.getShapes().get(0).getName(); //wrong, should be the selected name from the combobox
-    for (Integer i: values) {
-      //how to correspond each value from the list
+    if (name.equals("")) {
+      name = model.getShapes().get(0).getName();
     }
 
-    //model.addKeyframe(name, t, x, y, w, h, r, g, b);
-  }
+    System.out.println(name);
+    System.out.println(model.getState(t));
+    model.addKeyframe(name, t, x, y, w, h, r, g, b);
+    ((EditorView) view).updateROModel(model);
+    System.out.println(name);
+    System.out.println(model.getState(t));
+    }
 
 
   @Override
@@ -131,12 +139,17 @@ public class AnimationController implements IController {
   @Override
   public void actionPerformed(ActionEvent actionEvent) {
     EditorPanel editorPanel = ((IEditorView) view).getEditorPanel();
+
     switch (actionEvent.getActionCommand()) {
       case "start":
         this.startAnimation();
+        editorPanel.getStartButton().setText("RESTART");
         break;
       case "resume":
         this.resumeAnimation();
+        break;
+      case "whichShapeToAdd":
+        name = editorPanel.getComboBox().getSelectedItem().toString();
         break;
       case "changeSpeed":
         int s;
@@ -151,13 +164,12 @@ public class AnimationController implements IController {
         } catch (NumberFormatException nfe) {
           this.changeSpeed(this.speed);
         }
-
         break;
       case "loop":
         this.changeLoop();
         break;
       case "add":
-        this.addKeyFrame(((IEditorView) view).getEditorPanel().getKeyFrameAsList());
+        this.addKeyFrame(name, ((IEditorView) view).getEditorPanel().getKeyFrameAsList());
         break;
       case "pause":
         this.pauseAnimation();

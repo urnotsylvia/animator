@@ -41,5 +41,5 @@ public interface IController extends ActionListener {
    */
   void changeSpeed(int speed);
 
-  void addKeyFrame(List<Integer> values);
+  void addKeyFrame(String name, List<Integer> values);
 }

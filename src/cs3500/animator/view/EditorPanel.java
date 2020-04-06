@@ -1,15 +1,19 @@
 package cs3500.animator.view;
 
 import cs3500.animator.controller.IController;
+import cs3500.animator.model.IReadonlyAnimationOperations;
+import cs3500.animator.model.IShape;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class EditorPanel extends JPanel {
+  private IReadonlyAnimationOperations model;
   private JTextField addKeyInput;
   private JTextField changeSpeedInput;
   private JButton startButton;
@@ -18,9 +22,12 @@ public class EditorPanel extends JPanel {
   private JButton addKeyFrameButton;
   private JButton loopButton;
   private JButton changeSpeedButton;
+  private JComboBox whichShape;
 
 
-  public EditorPanel() {
+  public EditorPanel(IReadonlyAnimationOperations model) {
+
+    this.model = model;
 
     this.setBackground(Color.green);
 
@@ -53,6 +60,16 @@ public class EditorPanel extends JPanel {
     addKeyFrameButton = new JButton("ADD");
     addKeyFrameButton.setActionCommand("add");
     this.add(addKeyFrameButton);
+
+    List<String> names = new ArrayList<>();
+    for (IShape s: model.getShapes()) {
+      names.add(s.getName());
+    }
+
+    whichShape = new JComboBox(names.toArray());
+    whichShape.setActionCommand("whichShapeToAdd");
+    this.add(whichShape);
+    System.out.println((String) whichShape.getSelectedItem());
   }
 
   public String getInputString() {
@@ -81,5 +98,19 @@ public class EditorPanel extends JPanel {
 
     changeSpeedButton.addActionListener(listener);
 
+    whichShape.addActionListener(listener);
+
+  }
+
+  public JButton getStartButton() {
+    return this.startButton;
+  }
+
+  public JButton getLoopButton() {
+    return this.loopButton;
+  }
+
+  public JComboBox getComboBox() {
+    return this.whichShape;
   }
 }

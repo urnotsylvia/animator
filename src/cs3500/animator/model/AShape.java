@@ -108,6 +108,7 @@ public abstract class AShape implements IShape {
       }
     }
     keyFrames.add(newKey);
+    //sort
   }
 
   @Override

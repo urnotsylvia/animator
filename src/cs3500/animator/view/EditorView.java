@@ -2,13 +2,9 @@ package cs3500.animator.view;
 
 import cs3500.animator.controller.IController;
 import cs3500.animator.model.IReadonlyAnimationOperations;
-import cs3500.animator.model.IShape;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
@@ -31,14 +27,7 @@ public class EditorView extends JFrame implements IEditorView {
 
     panel1 = new AnimationPanel();
 
-    panel2 = new EditorPanel();
-    List<String> names = new ArrayList<>();
-    for (IShape s: model.getShapes()) {
-      names.add(s.getName());
-    }
-
-    JComboBox whichShape = new JComboBox(names.toArray());
-    panel2.add(whichShape);
+    panel2 = new EditorPanel(model);
 
     this.setLayout(new BorderLayout());
 
@@ -70,7 +59,7 @@ public class EditorView extends JFrame implements IEditorView {
 
   @Override
   public void addActionListener(IController listener) {
-    panel1 = new AnimationPanel(model.getShapes(), speed, listener);
+    panel1 = new AnimationPanel(model, speed, listener);
     panel2.addActionListener(listener);
   }
 
@@ -87,5 +76,12 @@ public class EditorView extends JFrame implements IEditorView {
   @Override
   public EditorPanel getEditorPanel() {
     return this.panel2;
+  }
+
+  @Override
+  public void updateROModel(IReadonlyAnimationOperations readonlyModel) {
+    model = readonlyModel;
+    refresh();
+    System.out.println("new-------------" + model.getState(3));
   }
 }

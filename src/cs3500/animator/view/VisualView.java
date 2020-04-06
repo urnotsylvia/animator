@@ -44,7 +44,7 @@ public class VisualView extends JFrame implements IVisualView {
 
   @Override
   public void addActionListener(IController listener) {
-    panel = new AnimationPanel(model.getShapes(), speed, listener);
+    panel = new AnimationPanel(model, speed, listener);
   }
 
   @Override
