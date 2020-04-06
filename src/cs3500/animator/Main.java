@@ -18,6 +18,10 @@ import cs3500.animator.view.IView;
  */
 public class Main {
 
+  /**
+   * the main methods that parses the commandline and start the animation.
+   * @param args commandLine that gives input output file, speed, which view
+   */
   public static void main(String[] args) {
 
     IAnimationOperations model;

@@ -14,6 +14,11 @@ public class VisualView extends JFrame implements IVisualView {
   private IReadonlyAnimationOperations model;
   private AnimationPanel panel;
 
+  /**
+   * constructs the visualView by initializes the model and panel and make it visible.
+   *
+   * @param model the readonly model
+   */
   public VisualView(IReadonlyAnimationOperations model) {
     this.model = model;
     this.panel = new AnimationPanel();

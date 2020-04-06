@@ -2,12 +2,17 @@ package cs3500.animator.view;
 
 import cs3500.animator.controller.IController;
 import cs3500.animator.model.IReadonlyAnimationOperations;
-import javax.swing.JPanel;
 
+/**
+ * the interface IEditorView that can let the user interacts with the animation and mutates the
+ * model by adding new keyFrames to the selected shape.
+ */
 public interface IEditorView extends IView {
 
   /**
-   * @param listener
+   * add a listener for the view.
+   *
+   * @param listener the controller as a listener
    */
   void addActionListener(IController listener);
 

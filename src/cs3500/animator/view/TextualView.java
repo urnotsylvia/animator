@@ -1,7 +1,5 @@
 package cs3500.animator.view;
 
-import cs3500.animator.controller.IController;
-import cs3500.animator.model.IAnimationOperations;
 import cs3500.animator.model.IReadonlyAnimationOperations;
 import cs3500.animator.model.IShape;
 import cs3500.animator.model.KeyFrame;

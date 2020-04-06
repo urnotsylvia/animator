@@ -10,6 +10,7 @@ import java.io.IOException;
  * and animations.
  */
 public class SVGView implements ISVGView {
+
   private IReadonlyAnimationOperations model;
   private Appendable output;
   private int speed;
@@ -48,15 +49,7 @@ public class SVGView implements ISVGView {
           throw new IllegalArgumentException("no such shape type");
       }
       result.append("\t").append(getShapeAsSVGString(shapeType, curShape));
- /*     if((curShape.getKeyFrames().size() == 2) && curShape.getKeyFrames().get(0).allValuesAreEqualButTime(curShape.getKeyFrames().get(1))) {
-        result.append("\t\t<animate attributeType=\"xml\" begin=\"0ms\" dur=\""
-            + ((curShape.getKeyFrames().get(curShape.getKeyFrames().size() - 1).getTime() + 0.0) * 1000 / speed)
-            + "ms\" attributeName=\"visibility\" from=\"visible\" to=\"hidden\" repeatCount=\"1\" />\n");
-          result.append("\t\t<animate attributeType=\"xml\" begin=\""
-              + (curShape.getKeyFrames().get(0).getTime() * 1000 / speed) + "ms\" dur=\""
-              + (((curShape.getKeyFrames().get(curShape.getKeyFrames().size() - 1).getTime() - curShape.getKeyFrames().get(0).getTime()) + 0.0) * 1000 / speed)
-              + "ms\" attributeName=\"visibility\" from=\"hidden\" to=\"visible\" repeatCount=\"1\" />\n");
-      }*/
+
       for (int k = 0; k < curShape.getKeyFrames().size() - 1; k++) {
         KeyFrame curKey = curShape.getKeyFrames().get(k);
         KeyFrame nextKey = curShape.getKeyFrames().get(k + 1);
@@ -144,7 +137,7 @@ public class SVGView implements ISVGView {
             case 6:
             case 7:
               changeAttribute = "fill";
-                break;
+              break;
             default:
               throw new IllegalArgumentException("not a valid attribute");
           }

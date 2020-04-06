@@ -59,7 +59,7 @@ public interface IAnimationOperations extends IReadonlyAnimationOperations {
   void setBounds(int x, int y, int width, int height);
 
   /**
-   * gets the maximum tick the animation needs
+   * gets the maximum tick the animation needs.
    *
    * @return the maximum tick
    */
