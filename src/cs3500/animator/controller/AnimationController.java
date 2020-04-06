@@ -7,8 +7,8 @@ import cs3500.animator.view.IEditorView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.IVisualView;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Objects;
 import javax.swing.Timer;
 
 /**
@@ -30,6 +30,7 @@ public class AnimationController implements IController {
    *
    * @param model the model that stores all the data of the animation
    * @param view  the view that shows the animation
+   * @param speed the speed of the animation
    */
   public AnimationController(IAnimationOperations model, IView view, int speed) {
     this.model = model;
@@ -38,19 +39,16 @@ public class AnimationController implements IController {
     this.loop = false;
 
     if (view instanceof IEditorView) {
-      this.timer = new Timer(1000 / speed, new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          if (curTime == model.maxTick()) {
-            if (!loop) {
-              timer.stop();
-            } else {
-              curTime = 0;
-            }
+      this.timer = new Timer(1000 / speed, e -> {
+        if (curTime == model.maxTick()) {
+          if (!loop) {
+            timer.stop();
           } else {
-            curTime++;
-            ((IEditorView) view).refresh();
+            curTime = 0;
           }
+        } else {
+          curTime++;
+          ((IEditorView) view).refresh();
         }
       });
     }
@@ -98,26 +96,28 @@ public class AnimationController implements IController {
 
   @Override
   public void addKeyFrame(String name, List<Integer> values) {
-    int t = values.get(0);
-    int x = values.get(1);
-    int y = values.get(2);
-    int w = values.get(3);
-    int h = values.get(4);
-    int r = values.get(5);
-    int g = values.get(6);
-    int b = values.get(7);
+    if (values.size() != 8) {
+      ((EditorView) view).getEditorPanel().getHint()
+          .setText("the format should be 8 integers separated by blank!");
+    } else {
+      int t = values.get(0);
+      int x = values.get(1);
+      int y = values.get(2);
+      int w = values.get(3);
+      int h = values.get(4);
+      int r = values.get(5);
+      int g = values.get(6);
+      int b = values.get(7);
 
-    if (name.equals("")) {
-      name = model.getShapes().get(0).getName();
-    }
+      if (name.equals("")) {
+        name = model.getShapes().get(0).getName();
+      }
 
-    System.out.println(name);
-    System.out.println(model.getState(t));
-    model.addKeyframe(name, t, x, y, w, h, r, g, b);
-    ((EditorView) view).updateROModel(model);
-    System.out.println(name);
-    System.out.println(model.getState(t));
+      model.addKeyframe(name, t, x, y, w, h, r, g, b);
+      ((EditorView) view).getEditorPanel().getHint().setText("");
+      ((EditorView) view).updateROModel(model);
     }
+  }
 
 
   @Override
@@ -149,7 +149,7 @@ public class AnimationController implements IController {
         this.resumeAnimation();
         break;
       case "whichShapeToAdd":
-        name = editorPanel.getComboBox().getSelectedItem().toString();
+        name = Objects.requireNonNull(editorPanel.getComboBox().getSelectedItem()).toString();
         break;
       case "changeSpeed":
         int s;
@@ -157,8 +157,7 @@ public class AnimationController implements IController {
           s = Integer.parseInt(editorPanel.getInputString());
           if (s <= 0) {
             this.changeSpeed(this.speed);
-          }
-          else {
+          } else {
             this.changeSpeed(s);
           }
         } catch (NumberFormatException nfe) {

@@ -1,12 +1,9 @@
 package cs3500.animator.view;
 
-import cs3500.animator.controller.IController;
-import cs3500.animator.model.IAnimationOperations;
 import cs3500.animator.model.IReadonlyAnimationOperations;
 import cs3500.animator.model.IShape;
 import cs3500.animator.model.KeyFrame;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * shows the animation in the format that is an XML-based format that can be used to describe images
@@ -87,7 +84,7 @@ public class SVGView implements ISVGView {
    * @return the current motion to the string
    */
   private String curAnimation(KeyFrame curKey, KeyFrame nextKey, String shapeType) {
-    String result = "";
+    StringBuilder result = new StringBuilder();
     String[] arr1 = curKey.keyToString().split(" ");
     String[] arr2 = nextKey.keyToString().split(" ");
     double startTime = (curKey.getTime() + 0.0) * 1000 / speed;
@@ -153,27 +150,25 @@ public class SVGView implements ISVGView {
           }
           if (changeAttribute.equals("fill")) {
             if (!changedColor) {
-              result = result + "\t\t<animate attributeType=\"xml\" begin=\""
-                  + startTime
-                  + "ms\" dur=\"" + duration
-                  + "ms\" attributeName=\"" + changeAttribute
-                  + "\" from=\"" + curKey.getColor().asRGBString() + "\" to=\""
-                  + nextKey.getColor().asRGBString() + "\" fill=\"freeze\" />\n";
+              result.append("\t\t<animate attributeType=\"xml\" begin=\"").append(startTime)
+                  .append("ms\" dur=\"").append(duration).append("ms\" attributeName=\"")
+                  .append(changeAttribute).append("\" from=\"")
+                  .append(curKey.getColor().asRGBString()).append("\" to=\"")
+                  .append(nextKey.getColor().asRGBString()).append("\" fill=\"freeze\" />\n");
               changedColor = true;
             }
           } else {
-            result = result + "\t\t<animate attributeType=\"xml\" "
-                + "begin=\"" + startTime + "ms\" "
-                + "dur=\"" + duration + "ms\" "
-                + "attributeName=\"" + changeAttribute
-                + "\" from=\"" + arr1[i] + "\" to=\"" + arr2[arr2Index]
-                + "\" fill=\"freeze\" />\n";
+            result.append("\t\t<animate attributeType=\"xml\" ").append("begin=\"")
+                .append(startTime).append("ms\" ").append("dur=\"").append(duration).append("ms\" ")
+                .append("attributeName=\"").append(changeAttribute).append("\" from=\"")
+                .append(arr1[i]).append("\" to=\"").append(arr2[arr2Index])
+                .append("\" fill=\"freeze\" />\n");
           }
         }
         arr2Index++;
       }
     }
-    return result;
+    return result.toString();
   }
 
   /**

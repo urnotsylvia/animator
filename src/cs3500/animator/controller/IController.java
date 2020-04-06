@@ -1,6 +1,5 @@
 package cs3500.animator.controller;
 
-import cs3500.animator.model.IAnimationOperations;
 import java.awt.event.ActionListener;
 import java.util.List;
 
@@ -41,5 +40,11 @@ public interface IController extends ActionListener {
    */
   void changeSpeed(int speed);
 
+  /**
+   * adds a new keyFrame to the model based on the input from user and the shape name chosen.
+   *
+   * @param name   the name of the shape to add the keyFrame
+   * @param values the values for the keyFrame as a list of integer
+   */
   void addKeyFrame(String name, List<Integer> values);
 }

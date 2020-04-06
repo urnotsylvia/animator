@@ -17,13 +17,14 @@ public class EditorView extends JFrame implements IEditorView {
   private IReadonlyAnimationOperations model;
   private AnimationPanel panel1;
   private EditorPanel panel2;
-  private int speed;
 
-
-  public EditorView(IReadonlyAnimationOperations model,
-      int speed) {
+  /**
+   * constructs the EditorView by initialize the panels and make the animation visible.
+   *
+   * @param model the readonly model that cannot be mutated
+   */
+  public EditorView(IReadonlyAnimationOperations model) {
     this.model = model;
-    this.speed = speed;
 
     panel1 = new AnimationPanel();
 
@@ -59,7 +60,7 @@ public class EditorView extends JFrame implements IEditorView {
 
   @Override
   public void addActionListener(IController listener) {
-    panel1 = new AnimationPanel(model, speed, listener);
+    panel1 = new AnimationPanel(model, listener);
     panel2.addActionListener(listener);
   }
 
@@ -81,7 +82,5 @@ public class EditorView extends JFrame implements IEditorView {
   @Override
   public void updateROModel(IReadonlyAnimationOperations readonlyModel) {
     model = readonlyModel;
-    refresh();
-    System.out.println("new-------------" + model.getState(3));
   }
 }

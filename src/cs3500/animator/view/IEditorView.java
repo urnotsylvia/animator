@@ -5,8 +5,8 @@ import cs3500.animator.model.IReadonlyAnimationOperations;
 import javax.swing.JPanel;
 
 public interface IEditorView extends IView {
+
   /**
-   *
    * @param listener
    */
   void addActionListener(IController listener);
@@ -26,5 +26,10 @@ public interface IEditorView extends IView {
    */
   EditorPanel getEditorPanel();
 
+  /**
+   * updates the readonly model after the mutable model been mutated.
+   *
+   * @param readonlyModel the readonly model
+   */
   void updateROModel(IReadonlyAnimationOperations readonlyModel);
 }

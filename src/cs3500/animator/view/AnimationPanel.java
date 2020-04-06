@@ -2,38 +2,38 @@ package cs3500.animator.view;
 
 import cs3500.animator.controller.IController;
 import cs3500.animator.model.AnimationModel;
-import cs3500.animator.model.IAnimationOperations;
 import cs3500.animator.model.IReadonlyAnimationOperations;
 import cs3500.animator.model.IShape;
 import cs3500.animator.model.KeyFrame;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 /**
  * draw the animation each tick.
  */
-public class AnimationPanel extends JPanel{
+public class AnimationPanel extends JPanel {
+
   private IController controller;
   private IReadonlyAnimationOperations model;
 
   /**
-   * constructs the panel that given model and speed.
+   * constructs the panel that takes in the model and controller.
    *
-   * @param speed the rate that specifies how many tick per ms
+   * @param model      the readonly model that cannot be mutated
+   * @param controller the controller as a action listener
    */
-  public AnimationPanel(IReadonlyAnimationOperations model, int speed, IController controller) {
+  public AnimationPanel(IReadonlyAnimationOperations model, IController controller) {
     this.controller = controller;
     this.model = model;
   }
 
+  /**
+   * constructor that initialize the model.
+   */
   public AnimationPanel() {
     this.model = new AnimationModel(new ArrayList<>());
   }
@@ -44,7 +44,7 @@ public class AnimationPanel extends JPanel{
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D) g;
     List<IShape> shapesWithAllKeys = new ArrayList<>();
-    for (IShape s: model.getShapes()) {
+    for (IShape s : model.getShapes()) {
       shapesWithAllKeys.addAll(s.getShapesWithAllKeys());
     }
     for (int i = 0; i < shapesWithAllKeys.size() - 1; i++) {
@@ -94,8 +94,10 @@ public class AnimationPanel extends JPanel{
                   (nextKey.getX()), tA, tB, controller.getTime()),
                   getTweening((curKey.getY()),
                       (nextKey.getY()), tA, tB, controller.getTime()),
-                  getTweening((int) (curKey.getW()), (int) (nextKey.getW()), tA, tB, controller.getTime()),
-                  getTweening((int) (curKey.getH()), (int) (nextKey.getH()), tA, tB, controller.getTime()));
+                  getTweening((int) (curKey.getW()), (int) (nextKey.getW()), tA, tB,
+                      controller.getTime()),
+                  getTweening((int) (curKey.getH()), (int) (nextKey.getH()), tA, tB,
+                      controller.getTime()));
               break;
             default:
               throw new IllegalArgumentException("no such shape");

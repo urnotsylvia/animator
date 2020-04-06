@@ -15,6 +15,7 @@ import java.util.List;
  * with the popular SVG (Scalable Vector Graphics) file format.
  */
 public class TextualView implements ITextualView {
+
   private Appendable output;
   IReadonlyAnimationOperations model;
 
@@ -62,12 +63,13 @@ public class TextualView implements ITextualView {
 
   /**
    * convert the given list of integers to the string format of the bound.
+   *
    * @param bounds represent the list of attribute
    * @return the String format of bounds
    */
   private String getBoundsAsString(List<Integer> bounds) {
     String result = "";
-    for (Integer i: bounds) {
+    for (Integer i : bounds) {
       result += i + " ";
     }
     result = result.substring(0, result.length() - 1);

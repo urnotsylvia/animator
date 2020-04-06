@@ -23,13 +23,13 @@ public class AnimationCreator {
   public static IView create(ViewType t, IAnimationOperations model, int speed, Appendable output) {
     switch (t) {
       case VISUAL:
-        return new VisualView(model, speed);
+        return new VisualView(model);
       case TEXTUAL:
         return new TextualView(model, output);
       case SVG:
         return new SVGView(model, speed, output);
       case EDITOR:
-        return new EditorView(model, speed);
+        return new EditorView(model);
       default:
         return null;
     }

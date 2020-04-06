@@ -1,12 +1,11 @@
 package cs3500.animator.model;
 
-import java.util.List;
 
 /**
  * This is the interface of the Model.IAnimationOperations, that representing all the functions in
  * the animator.
  */
-public interface IAnimationOperations extends IReadonlyAnimationOperations{
+public interface IAnimationOperations extends IReadonlyAnimationOperations {
 
   /**
    * Add the shape to the list of keyFrame.
@@ -34,6 +33,7 @@ public interface IAnimationOperations extends IReadonlyAnimationOperations{
 
   /**
    * add the keyFrame with given values to the shape of given name.
+   *
    * @param name the name of the shape that keyFrame need to be added to
    * @param t    time
    * @param x    x
@@ -58,5 +58,10 @@ public interface IAnimationOperations extends IReadonlyAnimationOperations{
    */
   void setBounds(int x, int y, int width, int height);
 
+  /**
+   * gets the maximum tick the animation needs
+   *
+   * @return the maximum tick
+   */
   int maxTick();
 }

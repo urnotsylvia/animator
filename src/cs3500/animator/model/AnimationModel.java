@@ -40,7 +40,7 @@ public class AnimationModel implements IAnimationOperations {
      * constructs the builder that takes in the model.
      */
     public Builder() {
-      this.model = new AnimationModel(new ArrayList<IShape>());
+      this.model = new AnimationModel(new ArrayList<>());
     }
 
     @Override
@@ -91,8 +91,8 @@ public class AnimationModel implements IAnimationOperations {
   @Override
   public int maxTick() {
     int maxT = 0;
-    int cur = 0;
-    for (IShape s: shapes) {
+    int cur;
+    for (IShape s : shapes) {
       cur = s.getKeyFrames().get(s.getKeyFrames().size() - 1).getTime();
       if (cur > maxT) {
         maxT = cur;
@@ -144,16 +144,6 @@ public class AnimationModel implements IAnimationOperations {
       default:
         throw new IllegalArgumentException("invalid attribute");
     }
-  }
-
-  @Override
-  public List<Integer> getBoundAsList() {
-    List<Integer> bounds = new ArrayList<>();
-    bounds.add(x);
-    bounds.add(y);
-    bounds.add(width);
-    bounds.add(height);
-    return bounds;
   }
 
   @Override
@@ -220,27 +210,23 @@ public class AnimationModel implements IAnimationOperations {
 
   @Override
   public List<IShape> getShapes() {
-    List<IShape> copy = new ArrayList<>();
-    for (IShape s : shapes) {
-      copy.add(s);
-    }
-    return copy;
+    return new ArrayList<>(shapes);
   }
 
   @Override
   public String motionToString(String which, int when) {
-    String result = "";
-    for (int i = 0; i < shapes.size(); i++) {
-      if (shapes.get(i).getName().equals(which)) {
-        for (int j = 0; j < shapes.get(i).getKeyFrames().size(); j++) {
-          if (shapes.get(i).getKeyFrames().get(j).getTime() == when) {
-            result = result + "motion " + shapes.get(i).getName() + " start:"
-                + shapes.get(i).getKeyFrames().get(j).keyToString() + " end:" + shapes.get(i)
-                .getKeyFrames().get(j + 1).keyToString();
+    StringBuilder result = new StringBuilder();
+    for (IShape shape : shapes) {
+      if (shape.getName().equals(which)) {
+        for (int j = 0; j < shape.getKeyFrames().size(); j++) {
+          if (shape.getKeyFrames().get(j).getTime() == when) {
+            result.append("motion ").append(shape.getName()).append(" start:")
+                .append(shape.getKeyFrames().get(j).keyToString()).append(" end:").append(shape
+                .getKeyFrames().get(j + 1).keyToString());
           }
         }
       }
     }
-    return result;
+    return result.toString();
   }
 }

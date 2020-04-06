@@ -2,7 +2,11 @@ package cs3500.animator.model;
 
 import java.util.List;
 
+/**
+ * The interface for readonly model that cannot be mutated.
+ */
 public interface IReadonlyAnimationOperations {
+
   /**
    * get the attribute that is part of the bound according to the String given.
    *
@@ -10,13 +14,6 @@ public interface IReadonlyAnimationOperations {
    * @return the value of the attribute
    */
   int getBound(String i);
-
-  /**
-   * returns the bound information as a list of integer.
-   * @return a list of integer that represents the bounds
-   */
-  List<Integer> getBoundAsList();
-
 
   /**
    * return the list of shapes of the model.

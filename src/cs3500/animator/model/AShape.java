@@ -1,6 +1,7 @@
 package cs3500.animator.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -71,9 +72,9 @@ public abstract class AShape implements IShape {
   @Override
   public List<IShape> getShapesWithAllKeys() {
     List<IShape> allKeys = new ArrayList<>();
-      for (int i = 0; i < this.keyFrames.size(); i++) {
-        copyAllTheValue(allKeys, this, this.keyFrames.get(i));
-      }
+    for (int i = 0; i < this.keyFrames.size(); i++) {
+      copyAllTheValue(allKeys, this, this.keyFrames.get(i));
+    }
     return allKeys;
   }
 
@@ -108,7 +109,7 @@ public abstract class AShape implements IShape {
       }
     }
     keyFrames.add(newKey);
-    //sort
+    keyFrames.sort(Comparator.comparingInt(KeyFrame::getTime));
   }
 
   @Override
