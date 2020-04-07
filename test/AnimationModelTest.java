@@ -11,6 +11,8 @@ import cs3500.animator.model.Oval;
 import cs3500.animator.model.Posn;
 import cs3500.animator.model.RGBColor;
 import cs3500.animator.model.Rectangle;
+import cs3500.animator.view.EditorView;
+import cs3500.animator.view.IEditorView;
 import cs3500.animator.view.IView;
 import cs3500.animator.view.SVGView;
 import cs3500.animator.view.TextualView;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 /**
  * The tests and examples of the animation.
@@ -77,7 +80,13 @@ public class AnimationModelTest {
 
   Appendable out = new StringBuilder();
 
+  // Tests for EditorView
+  @Test
+  public void testEditorOutputTest(){
 
+  }
+
+  // tests for ASMT5-6
   @Test
   public void textViewOutputTest() {
     IView textual = new TextualView(model1, out);

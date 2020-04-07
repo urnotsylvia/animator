@@ -12,7 +12,7 @@ import java.util.List;
  * The View of the Animation to produce a textual description of the animation that is compliant
  * with the popular SVG (Scalable Vector Graphics) file format.
  */
-public class TextualView implements ITextualView {
+public class TextualView implements IView {
 
   private Appendable output;
   IReadonlyAnimationOperations model;

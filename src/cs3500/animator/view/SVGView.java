@@ -9,7 +9,7 @@ import java.io.IOException;
  * shows the animation in the format that is an XML-based format that can be used to describe images
  * and animations.
  */
-public class SVGView implements ISVGView {
+public class SVGView implements IView {
 
   private IReadonlyAnimationOperations model;
   private Appendable output;
