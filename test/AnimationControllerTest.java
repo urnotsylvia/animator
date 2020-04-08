@@ -1,6 +1,5 @@
 import static org.junit.Assert.assertEquals;
 
-import cs3500.animator.model.AnimationModel;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -19,7 +18,6 @@ public class AnimationControllerTest {
   JComboBox whichShapeToAdd;
 
   MockController controller;
-  AnimationModel model;
   MockEditorView view;
 
 
@@ -35,7 +33,6 @@ public class AnimationControllerTest {
 
     this.controller = new MockController();
     this.view = new MockEditorView();
-    //this.model = new AnimationModel(los1);
 
   }
 
